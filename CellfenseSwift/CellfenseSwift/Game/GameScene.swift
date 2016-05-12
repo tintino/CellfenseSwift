@@ -5,6 +5,7 @@
 //  Created by Tincho on 5/5/16.
 //  Copyright © 2016 ag2. All rights reserved.
 //
+//
 
 import Foundation
 import SpriteKit
@@ -50,11 +51,22 @@ class GameScene: SKScene {
             let location = (touch as UITouch).locationInNode(self)
             let nodeTouched = self.nodeAtPoint(location)
             
+            //Add a new Tower
             if nodeTouched.name == Constants.NodeName.hudTower{
                 self.touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
                 self.touchedTower!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-                self.touchedTower!.position = CGPoint(x:  300, y:  100)
+                
+                //Offset on Y: avoid the tower to be under the finger
+                self.touchedTower!.position = CGPoint(x: location.x,
+                                                      y: location.y + self.touchedTower!.size.height)
                 self.addChild(self.touchedTower!)
+            }
+            //Relocate a Tower
+            else if let worldTower = self.gameWorld.towerAtLocation(location){
+                
+                //Reuse same flow as "add a new tower" to Keep It Simple
+                self.touchedTower = worldTower
+                 self.gameWorld.removeTowerAtLocation(location)
             }
         }
     }
@@ -68,7 +80,7 @@ class GameScene: SKScene {
             
             if let touchedTower = self.touchedTower {
                 
-                //Offset on Y: avoid the tower to be under the finger
+                //Offset on Y: mantain the tower on the finger
                 touchedTower.position = CGPoint(x: location.x,
                                                 y: location.y + self.touchedTower!.size.height)
                 
