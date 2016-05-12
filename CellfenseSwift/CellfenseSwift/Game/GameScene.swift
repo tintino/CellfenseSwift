@@ -11,11 +11,15 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    //Control: Has the play button, switch screen button, hud to add new towers
     var gameControl : GameControlNode!
+    
+    //World: Has the enemies, installed towers
     var gameWorld : GameWorldNode!
+    
     var sceneCam: SKCameraNode!
     
-    var touchedTower : SKSpriteNode!
+    var touchedTower : SKSpriteNode?
     
     override func didMoveToView(view: SKView) {
         
@@ -40,6 +44,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         for touch in touches {
             
             let location = (touch as UITouch).locationInNode(self)
@@ -47,27 +52,36 @@ class GameScene: SKScene {
             
             if nodeTouched.name == Constants.NodeName.hudTower{
                 self.touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
-                self.touchedTower.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-                self.touchedTower.position = CGPoint(x:  300, y:  100)
-                self.addChild(self.touchedTower)
+                self.touchedTower!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                self.touchedTower!.position = CGPoint(x:  300, y:  100)
+                self.addChild(self.touchedTower!)
             }
         }
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         for touch in touches {
             
             let location = (touch as UITouch).locationInNode(self)
-            
             let nodeTouched = self.nodeAtPoint(location)           
             
-            if let tower = self.touchedTower {
-                //Offset on y: avoid the tower to be under the finger
-                tower.position = CGPoint(x: location.x, y: location.y +
-                    self.touchedTower.size.height)
+            if let touchedTower = self.touchedTower {
+                
+                //Offset on Y: avoid the tower to be under the finger
+                touchedTower.position = CGPoint(x: location.x,
+                                         y: location.y + self.touchedTower!.size.height)
+                
+                if self.gameWorld.towerAtLocation(touchedTower.position) != nil{
+                    
+                    touchedTower.color = UIColor.redColor();
+                    touchedTower.colorBlendFactor = Constants.Tower.opacity;
+                }
+                else{
+                    touchedTower.colorBlendFactor = 0.0;
+                }
             }
         }
-        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -81,13 +95,20 @@ class GameScene: SKScene {
                 moveScene()
             }
             
-            if let tower = self.touchedTower {
-                tower.removeFromParent()
-                self.gameWorld.addTower(tower.position)
+            //User is holding a new tower
+            if let touchedTower = self.touchedTower {
                 
+                //And want it to place it on an empty space
+                if self.gameWorld.towerAtLocation(touchedTower.position) == nil{
+                    
+                    self.gameWorld.addTower(touchedTower.position)
+                }
+                
+                //Added (available place) or not (occupied place) to the world, we remove the touched tower
+                touchedTower.removeFromParent()
+                self.touchedTower = nil
             }
         }
-        
     }
     
     override func update(currentTime: NSTimeInterval) {

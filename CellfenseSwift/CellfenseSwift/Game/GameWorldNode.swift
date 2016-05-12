@@ -39,6 +39,18 @@ class GameWorldNode: SKNode{
         self.addChild(newTower!)
         
     }
+    
+    func towerAtLocation(position: CGPoint) -> Tower?{
+        for tower in self.towers {
+            var rectArea = CGRect()
+            rectArea.size = tower.size
+            rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2, y: tower.position.y - rectArea.size.height/2)
+            if CGRectContainsPoint(rectArea, position){
+                return tower
+            }
+        }
+        return nil
+    }
 
     
 }
