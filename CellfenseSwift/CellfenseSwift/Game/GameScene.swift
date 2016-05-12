@@ -126,6 +126,7 @@ class GameScene: SKScene {
         else{
             self.sceneCam.runAction(SKAction.moveToY(720, duration: 1))
             self.gameControl.moveUp()
+            self.gameWorld.moveEnemies()
         }
     }
 }

@@ -24,5 +24,6 @@ struct Constants {
     
     struct Tower {
         static let opacity : CGFloat = 0.5
+        static let range : CGFloat = 1.8
     }
 }

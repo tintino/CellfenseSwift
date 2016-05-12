@@ -42,6 +42,8 @@ class Enemy: SKSpriteNode {
     func Walk(){
         let animatedAction = SKAction.animateWithTextures(self.enemyFrames, timePerFrame: 0.1)
         let walkAction = SKAction.repeatActionForever(animatedAction)
+        let advance = SKAction.moveToY(0, duration: 10)
         self.runAction(walkAction, withKey: "enemyWalk")
+        self.runAction(advance)
     }
 }

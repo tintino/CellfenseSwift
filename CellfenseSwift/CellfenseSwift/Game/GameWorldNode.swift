@@ -39,7 +39,6 @@ class GameWorldNode: SKNode{
     func addTower(position: CGPoint){
         
         let newTower = Tower(type: TowerType.TURRET)
-        newTower?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         newTower?.position = position
         self.towers.append(newTower!)
         self.addChild(newTower!)
@@ -56,6 +55,13 @@ class GameWorldNode: SKNode{
             }
         }
         return nil
+    }
+    
+    //TODO: Remove test method
+    func moveEnemies(){
+        for enemy in self.enemies {
+            enemy.Walk()
+        }
     }
 
     
