@@ -34,7 +34,7 @@ class GameControlNode: SKNode {
         hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
         hudBackground.position = CGPoint(x: 0, y: 0)
         hudBackground.alpha = 0.3
-        hudBackground.zPosition = -1
+        hudBackground.zPosition = Constants.zPosition.hudbackground
         self.hud.addChild(hudBackground)
         
         //Create Tower Button

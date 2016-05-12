@@ -12,13 +12,14 @@ import SpriteKit
 class GameWorldNode: SKNode{
    
     var towers = [Tower]()
+    var enemies = [Enemy]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(withLevel: String){
+    init(withLevel: Level){
         super.init()
         
         //Create background
@@ -26,8 +27,13 @@ class GameWorldNode: SKNode{
         background.anchorPoint = CGPoint(x: 0, y: 0)
         background.position = CGPoint(x: 0, y: 0)
         //Force to render on back
-        background.zPosition = -2
+        background.zPosition = Constants.zPosition.background
         self.addChild(background)
+        
+        for enemy in withLevel.enemies {
+            self.enemies.append(enemy)
+            self.addChild(enemy)
+        }
     }
     
     func addTower(position: CGPoint){

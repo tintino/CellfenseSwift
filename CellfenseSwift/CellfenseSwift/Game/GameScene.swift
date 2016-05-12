@@ -25,11 +25,11 @@ class GameScene: SKScene {
         
         //Create the scene’s contents.
         
-        let level = Level()
-        self.gameControl = GameControlNode(withLevel: level)
+        let randomLevel = Level.randomLevel()
+        self.gameControl = GameControlNode(withLevel: randomLevel)
         self.addChild(self.gameControl)
         
-        self.gameWorld = GameWorldNode(withLevel: "")
+        self.gameWorld = GameWorldNode(withLevel: randomLevel)
         self.addChild(gameWorld)
         
         //Add Camera Scene
@@ -70,7 +70,7 @@ class GameScene: SKScene {
                 
                 //Offset on Y: avoid the tower to be under the finger
                 touchedTower.position = CGPoint(x: location.x,
-                                         y: location.y + self.touchedTower!.size.height)
+                                                y: location.y + self.touchedTower!.size.height)
                 
                 if self.gameWorld.towerAtLocation(touchedTower.position) != nil{
                     

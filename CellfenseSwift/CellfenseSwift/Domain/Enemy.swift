@@ -8,20 +8,21 @@
 
 import Foundation
 import SpriteKit
+
+enum EnemyType : String {
+    case CATERPILLAR = "Caterpillar"
+}
+
 class Enemy: SKSpriteNode {
     
     var enemyFrames = [SKTexture]()
-    
-    enum Typed : String {
-        case CATERPILLAR = "Caterpillar"
-    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
-    init?(type: Typed){
+    init?(type: EnemyType){
         
         //TODO: This code is the same on Tower, try to optimize
         

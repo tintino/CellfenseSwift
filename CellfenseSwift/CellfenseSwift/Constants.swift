@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 struct Constants {
+    
+    struct zPosition {
+        static let background : CGFloat = -2
+        static let hudbackground : CGFloat = -1
+    }
+    
     struct NodeName {
         static let hudTower = "hudTower"
         static let hudBackground = "hudBackground"
