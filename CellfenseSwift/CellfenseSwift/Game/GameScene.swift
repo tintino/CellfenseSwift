@@ -12,6 +12,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var lastUpdateTime = NSTimeInterval()
+    
     //Control: Has the play button, switch screen button, hud to add new towers
     var gameControl : GameControlNode!
     
@@ -61,13 +63,18 @@ class GameScene: SKScene {
                                                       y: location.y + self.touchedTower!.size.height)
                 self.addChild(self.touchedTower!)
             }
-            //Relocate a Tower
+                //Relocate a Tower
             else if let worldTower = self.gameWorld.towerAtLocation(location){
                 
                 //Reuse same flow as "add a new tower" to Keep It Simple
                 self.touchedTower = worldTower
-                 self.gameWorld.removeTowerAtLocation(location)
+                self.gameWorld.removeTowerAtLocation(location)
             }
+            else if nodeTouched.name == Constants.NodeName.hudRush{
+                self.gameWorld.startDefending()
+                self.gameWorld.moveEnemies()
+            }
+            
         }
     }
     
@@ -76,7 +83,7 @@ class GameScene: SKScene {
         for touch in touches {
             
             let location = (touch as UITouch).locationInNode(self)
-            let nodeTouched = self.nodeAtPoint(location)           
+            let nodeTouched = self.nodeAtPoint(location)
             
             if let touchedTower = self.touchedTower {
                 
@@ -123,8 +130,13 @@ class GameScene: SKScene {
         }
     }
     
+    
     override func update(currentTime: NSTimeInterval) {
         
+        let timeSinceLastUpdate = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+        
+        self.gameWorld.update(timeSinceLastUpdate)
     }
     
     override func didFinishUpdate() {
@@ -138,7 +150,6 @@ class GameScene: SKScene {
         else{
             self.sceneCam.runAction(SKAction.moveToY(720, duration: 1))
             self.gameControl.moveUp()
-            self.gameWorld.moveEnemies()
         }
     }
 }

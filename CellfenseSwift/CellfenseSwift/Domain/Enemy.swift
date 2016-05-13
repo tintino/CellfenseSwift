@@ -16,6 +16,10 @@ enum EnemyType : String {
 class Enemy: SKSpriteNode {
     
     var enemyFrames = [SKTexture]()
+    var path = []
+    var dirX : CGFloat = 0
+    var dirY : CGFloat = 0
+    var pathIndex = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,14 +40,13 @@ class Enemy: SKSpriteNode {
         
         //Initialize Sprite with First Frame
         super.init(texture: self.enemyFrames[0], color: UIColor.blackColor(), size:self.enemyFrames[0].size())
-        
+                
+        self.name = Constants.NodeName.enemy
     }
     
     func Walk(){
         let animatedAction = SKAction.animateWithTextures(self.enemyFrames, timePerFrame: 0.1)
         let walkAction = SKAction.repeatActionForever(animatedAction)
-        let advance = SKAction.moveToY(0, duration: 10)
         self.runAction(walkAction, withKey: "enemyWalk")
-        self.runAction(advance)
     }
 }
