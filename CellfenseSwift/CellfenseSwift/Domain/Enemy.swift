@@ -8,20 +8,25 @@
 
 import Foundation
 import SpriteKit
+
+enum EnemyType : String {
+    case CATERPILLAR = "Caterpillar"
+}
+
 class Enemy: SKSpriteNode {
     
     var enemyFrames = [SKTexture]()
-    
-    enum Typed : String {
-        case CATERPILLAR = "Caterpillar"
-    }
+    var path = []
+    var dirX : CGFloat = 0
+    var dirY : CGFloat = 0
+    var pathIndex = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
-    init?(type: Typed){
+    init?(type: EnemyType){
         
         //TODO: This code is the same on Tower, try to optimize
         
@@ -35,7 +40,8 @@ class Enemy: SKSpriteNode {
         
         //Initialize Sprite with First Frame
         super.init(texture: self.enemyFrames[0], color: UIColor.blackColor(), size:self.enemyFrames[0].size())
-        
+                
+        self.name = Constants.NodeName.enemy
     }
     
     func Walk(){

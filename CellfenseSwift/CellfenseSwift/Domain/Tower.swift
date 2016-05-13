@@ -17,8 +17,7 @@ class Tower: SKSpriteNode {
     
     var towerFrames = [SKTexture]()
     var fireSoundFileName = ""
-    
-    
+    var range : CGFloat = 0.0    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,12 +37,27 @@ class Tower: SKSpriteNode {
         //Initialize Sprite with First Frame
         super.init(texture: self.towerFrames[0], color: UIColor.blackColor(), size:self.towerFrames[0].size())
         
+        //Shared init values
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        //Custom init values for each tower type
         switch type {
             
         case TowerType.TURRET:
+            self.range = Constants.Tower.range
             self.fireSoundFileName = "chain_gun.wav"
         }
         
+        //Shoot Radio for debug. This will not affect the SKSpriteNode Size
+        let fireRadioCircle = CGRect(x: self.frame.origin.x * self.range,
+                                 y: self.frame.origin.y * self.range,
+                                 width: self.frame.size.width * self.range,
+                                 height: self.frame.size.height * self.range)
+        let shapeNode = SKShapeNode(rect: fireRadioCircle)
+        shapeNode.path = UIBezierPath.init(ovalInRect: fireRadioCircle).CGPath
+        shapeNode.strokeColor = SKColor.greenColor()
+        shapeNode.lineWidth = 1;
+        self.addChild(shapeNode)
     }
     
     func fire(){

@@ -14,6 +14,7 @@ class GameControlNode: SKNode {
     var upButton = SKSpriteNode()
     var tower = SKSpriteNode()
     var hud : SKNode!
+    var rushButton = SKSpriteNode()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,7 +35,7 @@ class GameControlNode: SKNode {
         hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
         hudBackground.position = CGPoint(x: 0, y: 0)
         hudBackground.alpha = 0.3
-        hudBackground.zPosition = -1
+        hudBackground.zPosition = Constants.zPosition.hudbackground
         self.hud.addChild(hudBackground)
         
         //Create Tower Button
@@ -50,6 +51,13 @@ class GameControlNode: SKNode {
         self.upButton.anchorPoint = CGPoint(x: 0, y: 0)
         self.upButton.position = CGPoint(x: 0, y: 0)
         self.addChild(self.upButton)
+        
+        //Create Rushs Button
+        self.rushButton = SKSpriteNode(imageNamed: "rush_button")
+        self.rushButton.name = Constants.NodeName.hudRush
+        self.rushButton.anchorPoint = CGPoint(x: 0, y: 0)        
+        self.rushButton.position = CGPoint(x:self.rushButton.frame.size.width, y: 0)
+        self.addChild(self.rushButton)
         
     }
     

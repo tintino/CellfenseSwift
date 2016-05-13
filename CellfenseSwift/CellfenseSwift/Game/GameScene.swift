@@ -5,11 +5,14 @@
 //  Created by Tincho on 5/5/16.
 //  Copyright © 2016 ag2. All rights reserved.
 //
+//
 
 import Foundation
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    var lastUpdateTime = NSTimeInterval()
     
     //Control: Has the play button, switch screen button, hud to add new towers
     var gameControl : GameControlNode!
@@ -25,11 +28,11 @@ class GameScene: SKScene {
         
         //Create the scene’s contents.
         
-        let level = Level()
-        self.gameControl = GameControlNode(withLevel: level)
+        let randomLevel = Level.randomLevel()
+        self.gameControl = GameControlNode(withLevel: randomLevel)
         self.addChild(self.gameControl)
         
-        self.gameWorld = GameWorldNode(withLevel: "")
+        self.gameWorld = GameWorldNode(withLevel: randomLevel)
         self.addChild(gameWorld)
         
         //Add Camera Scene
@@ -50,12 +53,28 @@ class GameScene: SKScene {
             let location = (touch as UITouch).locationInNode(self)
             let nodeTouched = self.nodeAtPoint(location)
             
+            //Add a new Tower
             if nodeTouched.name == Constants.NodeName.hudTower{
                 self.touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
                 self.touchedTower!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-                self.touchedTower!.position = CGPoint(x:  300, y:  100)
+                
+                //Offset on Y: avoid the tower to be under the finger
+                self.touchedTower!.position = CGPoint(x: location.x,
+                                                      y: location.y + self.touchedTower!.size.height)
                 self.addChild(self.touchedTower!)
             }
+                //Relocate a Tower
+            else if let worldTower = self.gameWorld.towerAtLocation(location){
+                
+                //Reuse same flow as "add a new tower" to Keep It Simple
+                self.touchedTower = worldTower
+                self.gameWorld.removeTowerAtLocation(location)
+            }
+            else if nodeTouched.name == Constants.NodeName.hudRush{
+                self.gameWorld.startDefending()
+                self.gameWorld.moveEnemies()
+            }
+            
         }
     }
     
@@ -64,13 +83,13 @@ class GameScene: SKScene {
         for touch in touches {
             
             let location = (touch as UITouch).locationInNode(self)
-            let nodeTouched = self.nodeAtPoint(location)           
+            let nodeTouched = self.nodeAtPoint(location)
             
             if let touchedTower = self.touchedTower {
                 
-                //Offset on Y: avoid the tower to be under the finger
+                //Offset on Y: mantain the tower on the finger
                 touchedTower.position = CGPoint(x: location.x,
-                                         y: location.y + self.touchedTower!.size.height)
+                                                y: location.y + self.touchedTower!.size.height)
                 
                 if self.gameWorld.towerAtLocation(touchedTower.position) != nil{
                     
@@ -111,8 +130,13 @@ class GameScene: SKScene {
         }
     }
     
+    
     override func update(currentTime: NSTimeInterval) {
         
+        let timeSinceLastUpdate = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+        
+        self.gameWorld.update(timeSinceLastUpdate)
     }
     
     override func didFinishUpdate() {
