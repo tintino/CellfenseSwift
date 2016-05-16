@@ -17,9 +17,13 @@ class Enemy: SKSpriteNode {
     
     var enemyFrames = [SKTexture]()
     var path = []
+    
+    //TODO: directions to integers
     var dirX : CGFloat = 0
     var dirY : CGFloat = 0
     var pathIndex = 0
+    var col = 3
+    var row = 1
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

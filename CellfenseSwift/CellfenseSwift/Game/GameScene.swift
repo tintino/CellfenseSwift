@@ -72,7 +72,6 @@ class GameScene: SKScene {
             }
             else if nodeTouched.name == Constants.NodeName.hudRush{
                 self.gameWorld.startDefending()
-                self.gameWorld.moveEnemies()
             }
             
         }
@@ -88,8 +87,7 @@ class GameScene: SKScene {
             if let touchedTower = self.touchedTower {
                 
                 //Offset on Y: mantain the tower on the finger
-                touchedTower.position = CGPoint(x: location.x,
-                                                y: location.y + self.touchedTower!.size.height)
+                touchedTower.position = self.gameWorld.worldToGrid(location)
                 
                 if self.gameWorld.towerAtLocation(touchedTower.position) != nil{
                     
