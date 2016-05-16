@@ -28,4 +28,12 @@ struct Constants {
         static let opacity : CGFloat = 0.5
         static let range : CGFloat = 1.8
     }
+    
+    struct direction {
+        static let RIGHT : CGFloat = 1
+        static let LEFT : CGFloat = -1
+        static let DOWN : CGFloat = -1
+        static let UP : CGFloat = 1
+        static let STOP : CGFloat = 0
+    }
 }
