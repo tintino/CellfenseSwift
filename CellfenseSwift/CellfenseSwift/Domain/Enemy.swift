@@ -53,4 +53,8 @@ class Enemy: SKSpriteNode {
         let walkAction = SKAction.repeatActionForever(animatedAction)
         self.runAction(walkAction, withKey: "enemyWalk")
     }
+    
+    func rotate(angle: Int){
+        self.runAction(SKAction.rotateToAngle(CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
+    }
 }

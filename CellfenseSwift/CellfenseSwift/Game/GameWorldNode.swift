@@ -119,15 +119,6 @@ class GameWorldNode: SKNode{
             //Find path
             enemy.path = pathFinder.findPathRow(0, col: Int32.init(point.x), toRow: self.rows() - 1, toCol:  0)
             
-            for pat in enemy.path {
-                
-                let node = pat as? PathFindNode
-                
-                print("Node:\(node?.nodeX) - \(node?.nodeY)")
-                
-            }
-            
-            
             //Set Direction (enemies will start goind down allways)
             enemy.dirX = 0
             enemy.dirY = -1
@@ -139,6 +130,7 @@ class GameWorldNode: SKNode{
     }
     
     func worldToGrid(position: CGPoint)-> CGPoint{
+        
         let cellSize = self.cellSize()
         
         //Cast to int will round the world position to "tiled" position
@@ -199,7 +191,7 @@ class GameWorldNode: SKNode{
         if enemy.pathIndex == enemy.path.count {
             enemy.dirX = Constants.direction.STOP
             enemy.dirY = Constants.direction.DOWN
-            enemy.zRotation = 0
+            enemy.rotate(0)
             return
         }
         
@@ -214,11 +206,11 @@ class GameWorldNode: SKNode{
             
             if previous.nodeX > actualNode.nodeX {
                 enemy.dirX = Constants.direction.LEFT
-                enemy.zRotation = 90
+                enemy.rotate(-90)
             }
             else{
                 enemy.dirX = Constants.direction.RIGHT
-                enemy.zRotation = -90
+                enemy.rotate(90)
             }
         }
         //Walking up or down
@@ -228,11 +220,11 @@ class GameWorldNode: SKNode{
             
             if previous.nodeY > actualNode.nodeY{
                 enemy.dirY = Constants.direction.UP
-                enemy.zRotation = 180
+                enemy.rotate(180)
             }
             else{
                 enemy.dirY = Constants.direction.DOWN
-                enemy.zRotation = 0
+                enemy.rotate(0)
             }
         }
     }
@@ -253,44 +245,39 @@ class GameWorldNode: SKNode{
                     return
                 }
                 
-                //Find the next node in the path
-                let index = enemyNode.path.count - 1 - enemyNode.pathIndex
-                //print("index: \(index)")
+                //Find the node in the path
+                let nodePath = enemyNode.path.objectAtIndex(enemyNode.path.count - 1 - enemyNode.pathIndex)
+                let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int(nodePath.nodeX),y: Int(nodePath.nodeY)))
                 
-                let node = enemyNode.path.objectAtIndex(enemyNode.path.count - 1 - enemyNode.pathIndex)
-                
-                print("node at found path:\(enemyNode.path.count - 1 - enemyNode.pathIndex) value: x:\(node.nodeX) y:\(node.nodeY)")
-                
-                let worldLocation = self.indexesToWorld(CGPoint(x: Int(node.nodeX),y: Int(node.nodeY)))
-                
-                //print("node in world: \(worldLocation)")
-                
+                //If the enemy reach or pass the node limit, fix the position to the limit and get next pathNode
                 if enemyNode.dirX == Constants.direction.LEFT{
-                    if enemyNode.position.x <= worldLocation.x{
-                        enemyNode.position = CGPoint(x: worldLocation.x, y: enemyNode.position.y)
+                    
+                    if enemyNode.position.x <= nodePathWorldLocation.x{
+                        enemyNode.position = CGPoint(x: nodePathWorldLocation.x, y: enemyNode.position.y)
                         enemyNode.pathIndex += 1
                         self.decideDirection(enemyNode)
                     }
                 }
                 else if enemyNode.dirX == Constants.direction.RIGHT{
-                    if enemyNode.position.x >= worldLocation.x{
-                        enemyNode.position = CGPoint(x: worldLocation.x, y:  enemyNode.position.y)
+                    
+                    if enemyNode.position.x >= nodePathWorldLocation.x{
+                        enemyNode.position = CGPoint(x: nodePathWorldLocation.x, y:  enemyNode.position.y)
                         enemyNode.pathIndex += 1
                         self.decideDirection(enemyNode)
                     }
                 }
                 else if enemyNode.dirY == Constants.direction.UP{
-                    if enemyNode.position.y >= worldLocation.y{
-                        enemyNode.position = CGPoint(x: enemyNode.position.x, y: worldLocation.y)
+                    
+                    if enemyNode.position.y >= nodePathWorldLocation.y{
+                        enemyNode.position = CGPoint(x: enemyNode.position.x, y: nodePathWorldLocation.y)
                         enemyNode.pathIndex += 1
                         self.decideDirection(enemyNode)
                     }
                 }
                 else if enemyNode.dirY == Constants.direction.DOWN{
                     
-                    print("\(enemyNode.position) new pos: \(CGPoint(x: enemyNode.position.x, y: worldLocation.y))")
-                    if enemyNode.position.y <= worldLocation.y{
-                        enemyNode.position = CGPoint(x: enemyNode.position.x, y: worldLocation.y)
+                    if enemyNode.position.y <= nodePathWorldLocation.y{
+                        enemyNode.position = CGPoint(x: enemyNode.position.x, y: nodePathWorldLocation.y)
                         enemyNode.pathIndex += 1
                         self.decideDirection(enemyNode)
                     }

@@ -29,6 +29,10 @@ struct Constants {
         static let range : CGFloat = 1.8
     }
     
+    struct Enemy {
+        static let rotateSpeed : Double = 0.3
+    }
+    
     struct direction {
         static let RIGHT : CGFloat = 1
         static let LEFT : CGFloat = -1

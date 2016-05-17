@@ -29,6 +29,7 @@
 		4BC6AF1A1CE0387F00901E43 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF191CE0387F00901E43 /* Enemy.swift */; };
 		4BC6AF1C1CE03B4900901E43 /* GameWorldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */; };
 		4BC6AF2C1CE18FAA00901E43 /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6AF2B1CE18FAA00901E43 /* hud.png */; };
+		4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		4BC6AF191CE0387F00901E43 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = Domain/Enemy.swift; sourceTree = "<group>"; };
 		4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameWorldNode.swift; path = Game/GameWorldNode.swift; sourceTree = "<group>"; };
 		4BC6AF2B1CE18FAA00901E43 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
+		4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatExtension.swift; path = Extensions/CGFloatExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		4B9C2ADB1CDE70C50003B193 /* CellfenseSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4BC9E3441CEA9E5200E74A89 /* Extensions */,
 				4B9C2AF71CDE77260003B193 /* Images */,
 				4B9C2AF41CDE77040003B193 /* Sounds */,
 				4BC6AF1D1CE03C2D00901E43 /* Game */,
@@ -159,6 +162,14 @@
 				4BC6AF171CE037EA00901E43 /* Level.swift */,
 			);
 			name = Domain;
+			sourceTree = "<group>";
+		};
+		4BC9E3441CEA9E5200E74A89 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 				4B3CB3CA1CE560CA001DE1A2 /* PathFinder.m in Sources */,
 				4B9C2AE11CDE70C60003B193 /* GameScene.swift in Sources */,
 				4B9C2AE31CDE70C60003B193 /* GameViewController.swift in Sources */,
+				4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */,
 				4B9C2ADD1CDE70C50003B193 /* AppDelegate.swift in Sources */,
 				4BC6AF161CE035DA00901E43 /* GameControlNode.swift in Sources */,
 				4BC6AF1C1CE03B4900901E43 /* GameWorldNode.swift in Sources */,
