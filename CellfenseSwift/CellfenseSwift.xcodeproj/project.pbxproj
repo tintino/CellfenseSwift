@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B2293B21CF1097D009798B8 /* Spider.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B2293B11CF1097D009798B8 /* Spider.atlas */; };
 		4B3CB3CA1CE560CA001DE1A2 /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */; };
 		4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */; };
 		4B3CB3CF1CE56149001DE1A2 /* rush_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CD1CE56149001DE1A2 /* rush_button.png */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B2293B11CF1097D009798B8 /* Spider.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Spider.atlas; sourceTree = "<group>"; };
 		4B3CB3C71CE560CA001DE1A2 /* CellfenseSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CellfenseSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B3CB3C81CE560CA001DE1A2 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = "Domain/objective-c/PathFinder.h"; sourceTree = "<group>"; };
 		4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFinder.m; path = "Domain/objective-c/PathFinder.m"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		4B9C2AF71CDE77260003B193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4B2293B11CF1097D009798B8 /* Spider.atlas */,
 				4B9C2AFA1CDE8F500003B193 /* Caterpillar.atlas */,
 				4B9C2AF21CDE76BA0003B193 /* Turret.atlas */,
 				4B9C2AF81CDE77260003B193 /* sceneBackground.png */,
@@ -230,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2293B21CF1097D009798B8 /* Spider.atlas in Resources */,
 				4B9C2AEB1CDE70C60003B193 /* LaunchScreen.storyboard in Resources */,
 				4BC6AF2C1CE18FAA00901E43 /* hud.png in Resources */,
 				4B9C2AFF1CDEA4940003B193 /* up_button.png in Resources */,

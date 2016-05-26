@@ -18,7 +18,7 @@ class Level {
     static func randomLevel() -> Level{
         let newRandomLevel = Level()
         
-        let newEnemy = Enemy(type: EnemyType.CATERPILLAR)
+        let newEnemy = Enemy(type: EnemyType.SPIDER)
         newEnemy?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         newEnemy?.position = CGPoint(x: 150, y: 840)
         newRandomLevel.enemies.append(newEnemy!)
