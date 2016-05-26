@@ -72,6 +72,7 @@ class GameScene: SKScene {
             }
             else if nodeTouched.name == Constants.NodeName.hudRush{
                 self.gameWorld.startDefending()
+                self.gameControl.hidden = true
             }
             
         }
