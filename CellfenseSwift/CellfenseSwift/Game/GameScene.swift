@@ -24,13 +24,21 @@ class GameScene: SKScene {
     
     var touchedTower : SKSpriteNode?
     
+    //Vars to hande action on switch area button
+    var cameraOffSet : CGFloat = 0
+    var enemyFieldOffset : CGFloat = 0
+    var defenseFieldOffset : CGFloat = 0
+    
     override func didMoveToView(view: SKView) {
         
         //Create the scene’s contents.
         
         let randomLevel = Level.randomLevel()
         self.gameControl = GameControlNode(withLevel: randomLevel)
-        self.addChild(self.gameControl)
+        
+        //GameControlNode is child of camera, the center of the camera is (0,0), width and height is the same as gamescene view
+        self.gameControl.position = CGPoint(x: -CGRectGetMidX(self.frame), y: -CGRectGetMidY(self.frame))
+     
         
         self.gameWorld = GameWorldNode(withLevel: randomLevel)
         self.addChild(gameWorld)
@@ -39,11 +47,17 @@ class GameScene: SKScene {
         //The camera’s viewport is the same size as the scene’s viewport (determined by the scene’s size property)
         sceneCam = SKCameraNode()
         self.camera = sceneCam
+        
+        //The energy bar, with button and play button is part of the controls, they need to be on the screen always (they move with the camera)
+        self.camera?.addChild(self.gameControl)
         addChild(sceneCam)
         
-        //position the camera on the scene.
+        //position the camera on the scene. the center of the camera is tied to its position (No anchorpoint)
         sceneCam.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         
+        self.enemyFieldOffset = CGRectGetMidY(self.frame) + CGRectGetMaxY(self.frame)
+        self.defenseFieldOffset = CGRectGetMidY(self.frame)
+        self.cameraOffSet = enemyFieldOffset
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -110,7 +124,7 @@ class GameScene: SKScene {
             let nodeTouched = self.nodeAtPoint(location)
             
             if nodeTouched.name == Constants.NodeName.hudSwitch {
-                moveScene()
+                moveCamera()
             }
             
             //User is holding a new tower
@@ -127,8 +141,7 @@ class GameScene: SKScene {
                 self.touchedTower = nil
             }
         }
-    }
-    
+    }    
     
     override func update(currentTime: NSTimeInterval) {
         
@@ -141,14 +154,17 @@ class GameScene: SKScene {
     override func didFinishUpdate() {
     }
     
-    func moveScene(){
-        if self.sceneCam.position.y == 720{
-            self.sceneCam.runAction(SKAction.moveToY(240, duration: 1))
-            self.gameControl.moveDown()
+    func moveCamera(){
+       //All these variables and logic, are just to handle if the user touches very quickly the "switch button" before the action finished
+        self.sceneCam.runAction(SKAction.moveToY(cameraOffSet, duration: 0.3))
+        if self.cameraOffSet == self.enemyFieldOffset{
+            
+            self.cameraOffSet = self.defenseFieldOffset
+            self.gameControl.hideHud()
         }
         else{
-            self.sceneCam.runAction(SKAction.moveToY(720, duration: 1))
-            self.gameControl.moveUp()
+            self.cameraOffSet = self.enemyFieldOffset
+            self.gameControl.showHud()
         }
     }
 }

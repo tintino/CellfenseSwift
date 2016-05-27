@@ -23,8 +23,8 @@ class GameControlNode: SKNode {
     
     init(withLevel: Level){
         super.init()
-        
-        //Create Hud, will contain everything but play and switch button
+                
+        //Create Hud container, will contain availables towers
         self.hud = SKNode()
         self.hud.position = CGPoint(x: 0, y: 0)
         self.addChild(self.hud)
@@ -61,14 +61,11 @@ class GameControlNode: SKNode {
         
     }
     
-    func moveUp(){
-        //TODO: on multiple touchs on switch try to reverse action to avoid incorrect behavior
-        self.runAction(SKAction.moveTo(CGPoint(x: 0,y:480), duration: 1))
+    func hideHud(){
         self.hud.hidden = true
     }
     
-    func moveDown(){        
-        self.runAction(SKAction.moveTo(CGPoint(x: 0,y:0), duration: 1))
+    func showHud(){
         self.hud.hidden = false
     }
     

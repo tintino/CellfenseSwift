@@ -156,8 +156,7 @@ class GameWorldNode: SKNode{
                 
                 enemy.pathIndex += 1
             }
-            */
-            
+            */            
             
             //Set Direction (enemies will start goind down allways)
             enemy.dirX = 0
@@ -249,9 +248,7 @@ class GameWorldNode: SKNode{
                 //Find the node in the path
                 let nodePath = enemyNode.path.objectAtIndex(enemyNode.path.count - 1 - enemyNode.pathIndex)
                 let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int(nodePath.nodeX),y: Int(nodePath.nodeY)))
-                
-                print(nodePathWorldLocation)
-                
+                                
                 //If the enemy reach or pass the node limit, fix the position to the limit and get next pathNode
                 if enemyNode.dirX == Constants.direction.LEFT{
                     

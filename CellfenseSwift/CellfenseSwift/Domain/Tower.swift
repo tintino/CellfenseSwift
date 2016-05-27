@@ -110,7 +110,7 @@ class Tower: SKSpriteNode {
     
     func damage(enemy: Enemy) -> CGFloat{
         //TODO compare all towers and enemies
-        return 10
+        return 13
     }
     
     func tick(dt: Double){

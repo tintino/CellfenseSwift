@@ -51,6 +51,7 @@ class Enemy: SKSpriteNode {
                 
         self.name = Constants.NodeName.enemy
         self.life = 100
+        self.speed = 1.4
         
         //Debug Information
         myLabel.fontSize = 12
