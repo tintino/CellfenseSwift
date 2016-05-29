@@ -60,6 +60,13 @@ class GameScene: SKScene {
         self.enemyFieldOffset = CGRectGetMidY(self.frame) + CGRectGetMaxY(self.frame)
         self.defenseFieldOffset = CGRectGetMidY(self.frame)
         self.cameraOffSet = enemyFieldOffset
+        
+        //Center on the screen
+        self.labelMessage.position = self.sceneCam.position
+        self.labelMessage.fontSize = 40
+        self.labelMessage.fontColor = UIColor.whiteColor()
+        //self.labelMessage.hidden = true
+        self.addChild(self.labelMessage)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -68,6 +75,11 @@ class GameScene: SKScene {
             
             let location = (touch as UITouch).locationInNode(self)
             let nodeTouched = self.nodeAtPoint(location)
+            
+            if nodeTouched.name == Constants.NodeName.hudSwitch {
+                moveCamera()
+                return
+            }
             
             //Add a new Tower
             if nodeTouched.name == Constants.NodeName.hudTower{
@@ -79,7 +91,7 @@ class GameScene: SKScene {
                                                       y: location.y + self.touchedTower!.size.height)
                 self.addChild(self.touchedTower!)
             }
-                //Relocate a Tower
+            //Relocate a Tower
             else if let worldTower = self.gameWorld.towerAtLocation(location){
                 
                 //Reuse same flow as "add a new tower" to Keep It Simple
@@ -106,6 +118,7 @@ class GameScene: SKScene {
                 //Offset on Y: mantain the tower on the finger
                 touchedTower.position = self.gameWorld.worldToGrid(location)
                 
+                //If Overlaping another tower, show it red
                 if self.gameWorld.towerAtLocation(touchedTower.position) != nil{
                     
                     touchedTower.color = UIColor.redColor();
@@ -113,6 +126,10 @@ class GameScene: SKScene {
                 }
                 else{
                     touchedTower.colorBlendFactor = 0.0;
+                }
+                
+                if self.gameControl.isHudArea(touchedTower.position){
+                    self.showMessage("SELL?", autoHide: false)
                 }
             }
         }
@@ -125,27 +142,28 @@ class GameScene: SKScene {
             let location = (touch as UITouch).locationInNode(self)
             let nodeTouched = self.nodeAtPoint(location)
             
-            if nodeTouched.name == Constants.NodeName.hudSwitch {
-                moveCamera()
-            }
+          
             
             //User is holding a new tower
             if let touchedTower = self.touchedTower {
                 
-                //And want it to place it on an empty space
-                if self.gameWorld.towerAtLocation(touchedTower.position) == nil{
+                //And Want to sell it
+                if self.gameControl.isHudArea(touchedTower.position){
+                    self.showMessage("SELL?", autoHide: true)
+                }
+                //And want to place it
+                else if self.gameWorld.towerAtLocation(touchedTower.position) == nil{
                     
                     //And is not blocking the path 
                     if self.gameWorld.doesBlockPathIfAddedTo(touchedTower.position){
                         self.gameWorld.addTower(touchedTower.position)
                     }
                     else{
-                        self.showMessage("BLOCKING!")
-                    }
-                    
+                        self.showMessage("BLOCKING!", autoHide: true)
+                    }                    
                 }
                 
-                //Added (available place) or not (occupied place) to the world, we remove the touched tower
+                //Added (available place) or not (occupied place, block or sell) to the world, we remove the touched tower
                 touchedTower.removeFromParent()
                 self.touchedTower = nil
             }
@@ -177,20 +195,17 @@ class GameScene: SKScene {
         }
     }
     
-    func showMessage(message: String){
-        self.labelMessage = SKLabelNode(text: message)
+    func showMessage(message: String, autoHide: Bool){
+        self.labelMessage.text = message
+        self.labelMessage.hidden = false
         
-        //Center on the screen
-        self.labelMessage.position = self.sceneCam.position
-        self.labelMessage.fontSize = 40
-        self.labelMessage.fontColor = UIColor.whiteColor()
-        self.addChild(self.labelMessage)
-        
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)        
+        if autoHide{
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)
+        }
     }
     
     func hideMessage(){
-        self.labelMessage.removeFromParent()
+        self.labelMessage.hidden = true
     }
     
     

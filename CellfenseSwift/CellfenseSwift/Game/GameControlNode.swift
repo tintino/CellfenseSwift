@@ -15,6 +15,7 @@ class GameControlNode: SKNode {
     var tower = SKSpriteNode()
     var hud : SKNode!
     var rushButton = SKSpriteNode()
+    var hudBackground = SKSpriteNode()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,12 +31,12 @@ class GameControlNode: SKNode {
         self.addChild(self.hud)
         
         //Create background
-        let hudBackground = SKSpriteNode(imageNamed: "hud")
-        hudBackground.name = Constants.NodeName.hudBackground
-        hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
-        hudBackground.position = CGPoint(x: 0, y: 0)
-        hudBackground.alpha = 0.3
-        hudBackground.zPosition = Constants.zPosition.hudbackground
+        self.hudBackground = SKSpriteNode(imageNamed: "hud")
+        self.hudBackground.name = Constants.NodeName.hudBackground
+        self.hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
+        self.hudBackground.position = CGPoint(x: 0, y: 0)
+        self.hudBackground.alpha = 0.3
+        self.hudBackground.zPosition = Constants.zPosition.hudbackground
         self.hud.addChild(hudBackground)
         
         //Create Tower Button
@@ -69,5 +70,13 @@ class GameControlNode: SKNode {
         self.hud.hidden = false
     }
     
+    func isHudArea(position: CGPoint) -> Bool {
+        if position.y < self.hudBackground.frame.height {
+            return true
+        }
+        else{
+            return false
+        }
+    }
     
 }
