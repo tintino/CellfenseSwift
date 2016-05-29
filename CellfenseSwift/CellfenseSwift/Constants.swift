@@ -22,7 +22,7 @@ struct Constants {
         static let hudTower = "hudTower"
         static let hudBackground = "hudBackground"
         static let hudSwitch = "hudSwitch"
-        static let hudRush = "hudRuch"
+        static let hudRush = "hudRush"
         static let enemy = "enemy"
     }
     

@@ -51,12 +51,15 @@ class Enemy: SKSpriteNode {
                 
         self.name = Constants.NodeName.enemy
         self.life = 100
+        self.speed = 1.4
         
         //Debug Information
+        /*
         myLabel.fontSize = 12
         myLabel.position = CGPointMake(0,self.frame.minY)
         myLabel.fontColor = UIColor.whiteColor()
         self.addChild(myLabel)
+        */
     }
     
     override var position: CGPoint{

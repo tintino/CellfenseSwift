@@ -15,6 +15,7 @@ class GameControlNode: SKNode {
     var tower = SKSpriteNode()
     var hud : SKNode!
     var rushButton = SKSpriteNode()
+    var hudBackground = SKSpriteNode()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,19 +24,19 @@ class GameControlNode: SKNode {
     
     init(withLevel: Level){
         super.init()
-        
-        //Create Hud, will contain everything but play and switch button
+                
+        //Create Hud container, will contain availables towers
         self.hud = SKNode()
         self.hud.position = CGPoint(x: 0, y: 0)
         self.addChild(self.hud)
         
         //Create background
-        let hudBackground = SKSpriteNode(imageNamed: "hud")
-        hudBackground.name = Constants.NodeName.hudBackground
-        hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
-        hudBackground.position = CGPoint(x: 0, y: 0)
-        hudBackground.alpha = 0.3
-        hudBackground.zPosition = Constants.zPosition.hudbackground
+        self.hudBackground = SKSpriteNode(imageNamed: "hud")
+        self.hudBackground.name = Constants.NodeName.hudBackground
+        self.hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
+        self.hudBackground.position = CGPoint(x: 0, y: 0)
+        self.hudBackground.alpha = 0.3
+        self.hudBackground.zPosition = Constants.zPosition.hudbackground
         self.hud.addChild(hudBackground)
         
         //Create Tower Button
@@ -61,16 +62,23 @@ class GameControlNode: SKNode {
         
     }
     
-    func moveUp(){
-        //TODO: on multiple touchs on switch try to reverse action to avoid incorrect behavior
-        self.runAction(SKAction.moveTo(CGPoint(x: 0,y:480), duration: 1))
+    func hideHud(){
+        self.rushButton.alpha = 0.5
         self.hud.hidden = true
     }
     
-    func moveDown(){        
-        self.runAction(SKAction.moveTo(CGPoint(x: 0,y:0), duration: 1))
+    func showHud(){
+        self.rushButton.alpha = 1
         self.hud.hidden = false
     }
     
+    func isHudArea(position: CGPoint) -> Bool {
+        if position.y < self.hudBackground.frame.height {
+            return true
+        }
+        else{
+            return false
+        }
+    }
     
 }

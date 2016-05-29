@@ -156,8 +156,7 @@ class GameWorldNode: SKNode{
                 
                 enemy.pathIndex += 1
             }
-            */
-            
+            */            
             
             //Set Direction (enemies will start goind down allways)
             enemy.dirX = 0
@@ -249,9 +248,7 @@ class GameWorldNode: SKNode{
                 //Find the node in the path
                 let nodePath = enemyNode.path.objectAtIndex(enemyNode.path.count - 1 - enemyNode.pathIndex)
                 let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int(nodePath.nodeX),y: Int(nodePath.nodeY)))
-                
-                print(nodePathWorldLocation)
-                
+                                
                 //If the enemy reach or pass the node limit, fix the position to the limit and get next pathNode
                 if enemyNode.dirX == Constants.direction.LEFT{
                     
@@ -438,5 +435,37 @@ class GameWorldNode: SKNode{
         }
         return sqrt(dx*dx + dy*dy) - sqrt(ndx*ndx + ndy*ndy)
     }
+    
+    func doesBlockPathIfAddedTo(position: CGPoint) -> Bool{
+        
+        //Create walls for existing tower + asked position
+        var towerNodes = self.towerNodesForPathFinding()
+        let locationIndexes = self.worldToGridIndexes(position)
+        let pathNode = PathFindNode()
+        pathNode.nodeX = Int32(locationIndexes.x)
+        pathNode.nodeY = Int32(locationIndexes.y)
+        towerNodes.append(pathNode)
+        
+        let pathFinder = PathFinder.init(rows: self.rows(), columns: self.cols(), walls: towerNodes)
+        let path = pathFinder.findPathRow(0, col: 0, toRow: self.rows() - 1, toCol: 0)
+        
+        if path != nil {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
