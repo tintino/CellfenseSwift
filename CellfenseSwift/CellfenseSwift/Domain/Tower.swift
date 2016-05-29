@@ -60,14 +60,16 @@ class Tower: SKSpriteNode {
         radioShootArea.position = CGPointMake(frame.midX, frame.midY)
         radioShootArea.strokeColor = SKColor.greenColor()
         radioShootArea.lineWidth = 1
+        radioShootArea.alpha = 0.2
         self.addChild(radioShootArea)
         
+        /*
         let blockArea = SKShapeNode(rect: self.frame)
         blockArea.lineWidth = 1
         blockArea.strokeColor = SKColor.cyanColor()
         blockArea.position = CGPointMake(frame.midX, frame.midY)
         self.addChild(blockArea)
-        
+        */
     }
     
     func fire(){

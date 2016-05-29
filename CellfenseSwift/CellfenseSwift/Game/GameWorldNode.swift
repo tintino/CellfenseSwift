@@ -436,4 +436,36 @@ class GameWorldNode: SKNode{
         return sqrt(dx*dx + dy*dy) - sqrt(ndx*ndx + ndy*ndy)
     }
     
+    func doesBlockPathIfAddedTo(position: CGPoint) -> Bool{
+        
+        //Create walls for existing tower + asked position
+        var towerNodes = self.towerNodesForPathFinding()
+        let locationIndexes = self.worldToGridIndexes(position)
+        let pathNode = PathFindNode()
+        pathNode.nodeX = Int32(locationIndexes.x)
+        pathNode.nodeY = Int32(locationIndexes.y)
+        towerNodes.append(pathNode)
+        
+        let pathFinder = PathFinder.init(rows: self.rows(), columns: self.cols(), walls: towerNodes)
+        let path = pathFinder.findPathRow(0, col: 0, toRow: self.rows() - 1, toCol: 0)
+        
+        if path != nil {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

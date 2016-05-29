@@ -22,12 +22,14 @@ class GameScene: SKScene {
     
     var sceneCam: SKCameraNode!
     
-    var touchedTower : SKSpriteNode?
-    
     //Vars to hande action on switch area button
     var cameraOffSet : CGFloat = 0
     var enemyFieldOffset : CGFloat = 0
     var defenseFieldOffset : CGFloat = 0
+    
+    
+    var touchedTower : SKSpriteNode?
+    var labelMessage = SKLabelNode()
     
     override func didMoveToView(view: SKView) {
         
@@ -133,7 +135,14 @@ class GameScene: SKScene {
                 //And want it to place it on an empty space
                 if self.gameWorld.towerAtLocation(touchedTower.position) == nil{
                     
-                    self.gameWorld.addTower(touchedTower.position)
+                    //And is not blocking the path 
+                    if self.gameWorld.doesBlockPathIfAddedTo(touchedTower.position){
+                        self.gameWorld.addTower(touchedTower.position)
+                    }
+                    else{
+                        self.showMessage("BLOCKING!")
+                    }
+                    
                 }
                 
                 //Added (available place) or not (occupied place) to the world, we remove the touched tower
@@ -141,7 +150,7 @@ class GameScene: SKScene {
                 self.touchedTower = nil
             }
         }
-    }    
+    }
     
     override func update(currentTime: NSTimeInterval) {
         
@@ -167,4 +176,27 @@ class GameScene: SKScene {
             self.gameControl.showHud()
         }
     }
+    
+    func showMessage(message: String){
+        self.labelMessage = SKLabelNode(text: message)
+        
+        //Center on the screen
+        self.labelMessage.position = self.sceneCam.position
+        self.labelMessage.fontSize = 40
+        self.labelMessage.fontColor = UIColor.whiteColor()
+        self.addChild(self.labelMessage)
+        
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)        
+    }
+    
+    func hideMessage(){
+        self.labelMessage.removeFromParent()
+    }
+    
+    
+    
+    
+    
+    
+    
 }
