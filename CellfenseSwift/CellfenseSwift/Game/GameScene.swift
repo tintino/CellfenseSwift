@@ -85,6 +85,7 @@ class GameScene: SKScene {
             if nodeTouched.name == Constants.NodeName.hudTower{
                 self.touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
                 self.touchedTower!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                self.touchedTower?.alpha = 0.5
                 
                 //Offset on Y: avoid the tower to be under the finger
                 self.touchedTower!.position = CGPoint(x: location.x,
@@ -160,7 +161,7 @@ class GameScene: SKScene {
                     }
                     else{
                         self.showMessage("BLOCKING!", autoHide: true)
-                    }                    
+                    }
                 }
                 
                 //Added (available place) or not (occupied place, block or sell) to the world, we remove the touched tower
