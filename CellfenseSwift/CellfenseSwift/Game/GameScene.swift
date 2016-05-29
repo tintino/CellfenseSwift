@@ -40,7 +40,7 @@ class GameScene: SKScene {
         
         //GameControlNode is child of camera, the center of the camera is (0,0), width and height is the same as gamescene view
         self.gameControl.position = CGPoint(x: -CGRectGetMidX(self.frame), y: -CGRectGetMidY(self.frame))
-     
+        
         
         self.gameWorld = GameWorldNode(withLevel: randomLevel)
         self.addChild(gameWorld)
@@ -84,7 +84,6 @@ class GameScene: SKScene {
             //Add a new Tower
             if nodeTouched.name == Constants.NodeName.hudTower{
                 self.touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
-                self.touchedTower!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 self.touchedTower?.alpha = 0.5
                 
                 //Offset on Y: avoid the tower to be under the finger
@@ -92,7 +91,7 @@ class GameScene: SKScene {
                                                       y: location.y + self.touchedTower!.size.height)
                 self.addChild(self.touchedTower!)
             }
-            //Relocate a Tower
+                //Relocate a Tower
             else if let worldTower = self.gameWorld.towerAtLocation(location){
                 
                 //Reuse same flow as "add a new tower" to Keep It Simple
@@ -130,7 +129,10 @@ class GameScene: SKScene {
                 }
                 
                 if self.gameControl.isHudArea(touchedTower.position){
-                    self.showMessage("SELL?", autoHide: false)
+                    self.showMessage("SELL?")
+                }
+                else{
+                    self.hideMessage()
                 }
             }
         }
@@ -143,24 +145,22 @@ class GameScene: SKScene {
             let location = (touch as UITouch).locationInNode(self)
             let nodeTouched = self.nodeAtPoint(location)
             
-          
-            
             //User is holding a new tower
             if let touchedTower = self.touchedTower {
                 
                 //And Want to sell it
                 if self.gameControl.isHudArea(touchedTower.position){
-                    self.showMessage("SELL?", autoHide: true)
+                    self.showAutoHideMessage("SELL?")
                 }
-                //And want to place it
+                    //And want to place it
                 else if self.gameWorld.towerAtLocation(touchedTower.position) == nil{
                     
-                    //And is not blocking the path 
+                    //And is not blocking the path
                     if self.gameWorld.doesBlockPathIfAddedTo(touchedTower.position){
                         self.gameWorld.addTower(touchedTower.position)
                     }
                     else{
-                        self.showMessage("BLOCKING!", autoHide: true)
+                        self.showAutoHideMessage("BLOCKING!")
                     }
                 }
                 
@@ -183,7 +183,7 @@ class GameScene: SKScene {
     }
     
     func moveCamera(){
-       //All these variables and logic, are just to handle if the user touches very quickly the "switch button" before the action finished
+        //All these variables and logic, are just to handle if the user touches very quickly the "switch button" before the action finished
         self.sceneCam.runAction(SKAction.moveToY(cameraOffSet, duration: 0.3))
         if self.cameraOffSet == self.enemyFieldOffset{
             
@@ -196,13 +196,16 @@ class GameScene: SKScene {
         }
     }
     
-    func showMessage(message: String, autoHide: Bool){
+    func showAutoHideMessage(message: String){
+        
+        self.showMessage(message)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)
+    }
+    
+    func showMessage(message: String){
+        
         self.labelMessage.text = message
         self.labelMessage.hidden = false
-        
-        if autoHide{
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)
-        }
     }
     
     func hideMessage(){

@@ -63,10 +63,12 @@ class GameControlNode: SKNode {
     }
     
     func hideHud(){
+        self.rushButton.alpha = 0.5
         self.hud.hidden = true
     }
     
     func showHud(){
+        self.rushButton.alpha = 1
         self.hud.hidden = false
     }
     
