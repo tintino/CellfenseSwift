@@ -64,15 +64,15 @@ class GameControlNode: SKNode {
     
     func hideHud(){
         self.rushButton.alpha = 0.5
-        self.hud.hidden = true
+        self.hud.isHidden = true
     }
     
     func showHud(){
         self.rushButton.alpha = 1
-        self.hud.hidden = false
+        self.hud.isHidden = false
     }
     
-    func isHudArea(position: CGPoint) -> Bool {
+    func isHudArea(_ position: CGPoint) -> Bool {
         if position.y < self.hudBackground.frame.height {
             return true
         }

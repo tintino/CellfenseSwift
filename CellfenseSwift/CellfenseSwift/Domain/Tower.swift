@@ -39,7 +39,7 @@ class Tower: SKSpriteNode {
         }
         
         //Initialize Sprite with First Frame
-        super.init(texture: self.towerFrames[0], color: UIColor.blackColor(), size:self.towerFrames[0].size())
+        super.init(texture: self.towerFrames[0], color: UIColor.black, size:self.towerFrames[0].size())
         
         //Shared init values
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -57,8 +57,8 @@ class Tower: SKSpriteNode {
         
         //Shoot Radio for debug. This will not affect the SKSpriteNode Size
         let radioShootArea = SKShapeNode(circleOfRadius: self.frame.size.width * self.range )
-        radioShootArea.position = CGPointMake(frame.midX, frame.midY)
-        radioShootArea.strokeColor = SKColor.greenColor()
+        radioShootArea.position = CGPoint(x: frame.midX, y: frame.midY)
+        radioShootArea.strokeColor = SKColor.green
         radioShootArea.lineWidth = 1
         radioShootArea.alpha = 0.2
         self.addChild(radioShootArea)
@@ -73,15 +73,15 @@ class Tower: SKSpriteNode {
     }
     
     func fire(){
-        let animatedAction = SKAction.animateWithTextures(self.towerFrames, timePerFrame: 0.1)
-        let fireAction = SKAction.repeatAction(animatedAction, count:1)
+        let animatedAction = SKAction.animate(with: self.towerFrames, timePerFrame: 0.1)
+        let fireAction = SKAction.repeat(animatedAction, count:1)
         let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
-        self.runAction(fireAction, withKey: "towerFire")
-        self.runAction(fireSoundAction)
+        self.run(fireAction, withKey: "towerFire")
+        self.run(fireSoundAction)
     }
     
-    func rotate(angle: CGFloat){
-        self.runAction(SKAction.rotateToAngle(angle.degreesToRadians(), duration: Constants.Tower.rotateSpeed))
+    func rotate(_ angle: CGFloat){
+        self.run(SKAction.rotate(toAngle: angle.degreesToRadians(), duration: Constants.Tower.rotateSpeed))
     }
     
     func rate() -> CGFloat{
@@ -93,7 +93,7 @@ class Tower: SKSpriteNode {
         }
     }
     
-    func tryShoot(victim: Enemy) -> Bool{
+    func tryShoot(_ victim: Enemy) -> Bool{
         
         //Shoot only if im not shooting
         if self.shootTimer  >= Int(self.defaultRate * 1000) {
@@ -110,12 +110,12 @@ class Tower: SKSpriteNode {
         }
     }
     
-    func damage(enemy: Enemy) -> CGFloat{
+    func damage(_ enemy: Enemy) -> CGFloat{
         //TODO compare all towers and enemies
         return 13
     }
     
-    func tick(dt: Double){
+    func tick(_ dt: Double){
         let intTime = Int(dt*1000)
         self.turboTimer += intTime
         self.shootTimer += intTime

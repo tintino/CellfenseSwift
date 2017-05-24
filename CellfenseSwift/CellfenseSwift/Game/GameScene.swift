@@ -12,7 +12,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var lastUpdateTime = NSTimeInterval()
+    var lastUpdateTime = TimeInterval()
     
     //Control: Has the play button, switch screen button, hud to add new towers
     var gameControl : GameControlNode!
@@ -31,7 +31,7 @@ class GameScene: SKScene {
     var touchedTower : SKSpriteNode?
     var labelMessage = SKLabelNode()
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         
         //Create the scene’s contents.
         
@@ -39,7 +39,7 @@ class GameScene: SKScene {
         self.gameControl = GameControlNode(withLevel: randomLevel)
         
         //GameControlNode is child of camera, the center of the camera is (0,0), width and height is the same as gamescene view
-        self.gameControl.position = CGPoint(x: -CGRectGetMidX(self.frame), y: -CGRectGetMidY(self.frame))
+        self.gameControl.position = CGPoint(x: -self.frame.midX, y: -self.frame.midY)
         
         
         self.gameWorld = GameWorldNode(withLevel: randomLevel)
@@ -55,26 +55,26 @@ class GameScene: SKScene {
         addChild(sceneCam)
         
         //position the camera on the scene. the center of the camera is tied to its position (No anchorpoint)
-        sceneCam.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        sceneCam.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         
-        self.enemyFieldOffset = CGRectGetMidY(self.frame) + CGRectGetMaxY(self.frame)
-        self.defenseFieldOffset = CGRectGetMidY(self.frame)
+        self.enemyFieldOffset = self.frame.midY + self.frame.maxY
+        self.defenseFieldOffset = self.frame.midY
         self.cameraOffSet = enemyFieldOffset
         
         //Center on the screen
         self.labelMessage.position = self.sceneCam.position
         self.labelMessage.fontSize = 40
-        self.labelMessage.fontColor = UIColor.whiteColor()
+        self.labelMessage.fontColor = UIColor.white
         //self.labelMessage.hidden = true
         self.addChild(self.labelMessage)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
             
-            let location = (touch as UITouch).locationInNode(self)
-            let nodeTouched = self.nodeAtPoint(location)
+            let location = (touch as UITouch).location(in: self)
+            let nodeTouched = self.atPoint(location)
             
             if nodeTouched.name == Constants.NodeName.hudSwitch {
                 moveCamera()
@@ -100,18 +100,19 @@ class GameScene: SKScene {
             }
             else if nodeTouched.name == Constants.NodeName.hudRush{
                 self.gameWorld.startDefending()
-                self.gameControl.hidden = true
+                self.gameControl.isHidden = true
             }
             
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
             
-            let location = (touch as UITouch).locationInNode(self)
-            let nodeTouched = self.nodeAtPoint(location)
+            let location = (touch as UITouch).location(in: self)
+            //let nodeTouched = self.atPoint(location)
+            _ = self.atPoint(location)
             
             if let touchedTower = self.touchedTower {
                 
@@ -121,7 +122,7 @@ class GameScene: SKScene {
                 //If Overlaping another tower, show it red
                 if self.gameWorld.towerAtLocation(touchedTower.position) != nil{
                     
-                    touchedTower.color = UIColor.redColor();
+                    touchedTower.color = UIColor.red;
                     touchedTower.colorBlendFactor = Constants.Tower.opacity;
                 }
                 else{
@@ -138,12 +139,13 @@ class GameScene: SKScene {
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
             
-            let location = (touch as UITouch).locationInNode(self)
-            let nodeTouched = self.nodeAtPoint(location)
+            let location = (touch as UITouch).location(in: self)
+            //let nodeTouched = self.atPoint(location)
+            _ = self.atPoint(location)
             
             //User is holding a new tower
             if let touchedTower = self.touchedTower {
@@ -171,7 +173,7 @@ class GameScene: SKScene {
         }
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         
         let timeSinceLastUpdate = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
@@ -184,7 +186,7 @@ class GameScene: SKScene {
     
     func moveCamera(){
         //All these variables and logic, are just to handle if the user touches very quickly the "switch button" before the action finished
-        self.sceneCam.runAction(SKAction.moveToY(cameraOffSet, duration: 0.3))
+        self.sceneCam.run(SKAction.moveTo(y: cameraOffSet, duration: 0.3))
         if self.cameraOffSet == self.enemyFieldOffset{
             
             self.cameraOffSet = self.defenseFieldOffset
@@ -196,20 +198,20 @@ class GameScene: SKScene {
         }
     }
     
-    func showAutoHideMessage(message: String){
+    func showAutoHideMessage(_ message: String){
         
         self.showMessage(message)
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)
     }
     
-    func showMessage(message: String){
+    func showMessage(_ message: String){
         
         self.labelMessage.text = message
-        self.labelMessage.hidden = false
+        self.labelMessage.isHidden = false
     }
     
     func hideMessage(){
-        self.labelMessage.hidden = true
+        self.labelMessage.isHidden = true
     }
     
     
