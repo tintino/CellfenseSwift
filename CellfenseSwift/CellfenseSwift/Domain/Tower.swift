@@ -80,7 +80,7 @@ class Tower: SKSpriteNode {
         self.run(fireSoundAction)
     }
     
-    func rotate(_ angle: CGFloat){
+    func rotate(angle: CGFloat){
         self.run(SKAction.rotate(toAngle: angle.degreesToRadians(), duration: Constants.Tower.rotateSpeed))
     }
     
@@ -93,13 +93,13 @@ class Tower: SKSpriteNode {
         }
     }
     
-    func tryShoot(_ victim: Enemy) -> Bool{
+    func tryShoot(victim: Enemy) -> Bool{
         
         //Shoot only if im not shooting
         if self.shootTimer  >= Int(self.defaultRate * 1000) {
             self.shootTimer = 0
             
-            victim.shoot(self.damage(victim))
+            victim.shoot(damage: self.damage(enemy: victim))
             
             self.fire()
             return true
@@ -110,12 +110,12 @@ class Tower: SKSpriteNode {
         }
     }
     
-    func damage(_ enemy: Enemy) -> CGFloat{
+    func damage(enemy: Enemy) -> CGFloat{
         //TODO compare all towers and enemies
-        return 13
+        return 0
     }
     
-    func tick(_ dt: Double){
+    func tick(dt: Double){
         let intTime = Int(dt*1000)
         self.turboTimer += intTime
         self.shootTimer += intTime

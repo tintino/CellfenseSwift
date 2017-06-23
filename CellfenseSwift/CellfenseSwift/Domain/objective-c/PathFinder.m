@@ -150,9 +150,11 @@
 			//check all the surrounding nodes/tiles:
 			for(y=1;y>=-1;y--)
 			{
+                //y = 1,0,-1
 				newY = currentY+y;
 				for(x=-1;x<=1;x++)
 				{
+                    //x = 1,0,-1
 					newX = currentX+x;
 					if(y || x)
 					{
@@ -163,10 +165,14 @@
 							if ((!(y==-1 && x==-1) && !(y==-1 && x==1)
 								 && !(y== 1 && x== -1) && !(y==1 && x==1))) {
 								
+                                
+                                //Not in open list
 								if(![self nodeInArray: openList withX: newX Y:newY])
 								{
+                                    //Not in closed list
 									if(![self nodeInArray: closedList withX: newX Y:newY])
 									{
+                                        //Not in walls list
 										if(![self spaceIsBlocked: newX :newY])
 										{
 											aNode = [PathFindNode node];

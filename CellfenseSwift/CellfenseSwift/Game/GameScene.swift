@@ -129,8 +129,8 @@ class GameScene: SKScene {
                     touchedTower.colorBlendFactor = 0.0;
                 }
                 
-                if self.gameControl.isHudArea(touchedTower.position){
-                    self.showMessage("SELL?")
+                if self.gameControl.isHudArea(position: touchedTower.position){
+                    self.showMessage(message: "SELL?")
                 }
                 else{
                     self.hideMessage()
@@ -151,18 +151,18 @@ class GameScene: SKScene {
             if let touchedTower = self.touchedTower {
                 
                 //And Want to sell it
-                if self.gameControl.isHudArea(touchedTower.position){
-                    self.showAutoHideMessage("SELL?")
+                if self.gameControl.isHudArea(position: touchedTower.position){
+                    self.showAutoHideMessage(message: "SELL?")
                 }
                     //And want to place it
                 else if self.gameWorld.towerAtLocation(touchedTower.position) == nil{
                     
                     //And is not blocking the path
-                    if self.gameWorld.doesBlockPathIfAddedTo(touchedTower.position){
+                    if self.gameWorld.doesBlockPathIfAddedTo(position: touchedTower.position){
                         self.gameWorld.addTower(touchedTower.position)
                     }
                     else{
-                        self.showAutoHideMessage("BLOCKING!")
+                        self.showAutoHideMessage(message: "BLOCKING!")
                     }
                 }
                 
@@ -178,7 +178,7 @@ class GameScene: SKScene {
         let timeSinceLastUpdate = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
         
-        self.gameWorld.update(timeSinceLastUpdate)
+        self.gameWorld.update(dt: timeSinceLastUpdate)
     }
     
     override func didFinishUpdate() {
@@ -198,13 +198,13 @@ class GameScene: SKScene {
         }
     }
     
-    func showAutoHideMessage(_ message: String){
+    func showAutoHideMessage(message: String){
         
-        self.showMessage(message)
+        self.showMessage(message: message)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.hideMessage), userInfo: nil, repeats: false)
     }
     
-    func showMessage(_ message: String){
+    func showMessage(message: String){
         
         self.labelMessage.text = message
         self.labelMessage.isHidden = false

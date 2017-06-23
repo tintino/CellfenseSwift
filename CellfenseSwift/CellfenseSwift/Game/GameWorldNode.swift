@@ -56,7 +56,7 @@ class GameWorldNode: SKNode{
         self.addChild(self.background)
         
         for enemy in withLevel.enemies {
-            self.spawnEnemy(enemy)
+            self.spawnEnemy(enemy: enemy)
             self.addChild(enemy)
         }
     }
@@ -138,10 +138,10 @@ class GameWorldNode: SKNode{
             enemy.path = (pathFinder?.findPathRow(0, col: 7, toRow: 23, toCol:  0))!
             
             //For debug draw enemy path
-            /*
+            
             var isFirstNode = true
             var isLastNode = false
-            for _ in enemy.path{
+            for path in enemy.path{
                 
                 //Enemy reach the end of the path
                 if enemy.pathIndex == enemy.path.count{
@@ -153,30 +153,30 @@ class GameWorldNode: SKNode{
                 }
                 
                 //Find the node in the path
-                let nodePath = enemy.path.objectAtIndex(enemy.path.count - 1 - enemy.pathIndex)
+                let nodePath : PathFindNode =  path as! PathFindNode//enemy.path.objectAtIndex(enemy.path.count - 1 - enemy.pathIndex)
                 let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int(nodePath.nodeX),y: Int(nodePath.nodeY)))
                 
                 let blockArea = SKShapeNode(circleOfRadius: 5)
                 blockArea.lineWidth = 1
                 if isFirstNode {
                     isFirstNode = false
-                    blockArea.fillColor = SKColor.greenColor()
+                    blockArea.fillColor = SKColor.green
                 }
                 else if isLastNode{
                     isLastNode = false
-                    blockArea.fillColor = SKColor.redColor()
+                    blockArea.fillColor = SKColor.red
                 }
                     
                 else{
-                    blockArea.fillColor = SKColor.yellowColor()
+                    blockArea.fillColor = SKColor.yellow
                 }
-                blockArea.strokeColor = SKColor.yellowColor()
+                blockArea.strokeColor = SKColor.yellow
                 blockArea.position = nodePathWorldLocation
                 self.addChild(blockArea)
                 
                 enemy.pathIndex += 1
             }
-            */            
+            
             
             //Set Direction (enemies will start goind down allways)
             enemy.dirX = 0
@@ -243,13 +243,13 @@ class GameWorldNode: SKNode{
         return towerNodes
     }
     
-    func update(_ dt: Double) {
-        self.processEnemies(dt)
-        self.processTowers(dt)
+    func update(dt: Double) {
+        self.processEnemies(dt: dt)
+        self.processTowers(dt: dt)
     }
     
     
-    func processEnemies(_ dt: Double){
+    func processEnemies(dt: Double){
         
         let cellSize = self.cellSize().width
         self.enumerateChildNodes(withName: Constants.NodeName.enemy) { (node, stop) in
@@ -275,7 +275,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.x <= nodePathWorldLocation.x{
                         enemyNode.position = CGPoint(x: nodePathWorldLocation.x, y: enemyNode.position.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
                 else if enemyNode.dirX == Constants.direction.RIGHT{
@@ -283,7 +283,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.x >= nodePathWorldLocation.x{
                         enemyNode.position = CGPoint(x: nodePathWorldLocation.x, y:  enemyNode.position.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
                 else if enemyNode.dirY == Constants.direction.UP{
@@ -291,7 +291,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.y >= nodePathWorldLocation.y{
                         enemyNode.position = CGPoint(x: enemyNode.position.x, y: nodePathWorldLocation.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
                 else if enemyNode.dirY == Constants.direction.DOWN{
@@ -299,20 +299,20 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.y <= nodePathWorldLocation.y{
                         enemyNode.position = CGPoint(x: enemyNode.position.x, y: nodePathWorldLocation.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
             }
         }
     }
     
-    func decideDirection(_ enemy: Enemy){
+    func decideDirection(enemy: Enemy){
         
         //Is the end of the travel go down
         if enemy.pathIndex == enemy.path.count {
             enemy.dirX = Constants.direction.STOP
             enemy.dirY = Constants.direction.DOWN
-            enemy.rotate(0)
+            enemy.rotate(angle: 0)
             return
         }
         
@@ -327,11 +327,11 @@ class GameWorldNode: SKNode{
             
             if (previous as AnyObject).nodeX > (actualNode as AnyObject).nodeX {
                 enemy.dirX = Constants.direction.LEFT
-                enemy.rotate(-90)
+                enemy.rotate(angle: -90)
             }
             else{
                 enemy.dirX = Constants.direction.RIGHT
-                enemy.rotate(90)
+                enemy.rotate(angle: 90)
             }
         }
         //Walking up or down
@@ -341,27 +341,27 @@ class GameWorldNode: SKNode{
             
             if (previous as AnyObject).nodeY > (actualNode as AnyObject).nodeY{
                 enemy.dirY = Constants.direction.UP
-                enemy.rotate(180)
+                enemy.rotate(angle: 180)
             }
             else{
                 enemy.dirY = Constants.direction.DOWN
-                enemy.rotate(0)
+                enemy.rotate(angle: 0)
             }
         }
     }
     
-    func spawnEnemy(_ enemy: Enemy){
+    func spawnEnemy(enemy: Enemy){
         enemy.position = self.gridToWorld(CGPoint(x:enemy.col,y:enemy.row))
         self.enemies.append(enemy)
         
     }
     
-    func processTowers(_ dt: Double){
+    func processTowers(dt: Double){
         
         for tower in self.towers {
             
             //Before shoot or keep shooting we check if it is already dead (maybe kill by another tower) or out of range
-            if (tower.shootingAt == nil || tower.shootingAt?.life == 0 || !self.isInRange(tower, enemy: tower.shootingAt!)){
+            if (tower.shootingAt == nil || tower.shootingAt?.life == 0 || !self.isInRange(tower: tower, enemy: tower.shootingAt!)){
                 
                 //Dead or lucky (out of range)
                 tower.shootingAt = nil
@@ -372,16 +372,16 @@ class GameWorldNode: SKNode{
                 for enemy in self.enemies {
                     
                     //the closest one
-                    if self.isInRange(tower, enemy: enemy){
+                    if self.isInRange(tower: tower, enemy: enemy){
                         
                         if nearestEnemy == nil {
                             
                             nearestEnemy = enemy
-                            nearestDist = self.distance(tower, enemy: enemy)
+                            nearestDist = self.distance(tower: tower, enemy: enemy)
                         }
                         else{
                             
-                            let distance = self.distance(tower, enemy: enemy)
+                            let distance = self.distance(tower: tower, enemy: enemy)
                             if distance <= nearestDist{
                                 nearestDist = distance
                                 nearestEnemy = enemy
@@ -402,10 +402,10 @@ class GameWorldNode: SKNode{
                 if (victim.position.x - tower.position.x  < 0){
                     angle += 180;
                 }
-                tower.rotate(angle - 90);
+                tower.rotate(angle: angle - 90);
                 
                 //Fire!
-                if tower.tryShoot(victim){
+                if tower.tryShoot(victim: victim){
                     
                     if tower.shootingAt?.life > 0 {
                         //TODO: spare blood particles
@@ -419,19 +419,19 @@ class GameWorldNode: SKNode{
                     }
                 }
             }
-            tower.tick(dt)
+            tower.tick(dt: dt)
         }
     }
     
-    func isInRange(_ tower: Tower, enemy: Enemy) -> Bool{
+    func isInRange(tower: Tower, enemy: Enemy) -> Bool{
         
-        let distance = self.distance(tower, enemy: enemy)
+        let distance = self.distance(tower: tower, enemy: enemy)
         let range = tower.range * self.cellSize().width
         
         return distance <= range || fabs(distance - range) < 0.001;
     }
     
-    func distance(_ tower: Tower, enemy: Enemy) -> CGFloat{
+    func distance(tower: Tower, enemy: Enemy) -> CGFloat{
         //Calc Deltas
         let dx = abs(tower.position.x - enemy.position.x)
         let dy = abs(tower.position.y - enemy.position.y)
@@ -456,7 +456,7 @@ class GameWorldNode: SKNode{
         return sqrt(dx*dx + dy*dy) - sqrt(ndx*ndx + ndy*ndy)
     }
     
-    func doesBlockPathIfAddedTo(_ position: CGPoint) -> Bool{
+    func doesBlockPathIfAddedTo(position: CGPoint) -> Bool{
         
         //Create walls for existing tower + asked position
         var towerNodes = self.towerNodesForPathFinding()

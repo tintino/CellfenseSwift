@@ -74,11 +74,11 @@ class Enemy: SKSpriteNode {
         self.run(walkAction, withKey: "enemyWalk")
     }
     
-    func rotate(_ angle: Int){
+    func rotate(angle: Int){
         self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
     }
     
-    func  shoot(_ damage: CGFloat){
+    func  shoot(damage: CGFloat){
         if self.life != 0 {
             self.life -= damage
         }

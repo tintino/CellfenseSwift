@@ -72,7 +72,7 @@ class GameControlNode: SKNode {
         self.hud.isHidden = false
     }
     
-    func isHudArea(_ position: CGPoint) -> Bool {
+    func isHudArea(position: CGPoint) -> Bool {
         if position.y < self.hudBackground.frame.height {
             return true
         }
