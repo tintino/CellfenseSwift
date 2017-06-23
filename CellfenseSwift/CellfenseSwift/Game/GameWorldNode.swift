@@ -8,6 +8,26 @@
 
 import Foundation
 import SpriteKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class GameWorldNode: SKNode{
     
@@ -25,7 +45,7 @@ class GameWorldNode: SKNode{
         
         super.init()
         
-        self.sampleCellSize = CGSizeMake(0, 0)
+        self.sampleCellSize = CGSize(width: 0, height: 0)
         
         //Create background
         self.background = SKSpriteNode(imageNamed: "sceneBackground")
@@ -36,21 +56,21 @@ class GameWorldNode: SKNode{
         self.addChild(self.background)
         
         for enemy in withLevel.enemies {
-            self.spawnEnemy(enemy)
+            self.spawnEnemy(enemy: enemy)
             self.addChild(enemy)
         }
     }
     
-    func addTower(position: CGPoint){
+    func addTower(_ position: CGPoint){
         
         let newTower = Tower(type: TowerType.TURRET)
         newTower?.position = position
         self.towers.append(newTower!)
-        newTower?.name
+        //newTower?.name
         self.addChild(newTower!)
     }
     
-    func removeTowerAtLocation(position: CGPoint){
+    func removeTowerAtLocation(_ position: CGPoint){
         //TODO: Analize best solution for towers type
         /*
          To avoid iteration just to remove a tower, we can use NSMutableArray for self.towers, will be easy to handle the remove action,
@@ -66,19 +86,19 @@ class GameWorldNode: SKNode{
             var rectArea = CGRect()
             rectArea.size = tower.size
             rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2, y: tower.position.y - rectArea.size.height/2)
-            if CGRectContainsPoint(rectArea, position){
-                self.towers.removeAtIndex(arrayIndex)
+            if rectArea.contains(position){
+                self.towers.remove(at: arrayIndex)
             }
             arrayIndex += 1
         }
     }
     
-    func towerAtLocation(position: CGPoint) -> Tower?{
+    func towerAtLocation(_ position: CGPoint) -> Tower?{
         for tower in self.towers {
             var rectArea = CGRect()
             rectArea.size = tower.size
             rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2, y: tower.position.y - rectArea.size.height/2)
-            if CGRectContainsPoint(rectArea, position){
+            if rectArea.contains(position){
                 return tower
             }
         }
@@ -91,7 +111,7 @@ class GameWorldNode: SKNode{
             self.sampleCellSize = CGSize(width: sampleSprite.size.width, height: sampleSprite.size.height)
         }
         let size = min(self.sampleCellSize!.width,self.sampleCellSize!.height)
-        return CGSizeMake(size, size)
+        return CGSize(width: size, height: size)
     }
     
     //Objective C will need a Int32
@@ -115,13 +135,13 @@ class GameWorldNode: SKNode{
         for enemy in self.enemies {
             
             //Find path
-            enemy.path = pathFinder.findPathRow(0, col: 7, toRow: 23, toCol:  0)
+            enemy.path = (pathFinder?.findPathRow(0, col: 7, toRow: 23, toCol:  0))!
             
             //For debug draw enemy path
-            /*
+            
             var isFirstNode = true
             var isLastNode = false
-            for _ in enemy.path{
+            for path in enemy.path{
                 
                 //Enemy reach the end of the path
                 if enemy.pathIndex == enemy.path.count{
@@ -133,30 +153,30 @@ class GameWorldNode: SKNode{
                 }
                 
                 //Find the node in the path
-                let nodePath = enemy.path.objectAtIndex(enemy.path.count - 1 - enemy.pathIndex)
+                let nodePath : PathFindNode =  path as! PathFindNode//enemy.path.objectAtIndex(enemy.path.count - 1 - enemy.pathIndex)
                 let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int(nodePath.nodeX),y: Int(nodePath.nodeY)))
                 
                 let blockArea = SKShapeNode(circleOfRadius: 5)
                 blockArea.lineWidth = 1
                 if isFirstNode {
                     isFirstNode = false
-                    blockArea.fillColor = SKColor.greenColor()
+                    blockArea.fillColor = SKColor.green
                 }
                 else if isLastNode{
                     isLastNode = false
-                    blockArea.fillColor = SKColor.redColor()
+                    blockArea.fillColor = SKColor.red
                 }
                     
                 else{
-                    blockArea.fillColor = SKColor.yellowColor()
+                    blockArea.fillColor = SKColor.yellow
                 }
-                blockArea.strokeColor = SKColor.yellowColor()
+                blockArea.strokeColor = SKColor.yellow
                 blockArea.position = nodePathWorldLocation
                 self.addChild(blockArea)
                 
                 enemy.pathIndex += 1
             }
-            */            
+            
             
             //Set Direction (enemies will start goind down allways)
             enemy.dirX = 0
@@ -168,7 +188,7 @@ class GameWorldNode: SKNode{
         }
     }
     
-    func worldToGrid(position: CGPoint)-> CGPoint{
+    func worldToGrid(_ position: CGPoint)-> CGPoint{
         
         let cellSize = self.cellSize()
         
@@ -180,13 +200,13 @@ class GameWorldNode: SKNode{
         
     }
     
-    func gridToWorld(position: CGPoint) -> CGPoint{
+    func gridToWorld(_ position: CGPoint) -> CGPoint{
         
         let cellSize = self.cellSize()
         return CGPoint(x:cellSize.width/2 + position.x * cellSize.width, y: position.y * cellSize.height + cellSize.height/2)
     }
     
-    func worldToGridIndexes(worldPoint: CGPoint) -> CGPoint {
+    func worldToGridIndexes(_ worldPoint: CGPoint) -> CGPoint {
         
         let cellSize = self.cellSize()
         
@@ -198,10 +218,10 @@ class GameWorldNode: SKNode{
         let toGrid = CGPoint(x: CGFloat(tiledX), y: CGFloat(tiledY))
         
         //Convert to Grid Value. Index 0 is the row above the first line of towers
-        return CGPoint(x: Int(toGrid.x/cellSize.width) - 1 , y: self.rows() - Int((toGrid.y/cellSize.height)) - 0)
+        return CGPoint(x: Int(toGrid.x/cellSize.width) - 1 , y: Int(self.rows()) - Int((toGrid.y/cellSize.height)))
     }
     
-    func indexesToWorld(gridPoint: CGPoint) -> CGPoint{
+    func indexesToWorld(_ gridPoint: CGPoint) -> CGPoint{
         
         let cellSize = self.cellSize()
         
@@ -224,15 +244,15 @@ class GameWorldNode: SKNode{
     }
     
     func update(dt: Double) {
-        self.processEnemies(dt)
-        self.processTowers(dt)
+        self.processEnemies(dt: dt)
+        self.processTowers(dt: dt)
     }
     
     
     func processEnemies(dt: Double){
         
         let cellSize = self.cellSize().width
-        self.enumerateChildNodesWithName(Constants.NodeName.enemy) { (node, stop) in
+        self.enumerateChildNodes(withName: Constants.NodeName.enemy) { (node, stop) in
             
             if let enemyNode = node as? Enemy{
                 
@@ -246,8 +266,8 @@ class GameWorldNode: SKNode{
                 }
                 
                 //Find the node in the path
-                let nodePath = enemyNode.path.objectAtIndex(enemyNode.path.count - 1 - enemyNode.pathIndex)
-                let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int(nodePath.nodeX),y: Int(nodePath.nodeY)))
+                let nodePath = enemyNode.path[enemyNode.path.count - 1 - enemyNode.pathIndex]
+                let nodePathWorldLocation = self.indexesToWorld(CGPoint(x: Int((nodePath as AnyObject).nodeX),y: Int((nodePath as AnyObject).nodeY)))
                                 
                 //If the enemy reach or pass the node limit, fix the position to the limit and get next pathNode
                 if enemyNode.dirX == Constants.direction.LEFT{
@@ -255,7 +275,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.x <= nodePathWorldLocation.x{
                         enemyNode.position = CGPoint(x: nodePathWorldLocation.x, y: enemyNode.position.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
                 else if enemyNode.dirX == Constants.direction.RIGHT{
@@ -263,7 +283,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.x >= nodePathWorldLocation.x{
                         enemyNode.position = CGPoint(x: nodePathWorldLocation.x, y:  enemyNode.position.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
                 else if enemyNode.dirY == Constants.direction.UP{
@@ -271,7 +291,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.y >= nodePathWorldLocation.y{
                         enemyNode.position = CGPoint(x: enemyNode.position.x, y: nodePathWorldLocation.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
                 else if enemyNode.dirY == Constants.direction.DOWN{
@@ -279,7 +299,7 @@ class GameWorldNode: SKNode{
                     if enemyNode.position.y <= nodePathWorldLocation.y{
                         enemyNode.position = CGPoint(x: enemyNode.position.x, y: nodePathWorldLocation.y)
                         enemyNode.pathIndex += 1
-                        self.decideDirection(enemyNode)
+                        self.decideDirection(enemy: enemyNode)
                     }
                 }
             }
@@ -292,7 +312,7 @@ class GameWorldNode: SKNode{
         if enemy.pathIndex == enemy.path.count {
             enemy.dirX = Constants.direction.STOP
             enemy.dirY = Constants.direction.DOWN
-            enemy.rotate(0)
+            enemy.rotate(angle: 0)
             return
         }
         
@@ -301,17 +321,17 @@ class GameWorldNode: SKNode{
         let actualNode = enemy.path[enemy.path.count - 1 - enemy.pathIndex]
         
         //Walking left or right
-        if previous.nodeY == actualNode.nodeY{
+        if (previous as AnyObject).nodeY == (actualNode as AnyObject).nodeY{
             
             enemy.dirY = Constants.direction.STOP
             
-            if previous.nodeX > actualNode.nodeX {
+            if (previous as AnyObject).nodeX > (actualNode as AnyObject).nodeX {
                 enemy.dirX = Constants.direction.LEFT
-                enemy.rotate(-90)
+                enemy.rotate(angle: -90)
             }
             else{
                 enemy.dirX = Constants.direction.RIGHT
-                enemy.rotate(90)
+                enemy.rotate(angle: 90)
             }
         }
         //Walking up or down
@@ -319,13 +339,13 @@ class GameWorldNode: SKNode{
             
             enemy.dirX = Constants.direction.STOP
             
-            if previous.nodeY > actualNode.nodeY{
+            if (previous as AnyObject).nodeY > (actualNode as AnyObject).nodeY{
                 enemy.dirY = Constants.direction.UP
-                enemy.rotate(180)
+                enemy.rotate(angle: 180)
             }
             else{
                 enemy.dirY = Constants.direction.DOWN
-                enemy.rotate(0)
+                enemy.rotate(angle: 0)
             }
         }
     }
@@ -341,27 +361,27 @@ class GameWorldNode: SKNode{
         for tower in self.towers {
             
             //Before shoot or keep shooting we check if it is already dead (maybe kill by another tower) or out of range
-            if (tower.shootingAt == nil || tower.shootingAt?.life == 0 || !self.isInRange(tower, enemy: tower.shootingAt!)){
+            if (tower.shootingAt == nil || tower.shootingAt?.life == 0 || !self.isInRange(tower: tower, enemy: tower.shootingAt!)){
                 
                 //Dead or lucky (out of range)
                 tower.shootingAt = nil
                 
                 //Find a new victim
                 var nearestEnemy : Enemy? = nil
-                var nearestDist = CGFloat.max
+                var nearestDist = CGFloat.greatestFiniteMagnitude
                 for enemy in self.enemies {
                     
                     //the closest one
-                    if self.isInRange(tower, enemy: enemy){
+                    if self.isInRange(tower: tower, enemy: enemy){
                         
                         if nearestEnemy == nil {
                             
                             nearestEnemy = enemy
-                            nearestDist = self.distance(tower, enemy: enemy)
+                            nearestDist = self.distance(tower: tower, enemy: enemy)
                         }
                         else{
                             
-                            let distance = self.distance(tower, enemy: enemy)
+                            let distance = self.distance(tower: tower, enemy: enemy)
                             if distance <= nearestDist{
                                 nearestDist = distance
                                 nearestEnemy = enemy
@@ -375,17 +395,17 @@ class GameWorldNode: SKNode{
             if let victim = tower.shootingAt {
                 
                 //Aim the tower
-                let π = CGFloat(M_PI)
+                let π = CGFloat(Double.pi)
                 let dx = victim.position.x - tower.position.x;
                 let dy = victim.position.y - tower.position.y;
                 var angle = atan(dy/dx) * (180/π);
                 if (victim.position.x - tower.position.x  < 0){
                     angle += 180;
                 }
-                tower.rotate(angle - 90);
+                tower.rotate(angle: angle - 90);
                 
                 //Fire!
-                if tower.tryShoot(victim){
+                if tower.tryShoot(victim: victim){
                     
                     if tower.shootingAt?.life > 0 {
                         //TODO: spare blood particles
@@ -399,13 +419,13 @@ class GameWorldNode: SKNode{
                     }
                 }
             }
-            tower.tick(dt)
+            tower.tick(dt: dt)
         }
     }
     
     func isInRange(tower: Tower, enemy: Enemy) -> Bool{
         
-        let distance = self.distance(tower, enemy: enemy)
+        let distance = self.distance(tower: tower, enemy: enemy)
         let range = tower.range * self.cellSize().width
         
         return distance <= range || fabs(distance - range) < 0.001;
@@ -447,7 +467,7 @@ class GameWorldNode: SKNode{
         towerNodes.append(pathNode)
         
         let pathFinder = PathFinder.init(rows: self.rows(), columns: self.cols(), walls: towerNodes)
-        let path = pathFinder.findPathRow(0, col: 0, toRow: self.rows() - 1, toCol: 0)
+        let path = pathFinder?.findPathRow(0, col: 0, toRow: self.rows() - 1, toCol: 0)
         
         if path != nil {
             return true

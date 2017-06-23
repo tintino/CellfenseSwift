@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /** The value of π as a CGFloat */
-let π = CGFloat(M_PI)
+let π = CGFloat(Double.pi)
 
 extension CGFloat {
     

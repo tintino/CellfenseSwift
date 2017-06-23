@@ -17,9 +17,9 @@ enum EnemyType : String {
 class Enemy: SKSpriteNode {
     
     var enemyFrames = [SKTexture]()
-    var path = []
+    var path = [Any]()
     
-    //TODO: directions to integers
+    //TODO: directioPathFindNodens to integers
     var dirX : CGFloat = 0
     var dirY : CGFloat = 0
     var life : CGFloat = 0
@@ -47,7 +47,7 @@ class Enemy: SKSpriteNode {
         }
         
         //Initialize Sprite with First Frame
-        super.init(texture: self.enemyFrames[0], color: UIColor.blackColor(), size:self.enemyFrames[0].size())
+        super.init(texture: self.enemyFrames[0], color: UIColor.black, size:self.enemyFrames[0].size())
                 
         self.name = Constants.NodeName.enemy
         self.life = 100
@@ -69,13 +69,13 @@ class Enemy: SKSpriteNode {
     }
     
     func Walk(){
-        let animatedAction = SKAction.animateWithTextures(self.enemyFrames, timePerFrame: 0.1)
-        let walkAction = SKAction.repeatActionForever(animatedAction)
-        self.runAction(walkAction, withKey: "enemyWalk")
+        let animatedAction = SKAction.animate(with: self.enemyFrames, timePerFrame: 0.1)
+        let walkAction = SKAction.repeatForever(animatedAction)
+        self.run(walkAction, withKey: "enemyWalk")
     }
     
     func rotate(angle: Int){
-        self.runAction(SKAction.rotateToAngle(CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
+        self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
     }
     
     func  shoot(damage: CGFloat){
