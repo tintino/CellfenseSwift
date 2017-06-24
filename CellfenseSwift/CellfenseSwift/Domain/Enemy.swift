@@ -24,8 +24,8 @@ class Enemy: SKSpriteNode {
     var dirY : CGFloat = 0
     var life : CGFloat = 0
     var pathIndex = 0
-    var col = 7
-    var row = 23
+    public var col = 0
+    public var row = 0
     
     let myLabel = SKLabelNode()
     

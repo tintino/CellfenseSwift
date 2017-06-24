@@ -12,6 +12,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    let levelLoaded : Level?
     var lastUpdateTime = TimeInterval()
     
     //Control: Has the play button, switch screen button, hud to add new towers
@@ -31,18 +32,27 @@ class GameScene: SKScene {
     var touchedTower : SKSpriteNode?
     var labelMessage = SKLabelNode()
     
+    
+    required init(size: CGSize, level: Level) {
+        self.levelLoaded = level
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
         
         //Create the scene’s contents.
         
-        let randomLevel = Level.randomLevel()
-        self.gameControl = GameControlNode(withLevel: randomLevel)
+        self.gameControl = GameControlNode(level: self.levelLoaded!)
         
         //GameControlNode is child of camera, the center of the camera is (0,0), width and height is the same as gamescene view
         self.gameControl.position = CGPoint(x: -self.frame.midX, y: -self.frame.midY)
         
         
-        self.gameWorld = GameWorldNode(withLevel: randomLevel)
+        self.gameWorld = GameWorldNode(level: self.levelLoaded!)
         self.addChild(gameWorld)
         
         //Add Camera Scene

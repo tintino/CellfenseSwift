@@ -22,7 +22,7 @@ class GameControlNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(withLevel: Level){
+    init(level: Level){
         super.init()
                 
         //Create Hud container, will contain availables towers

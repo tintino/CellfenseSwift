@@ -11,6 +11,7 @@ import UIKit
 
 class Level {
     
+    var name = ""
     var image = UIImage()
     var enemies = [Enemy]()
     var number : Int!

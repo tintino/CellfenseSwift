@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hdx-qv-I9M">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Levels View Controller-->
         <scene sceneID="bO7-EM-06G">
             <objects>
-                <viewController id="Hdx-qv-I9M" sceneMemberID="viewController">
+                <viewController id="Hdx-qv-I9M" customClass="LevelsViewController" customModule="CellfenseSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VoW-6r-Tgm"/>
                         <viewControllerLayoutGuide type="bottom" id="ir3-V9-kms"/>
@@ -20,8 +20,61 @@
                     <view key="view" contentMode="scaleToFill" id="1oO-OM-XH5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7KF-3i-3eM">
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R4J-ID-iNE">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="5V0-sf-Ria" customClass="LevelCollectionCell" customModule="CellfenseSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-Xy-gTw">
+                                                    <rect key="frame" x="-0.5" y="0.5" width="50" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Qac-Xy-gTw" firstAttribute="centerY" secondItem="5V0-sf-Ria" secondAttribute="centerY" id="2hF-OE-y89"/>
+                                            <constraint firstItem="Qac-Xy-gTw" firstAttribute="height" secondItem="5V0-sf-Ria" secondAttribute="height" id="CkH-Kp-BAT"/>
+                                            <constraint firstItem="Qac-Xy-gTw" firstAttribute="width" secondItem="5V0-sf-Ria" secondAttribute="width" id="qyX-uV-ZEy"/>
+                                            <constraint firstItem="Qac-Xy-gTw" firstAttribute="centerX" secondItem="5V0-sf-Ria" secondAttribute="centerX" id="z9y-Jy-1TO"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="labelName" destination="Qac-Xy-gTw" id="C7X-aI-U5g"/>
+                                            <segue destination="BV1-FR-VrT" kind="show" identifier="toGameViewController" id="sE6-DB-JRu"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hdx-qv-I9M" id="rIj-oW-tqU"/>
+                                    <outlet property="delegate" destination="Hdx-qv-I9M" id="oGp-JD-HzY"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7KF-3i-3eM" firstAttribute="width" secondItem="1oO-OM-XH5" secondAttribute="width" id="Hhh-62-zrl"/>
+                            <constraint firstItem="7KF-3i-3eM" firstAttribute="height" secondItem="1oO-OM-XH5" secondAttribute="height" id="kuZ-Ys-qAS"/>
+                            <constraint firstItem="7KF-3i-3eM" firstAttribute="centerY" secondItem="1oO-OM-XH5" secondAttribute="centerY" id="uGl-uM-56E"/>
+                            <constraint firstItem="7KF-3i-3eM" firstAttribute="centerX" secondItem="1oO-OM-XH5" secondAttribute="centerX" id="zfZ-qe-acB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="levelsCollectionView" destination="7KF-3i-3eM" id="9VK-mh-2RD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9M-LG-QrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,8 +92,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="avw-a9-H8O" customClass="SKView">
-                                <rect key="frame" x="140" y="60" width="320" height="480"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avw-a9-H8O" customClass="SKView">
+                                <rect key="frame" x="27.5" y="93.5" width="320" height="480"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="480" id="4TS-UF-tjG"/>
@@ -60,6 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-178" y="139"/>
         </scene>
     </scenes>
 </document>

@@ -41,7 +41,7 @@ class GameWorldNode: SKNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(withLevel: Level){
+    init(level: Level){
         
         super.init()
         
@@ -55,7 +55,7 @@ class GameWorldNode: SKNode{
         self.background.zPosition = Constants.zPosition.background
         self.addChild(self.background)
         
-        for enemy in withLevel.enemies {
+        for enemy in level.enemies {
             self.spawnEnemy(enemy: enemy)
             self.addChild(enemy)
         }
@@ -135,11 +135,11 @@ class GameWorldNode: SKNode{
         for enemy in self.enemies {
             
             //Find path
-            enemy.path = (pathFinder?.findPathRow(0, col: 7, toRow: 23, toCol:  0))!
+            enemy.path = (pathFinder?.findPathRow(Int32(enemy.row), col: Int32(enemy.col), toRow: 23, toCol:  0))!
             
             //For debug draw enemy path
             
-            var isFirstNode = true
+            /*var isFirstNode = true
             var isLastNode = false
             for path in enemy.path{
                 
@@ -176,7 +176,7 @@ class GameWorldNode: SKNode{
                 
                 enemy.pathIndex += 1
             }
-            
+            */
             
             //Set Direction (enemies will start goind down allways)
             enemy.dirX = 0
@@ -351,9 +351,10 @@ class GameWorldNode: SKNode{
     }
     
     func spawnEnemy(enemy: Enemy){
-        enemy.position = self.gridToWorld(CGPoint(x:enemy.col,y:enemy.row))
-        self.enemies.append(enemy)
-        
+        //TODO: due objective c project differences on point 0.0 on axes, we need to apply offset at spawn enemy time. For fixed screen is 12. Change and improve this. Another option is to change all the xml level file.
+        let offSetY = 12
+        enemy.position = self.gridToWorld(CGPoint(x:enemy.col,y:enemy.row + offSetY))
+        self.enemies.append(enemy)        
     }
     
     func processTowers(dt: Double){
@@ -414,7 +415,7 @@ class GameWorldNode: SKNode{
                         //TODO: enemyKilled
                         victim.removeFromParent()
                         //TODO: remove from enemies array
-                        self.enemies.removeLast()
+                        //self.enemies.removeLast()
                         tower.shootingAt = nil
                     }
                 }
