@@ -79,14 +79,14 @@ class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICol
             else if count == 2{
                 
                 let currentEnemy = self.currentEnemies.last!
-                currentEnemy.row = Int(string)!
+                currentEnemy.col = Int(string)!
                 self.count = 3
 
                 
             }
             else if count == 3 {
                 let currentEnemy = self.currentEnemies.last!
-                currentEnemy.col = Int(string)!
+                currentEnemy.row = Int(string)!
                 self.count = 4
             }
             
