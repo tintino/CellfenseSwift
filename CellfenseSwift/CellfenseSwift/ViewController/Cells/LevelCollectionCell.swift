@@ -11,12 +11,14 @@ import UIKit
 class LevelCollectionCell: UICollectionViewCell {
     @IBOutlet weak public var labelName: UILabel!
     
+    @IBOutlet weak var labelLevelNumber: UILabel!
     public var level =  Level()
     
     func configureCell(level:Level) {
         self.level = level
         
         self.labelName.text = self.level.name
+        self.layer.cornerRadius = 10
     }
     
     

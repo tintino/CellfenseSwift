@@ -55,15 +55,14 @@ class Tower: SKSpriteNode {
             
         }
         
-        //Shoot Radio for debug. This will not affect the SKSpriteNode Size
-        /*
+        //Shoot Radio. This will not affect the SKSpriteNode Size
+        
         let radioShootArea = SKShapeNode(circleOfRadius: self.frame.size.width * self.range )
         radioShootArea.position = CGPoint(x: frame.midX, y: frame.midY)
         radioShootArea.strokeColor = SKColor.green
         radioShootArea.lineWidth = 1
         radioShootArea.alpha = 0.2
         self.addChild(radioShootArea)
-        */
         
         /*
         let blockArea = SKShapeNode(rect: self.frame)

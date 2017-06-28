@@ -139,7 +139,7 @@ class GameWorldNode: SKNode{
             enemy.path = (pathFinder?.findPathRow(Int32(enemy.row) - 1, col: Int32(enemy.col) - 1, toRow: 23, toCol:  0))!
             
             //For debug draw enemy path
-            
+            /*
             var isFirstNode = true
             var isLastNode = false
             for path in enemy.path{
@@ -177,6 +177,7 @@ class GameWorldNode: SKNode{
                 
                 enemy.pathIndex += 1
             }
+             */
             
             
             //Set Direction (enemies will start goind down allways)

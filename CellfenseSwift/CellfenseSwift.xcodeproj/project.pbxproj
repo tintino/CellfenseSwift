@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B02CD5A1F0417D60049E7DD /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B02CD591F0417D60049E7DD /* menu.png */; };
 		4B2150C01EFDCC6D00CF9FDC /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */; };
 		4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B2150C51EFDD51000CF9FDC /* levels.xml */; };
 		4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B02CD591F0417D60049E7DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelsViewController.swift; path = ViewController/LevelsViewController.swift; sourceTree = "<group>"; };
 		4B2150C51EFDD51000CF9FDC /* levels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = levels.xml; path = Resources/Levels/levels.xml; sourceTree = "<group>"; };
 		4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelCollectionCell.swift; path = ViewController/Cells/LevelCollectionCell.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				4B9C2AFE1CDEA4940003B193 /* up_button.png */,
 				4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */,
 				4B3CB3CD1CE56149001DE1A2 /* rush_button.png */,
+				4B02CD591F0417D60049E7DD /* menu.png */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -304,6 +307,7 @@
 				4B9C2AF61CDE77040003B193 /* chain_gun.wav in Resources */,
 				4B9C2AE61CDE70C60003B193 /* Main.storyboard in Resources */,
 				4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */,
+				4B02CD5A1F0417D60049E7DD /* menu.png in Resources */,
 				4B9C2AFB1CDE8F500003B193 /* Caterpillar.atlas in Resources */,
 				4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */,
 				4B9C2AF31CDE76BA0003B193 /* Turret.atlas in Resources */,
