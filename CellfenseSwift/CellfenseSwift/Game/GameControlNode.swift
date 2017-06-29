@@ -81,4 +81,9 @@ class GameControlNode: SKNode {
         }
     }
     
+    func hideButtons() {
+        //TODO: action not working
+        self.upButton.run(SKAction.moveBy(x: -self.upButton.frame.width, y: 0, duration: 2000))
+    }
+    
 }

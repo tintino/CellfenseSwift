@@ -110,6 +110,9 @@ class GameScene: SKScene {
             }
             else if nodeTouched.name == Constants.NodeName.hudRush{
                 self.gameWorld.startDefending()
+                //TODO: hideButtons not working
+                //self.gameControl.hideHud()
+                //self.gameControl.hideButtons()
                 self.gameControl.isHidden = true
             }
             
