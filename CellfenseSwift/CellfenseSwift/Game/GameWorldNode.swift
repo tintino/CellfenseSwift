@@ -35,8 +35,11 @@ class GameWorldNode: SKNode{
     var sampleCellSize : CGSize?
     var towers = [Tower]()
     var enemies = [Enemy]()
+    var addedEnemies = [Enemy]()
     var background = SKSpriteNode()
     var lives = 0
+    var gameControl : GameControlNode!
+    var elapsed = 0.0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -59,28 +62,34 @@ class GameWorldNode: SKNode{
         
         for enemy in level.enemies {
             self.spawnEnemy(enemy: enemy)
-            
         }
+        self.lives = 1
+        
+        self.prepareLevel()
     }
     
     func update(dt: Double) {
         
-        //TODO: add elapsed time need to calc final score
+        if !self.levelDone {
+            self.elapsed += dt
+        }
+
         if self.levelDone {
-            
+            //TODO: why [self schedule:@selector(gameCompleted) interval:1.0] on objC???????
+            self.gameCompleted()
+            self.levelDone = true
         }
         
         if self.enemies.count == 0 && !levelDone {
             self.levelDone = true
         }
         self.checkBoundaries()
-        self.processEnemies(dt: dt)
-        self.processTowers(dt: dt)
-        
-        
+        self.processEnemies(dt:dt)
+        self.processTowers(dt:dt)
     }
     
     func checkBoundaries() {
+        
         var toDiscard = [Enemy]()
         
         for enemy in self.enemies {
@@ -89,8 +98,6 @@ class GameWorldNode: SKNode{
             if enemy.position.y < -enemy.frame.height/2 {
                 toDiscard.append(enemy)
                 self.lives -= 1
-                
-                NSLog("Enemy escape! lives:\(self.lives)")
             }
         }
         
@@ -98,6 +105,7 @@ class GameWorldNode: SKNode{
             self.removeEnemy(enemy: enemy)
         }
         
+        self.gameControl.updateLives(lives: self.lives)
         //TODO: send lives data to control node
         
         //TODO: clean bullets out of broundaries
@@ -397,8 +405,7 @@ class GameWorldNode: SKNode{
         
         enemy.position = self.gridToWorld(CGPoint(x:fixedX,y:fixedY))
         
-        self.enemies.append(enemy)
-        self.addChild(enemy)
+        self.addedEnemies.append(enemy)
     }
     
     func processTowers(dt: Double){
@@ -539,11 +546,50 @@ class GameWorldNode: SKNode{
     
     func gameCompleted() {
         self.cleanEnemies()
+        self.stopAnimations()
         self.levelDone = false
+        
+        self.gameControl.gameCompleted(elapsedTime: self.elapsed)
     }
     
     func cleanEnemies() {
         self.enemies = [Enemy]()
+    }
+    
+    func stopAnimations(){
+        
+        //TODO: stop particles from fly
+        
+        for enemy in self.enemies {
+            enemy.removeAllActions()
+        }
+    }
+    
+    func restart(){
+        
+        //Remove enemies
+       self.enumerateChildNodes(withName: Constants.NodeName.enemy) { (node, stop) in
+            
+            if let enemyNode = node as? Enemy{
+                enemyNode.removeFromParent()
+            }
+        }
+        self.enemies.removeAll()
+        
+        //Restart initial values
+        self.lives = 1
+        self.elapsed = 0
+        
+        self.prepareLevel()
+    }
+    
+    func prepareLevel() {
+    
+        for originalEnemy in self.addedEnemies {
+            let copyEnemy = originalEnemy.copy() as! Enemy
+            self.enemies.append(copyEnemy)
+            self.addChild(copyEnemy)
+        }
     }
     
     

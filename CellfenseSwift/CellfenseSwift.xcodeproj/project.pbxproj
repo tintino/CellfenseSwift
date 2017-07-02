@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B02CD5A1F0417D60049E7DD /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B02CD591F0417D60049E7DD /* menu.png */; };
+		4B0C68BA1F0987E40042D9F5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C68B91F0987E40042D9F5 /* StringExtension.swift */; };
 		4B2150C01EFDCC6D00CF9FDC /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */; };
 		4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B2150C51EFDD51000CF9FDC /* levels.xml */; };
 		4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */; };
@@ -36,12 +37,14 @@
 		4BC6AF1C1CE03B4900901E43 /* GameWorldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */; };
 		4BC6AF2C1CE18FAA00901E43 /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6AF2B1CE18FAA00901E43 /* hud.png */; };
 		4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */; };
+		4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BCCDCC71F09849900273C0D /* Localizable.strings */; };
 		4BEA47841EF77133005CAA69 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47831EF77133005CAA69 /* Pathfinder.swift */; };
 		4BEA47871EF772EE005CAA69 /* PathfindNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47861EF772EE005CAA69 /* PathfindNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B02CD591F0417D60049E7DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		4B0C68B91F0987E40042D9F5 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extensions/StringExtension.swift; sourceTree = "<group>"; };
 		4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelsViewController.swift; path = ViewController/LevelsViewController.swift; sourceTree = "<group>"; };
 		4B2150C51EFDD51000CF9FDC /* levels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = levels.xml; path = Resources/Levels/levels.xml; sourceTree = "<group>"; };
 		4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelCollectionCell.swift; path = ViewController/Cells/LevelCollectionCell.swift; sourceTree = "<group>"; };
@@ -74,6 +77,8 @@
 		4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameWorldNode.swift; path = Game/GameWorldNode.swift; sourceTree = "<group>"; };
 		4BC6AF2B1CE18FAA00901E43 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatExtension.swift; path = Extensions/CGFloatExtension.swift; sourceTree = "<group>"; };
+		4BCCDCC61F09849900273C0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4BCCDCC81F09849D00273C0D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4BEA47831EF77133005CAA69 /* Pathfinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pathfinder.swift; path = IA/Pathfinder.swift; sourceTree = "<group>"; };
 		4BEA47861EF772EE005CAA69 /* PathfindNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PathfindNode.swift; path = IA/PathfindNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +100,7 @@
 				4B9C2AF41CDE77040003B193 /* Sounds */,
 				4B2150C41EFDD50300CF9FDC /* Levels */,
 				4B9C2AF71CDE77260003B193 /* Images */,
+				4BCCDCC71F09849900273C0D /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */,
+				4B0C68B91F0987E40042D9F5 /* StringExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -279,7 +286,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				es,
 			);
 			mainGroup = 4B9C2AD01CDE70C50003B193;
 			productRefGroup = 4B9C2ADA1CDE70C50003B193 /* Products */;
@@ -309,6 +316,7 @@
 				4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */,
 				4B02CD5A1F0417D60049E7DD /* menu.png in Resources */,
 				4B9C2AFB1CDE8F500003B193 /* Caterpillar.atlas in Resources */,
+				4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */,
 				4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */,
 				4B9C2AF31CDE76BA0003B193 /* Turret.atlas in Resources */,
 			);
@@ -329,6 +337,7 @@
 				4B9C2AE31CDE70C60003B193 /* GameViewController.swift in Sources */,
 				4B2150C01EFDCC6D00CF9FDC /* LevelsViewController.swift in Sources */,
 				4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */,
+				4B0C68BA1F0987E40042D9F5 /* StringExtension.swift in Sources */,
 				4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */,
 				4B9C2ADD1CDE70C50003B193 /* AppDelegate.swift in Sources */,
 				4BEA47871EF772EE005CAA69 /* PathfindNode.swift in Sources */,
@@ -357,6 +366,16 @@
 				4B9C2AEA1CDE70C60003B193 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4BCCDCC71F09849900273C0D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BCCDCC61F09849900273C0D /* en */,
+				4BCCDCC81F09849D00273C0D /* es */,
+			);
+			name = Localizable.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

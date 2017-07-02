@@ -76,9 +76,9 @@ class Tower: SKSpriteNode {
     func fire(){
         let animatedAction = SKAction.animate(with: self.towerFrames, timePerFrame: 0.1)
         let fireAction = SKAction.repeat(animatedAction, count:1)
-        let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
+        //let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
         self.run(fireAction, withKey: "towerFire")
-        self.run(fireSoundAction)
+        //self.run(fireSoundAction)
     }
     
     func rotate(angle: CGFloat){

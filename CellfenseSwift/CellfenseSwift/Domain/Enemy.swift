@@ -16,6 +16,7 @@ enum EnemyType : String {
 
 class Enemy: SKSpriteNode {
     
+    var type : EnemyType = EnemyType.SPIDER
     var enemyFrames = [SKTexture]()
     var path = [Any]()
     
@@ -37,7 +38,7 @@ class Enemy: SKSpriteNode {
     init?(type: EnemyType){
         
         //TODO: This code is the same on Tower, try to optimize
-        
+        self.type = type
         //Create all Tower Textures
         let enemyAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfEnemyFrames = enemyAnimatedAtlas.textureNames.count
@@ -93,5 +94,13 @@ class Enemy: SKSpriteNode {
         }
         
         //TODO: calc life width bar
+    }
+    
+    override func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Enemy(type: type)
+        copy?.position = self.position
+        copy?.col = self.col
+        copy?.row = self.row
+        return copy!
     }
 }

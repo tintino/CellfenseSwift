@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
         //let sceneSize = CGSize(width: 320  , height: 480)
         
         //Create game Scene
-        let gameScene = GameScene(size: sceneSize , level: self.levelToLoad)
+        let gameScene = GameScene(size: sceneSize , level: self.levelToLoad, holderViewController:self)
         gameScene.backgroundColor = UIColor.green
         
         // Configure the view.

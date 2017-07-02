@@ -9,14 +9,15 @@
 import Foundation
 import UIKit
 
-class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, XMLParserDelegate  {
+class  LevelsViewController: UIViewController,
+                             UICollectionViewDataSource,
+                             UICollectionViewDelegate,
+                             XMLParserDelegate  {
     
     @IBOutlet weak var levelsCollectionView: UICollectionView!
     
-    
     fileprivate let reuseIdentifier = "LevelCell"
     var levels = [Level]()
-    
     //Parse xml aux vars
     var count = 0
     var currentEnemies = [Enemy]()
@@ -44,6 +45,7 @@ class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGameViewController"{
+            //goGame
             let toGameViewController = segue.destination as! GameViewController
             let selectedCell = sender as! LevelCollectionCell
             toGameViewController.levelToLoad = selectedCell.level
@@ -62,37 +64,37 @@ class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         //NSLog("foundCharacters %@", string)
-       
+        
         let test = String(string.characters.filter { !" \n\t\r".characters.contains($0) })
         
         if test == ""{
             return
         }
-            if self.count == 1 {
-                
-                //if string == "spider" {
-                    self.currentEnemies.append(Enemy(type: EnemyType.SPIDER)!)
-                //}
-                
-                self.count = 2
-            }
-            else if count == 2{
-                
-                let currentEnemy = self.currentEnemies.last!
-                currentEnemy.col = Int(string)!
-                self.count = 3
-
-                
-            }
-            else if count == 3 {
-                let currentEnemy = self.currentEnemies.last!
-                currentEnemy.row = Int(string)!
-                self.count = 4
-            }
+        if self.count == 1 {
             
-       
-
-
+            //if string == "spider" {
+            self.currentEnemies.append(Enemy(type: EnemyType.SPIDER)!)
+            //}
+            
+            self.count = 2
+        }
+        else if count == 2{
+            
+            let currentEnemy = self.currentEnemies.last!
+            currentEnemy.col = Int(string)!
+            self.count = 3
+            
+            
+        }
+        else if count == 3 {
+            let currentEnemy = self.currentEnemies.last!
+            currentEnemy.row = Int(string)!
+            self.count = 4
+        }
+        
+        
+        
+        
     }
     
     
@@ -100,7 +102,7 @@ class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICol
         //NSLog("didEndElement %@", elementName)
         
         if elementName == "string-array"{
-
+            
             let newLevel = Level()
             newLevel.enemies = currentEnemies
             newLevel.name = self.currentLevelName
@@ -119,7 +121,7 @@ class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICol
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-   
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.levels.count
@@ -130,7 +132,7 @@ class  LevelsViewController: UIViewController, UICollectionViewDataSource, UICol
                                                       for: indexPath) as! LevelCollectionCell
         
         cell.configureCell(level: self.levels[indexPath.row])
-        // Configure the cell
+        
         return cell
     }
     
