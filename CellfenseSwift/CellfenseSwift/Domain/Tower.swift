@@ -55,7 +55,8 @@ class Tower: SKSpriteNode {
             
         }
         
-        //Shoot Radio for debug. This will not affect the SKSpriteNode Size
+        //Shoot Radio. This will not affect the SKSpriteNode Size
+        
         let radioShootArea = SKShapeNode(circleOfRadius: self.frame.size.width * self.range )
         radioShootArea.position = CGPoint(x: frame.midX, y: frame.midY)
         radioShootArea.strokeColor = SKColor.green
@@ -75,9 +76,9 @@ class Tower: SKSpriteNode {
     func fire(){
         let animatedAction = SKAction.animate(with: self.towerFrames, timePerFrame: 0.1)
         let fireAction = SKAction.repeat(animatedAction, count:1)
-        let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
+        //let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
         self.run(fireAction, withKey: "towerFire")
-        self.run(fireSoundAction)
+        //self.run(fireSoundAction)
     }
     
     func rotate(angle: CGFloat){
@@ -112,7 +113,7 @@ class Tower: SKSpriteNode {
     
     func damage(enemy: Enemy) -> CGFloat{
         //TODO compare all towers and enemies
-        return 0
+        return 13
     }
     
     func tick(dt: Double){

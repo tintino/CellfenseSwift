@@ -10,8 +10,15 @@
 import Foundation
 import SpriteKit
 
-class GameScene: SKScene {
+protocol GameSceneProtocol {
+    func pauseGame()
+    func resumeGame()
+    func dismissGameGame()
+}
+
+class GameScene: SKScene, GameSceneProtocol {
     
+    let levelLoaded : Level?
     var lastUpdateTime = TimeInterval()
     
     //Control: Has the play button, switch screen button, hud to add new towers
@@ -31,19 +38,35 @@ class GameScene: SKScene {
     var touchedTower : SKSpriteNode?
     var labelMessage = SKLabelNode()
     
+    var holderViewController : UIViewController!
+    
+    
+    required init(size: CGSize, level: Level, holderViewController: UIViewController) {
+        self.levelLoaded = level
+        self.holderViewController = holderViewController
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
         
         //Create the scene’s contents.
         
-        let randomLevel = Level.randomLevel()
-        self.gameControl = GameControlNode(withLevel: randomLevel)
+        self.gameControl = GameControlNode(level: self.levelLoaded!, viewController: self.holderViewController)
+        self.gameControl.gameSceneProtocol = self
         
         //GameControlNode is child of camera, the center of the camera is (0,0), width and height is the same as gamescene view
         self.gameControl.position = CGPoint(x: -self.frame.midX, y: -self.frame.midY)
         
-        
-        self.gameWorld = GameWorldNode(withLevel: randomLevel)
+        self.gameWorld = GameWorldNode(level: self.levelLoaded!)
         self.addChild(gameWorld)
+        
+        //TODO: better way to do this? a pattern? cross dependency cannot use constructor to inyect dependency
+        self.gameWorld.gameControl = self.gameControl
+        self.gameControl.gameWorld = self.gameWorld
         
         //Add Camera Scene
         //The camera’s viewport is the same size as the scene’s viewport (determined by the scene’s size property)
@@ -100,6 +123,9 @@ class GameScene: SKScene {
             }
             else if nodeTouched.name == Constants.NodeName.hudRush{
                 self.gameWorld.startDefending()
+                //TODO: hideButtons not working
+                //self.gameControl.hideButtons()
+                //self.gameControl.hideHud()
                 self.gameControl.isHidden = true
             }
             
@@ -174,11 +200,12 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
-        let timeSinceLastUpdate = currentTime - lastUpdateTime
-        lastUpdateTime = currentTime
-        
-        self.gameWorld.update(dt: timeSinceLastUpdate)
+        if !self.isPaused {
+            let timeSinceLastUpdate = currentTime - lastUpdateTime
+            lastUpdateTime = currentTime
+            
+            self.gameWorld.update(dt: timeSinceLastUpdate)
+        }
     }
     
     override func didFinishUpdate() {
@@ -215,6 +242,20 @@ class GameScene: SKScene {
     }
     
     
+    func pauseGame() {
+        self.scene?.isPaused = true
+    }
+    
+    func resumeGame() {
+        self.scene?.isPaused = false
+    }
+    
+    func dismissGameGame() {
+        self.holderViewController.dismiss(animated: true) { 
+            
+            
+        }
+    }
     
     
     

@@ -31,17 +31,22 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 class GameWorldNode: SKNode{
     
+    var levelDone = false
     var sampleCellSize : CGSize?
     var towers = [Tower]()
     var enemies = [Enemy]()
+    var addedEnemies = [Enemy]()
     var background = SKSpriteNode()
+    var lives = 0
+    var gameControl : GameControlNode!
+    var elapsed = 0.0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(withLevel: Level){
+    init(level: Level){
         
         super.init()
         
@@ -55,10 +60,55 @@ class GameWorldNode: SKNode{
         self.background.zPosition = Constants.zPosition.background
         self.addChild(self.background)
         
-        for enemy in withLevel.enemies {
+        for enemy in level.enemies {
             self.spawnEnemy(enemy: enemy)
-            self.addChild(enemy)
         }
+        self.lives = 1
+        
+        self.prepareLevel()
+    }
+    
+    func update(dt: Double) {
+        
+        if !self.levelDone {
+            self.elapsed += dt
+        }
+
+        if self.levelDone {
+            //TODO: why [self schedule:@selector(gameCompleted) interval:1.0] on objC???????
+            self.gameCompleted()
+            self.levelDone = true
+        }
+        
+        if self.enemies.count == 0 && !levelDone {
+            self.levelDone = true
+        }
+        self.checkBoundaries()
+        self.processEnemies(dt:dt)
+        self.processTowers(dt:dt)
+    }
+    
+    func checkBoundaries() {
+        
+        var toDiscard = [Enemy]()
+        
+        for enemy in self.enemies {
+            
+            //Check if enemy escape!
+            if enemy.position.y < -enemy.frame.height/2 {
+                toDiscard.append(enemy)
+                self.lives -= 1
+            }
+        }
+        
+        for enemy in toDiscard {
+            self.removeEnemy(enemy: enemy)
+        }
+        
+        self.gameControl.updateLives(lives: self.lives)
+        //TODO: send lives data to control node
+        
+        //TODO: clean bullets out of broundaries
     }
     
     func addTower(_ position: CGPoint){
@@ -135,10 +185,10 @@ class GameWorldNode: SKNode{
         for enemy in self.enemies {
             
             //Find path
-            enemy.path = (pathFinder?.findPathRow(0, col: 7, toRow: 23, toCol:  0))!
+            enemy.path = (pathFinder?.findPathRow(Int32(enemy.row) - 1, col: Int32(enemy.col) - 1, toRow: 23, toCol:  0))!
             
             //For debug draw enemy path
-            
+            /*
             var isFirstNode = true
             var isLastNode = false
             for path in enemy.path{
@@ -176,6 +226,7 @@ class GameWorldNode: SKNode{
                 
                 enemy.pathIndex += 1
             }
+             */
             
             
             //Set Direction (enemies will start goind down allways)
@@ -242,12 +293,6 @@ class GameWorldNode: SKNode{
         }
         return towerNodes
     }
-    
-    func update(dt: Double) {
-        self.processEnemies(dt: dt)
-        self.processTowers(dt: dt)
-    }
-    
     
     func processEnemies(dt: Double){
         
@@ -351,9 +396,16 @@ class GameWorldNode: SKNode{
     }
     
     func spawnEnemy(enemy: Enemy){
-        enemy.position = self.gridToWorld(CGPoint(x:enemy.col,y:enemy.row))
-        self.enemies.append(enemy)
+        //TODO: due objective c project differences on point 0.0 on axes, we need to apply offset at spawn enemy time. For fixed screen is 11 (0->11 =  12). Change and improve this. This is to avoid to have diferents xmls level versions on objective c and android.
         
+        let rows = Int(self.background.frame.size.height/self.cellSize().width)
+        let fixedY = rows - enemy.row
+        //Objective C use 1->8 and Swift version 0->7
+        let fixedX = enemy.col - 1
+        
+        enemy.position = self.gridToWorld(CGPoint(x:fixedX,y:fixedY))
+        
+        self.addedEnemies.append(enemy)
     }
     
     func processTowers(dt: Double){
@@ -392,35 +444,50 @@ class GameWorldNode: SKNode{
                 tower.shootingAt = nearestEnemy
             }
             //Got a victim, let's aim the tower and shoot
-            if let victim = tower.shootingAt {
+            if tower.shootingAt != nil {
                 
                 //Aim the tower
                 let π = CGFloat(Double.pi)
-                let dx = victim.position.x - tower.position.x;
-                let dy = victim.position.y - tower.position.y;
+                let dx = tower.shootingAt!.position.x - tower.position.x;
+                let dy = tower.shootingAt!.position.y - tower.position.y;
                 var angle = atan(dy/dx) * (180/π);
-                if (victim.position.x - tower.position.x  < 0){
+                if (tower.shootingAt!.position.x - tower.position.x  < 0){
                     angle += 180;
                 }
                 tower.rotate(angle: angle - 90);
                 
                 //Fire!
-                if tower.tryShoot(victim: victim){
+                if tower.tryShoot(victim: tower.shootingAt!){
                     
                     if tower.shootingAt?.life > 0 {
                         //TODO: spare blood particles
                     }
                     else{
-                        //TODO: enemyKilled
-                        victim.removeFromParent()
-                        //TODO: remove from enemies array
-                        self.enemies.removeLast()
+                        self.enemyKilled(enemy: tower.shootingAt!)
                         tower.shootingAt = nil
                     }
                 }
             }
             tower.tick(dt: dt)
         }
+    }
+    
+    func enemyKilled(enemy: Enemy){
+        enemy.rotate(angle: 0)
+        //TODO: spawnParticleGroupAtX
+        self.removeEnemy(enemy: enemy)
+        
+    }
+    
+    func removeEnemy(enemy: Enemy){
+        
+        //TODO: due use of self.enemies.index(of check if we can remove indexAtWave from enemy
+        if let index = self.enemies.index(of: enemy) {
+            self.enemies.remove(at: index)
+            enemy.removeFromParent()
+        }
+        
+       
     }
     
     func isInRange(tower: Tower, enemy: Enemy) -> Bool{
@@ -476,6 +543,55 @@ class GameWorldNode: SKNode{
             return false
         }
     }
+    
+    func gameCompleted() {
+        self.cleanEnemies()
+        self.stopAnimations()
+        self.levelDone = false
+        
+        self.gameControl.gameCompleted(elapsedTime: self.elapsed)
+    }
+    
+    func cleanEnemies() {
+        self.enemies = [Enemy]()
+    }
+    
+    func stopAnimations(){
+        
+        //TODO: stop particles from fly
+        
+        for enemy in self.enemies {
+            enemy.removeAllActions()
+        }
+    }
+    
+    func restart(){
+        
+        //Remove enemies
+       self.enumerateChildNodes(withName: Constants.NodeName.enemy) { (node, stop) in
+            
+            if let enemyNode = node as? Enemy{
+                enemyNode.removeFromParent()
+            }
+        }
+        self.enemies.removeAll()
+        
+        //Restart initial values
+        self.lives = 1
+        self.elapsed = 0
+        
+        self.prepareLevel()
+    }
+    
+    func prepareLevel() {
+    
+        for originalEnemy in self.addedEnemies {
+            let copyEnemy = originalEnemy.copy() as! Enemy
+            self.enemies.append(copyEnemy)
+            self.addChild(copyEnemy)
+        }
+    }
+    
     
     
     

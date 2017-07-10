@@ -12,6 +12,8 @@ import SpriteKit
 class GameViewController: UIViewController {
     @IBOutlet weak var gameView: UIView!
     
+    public var levelToLoad = Level()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Create size of the game on the screen
@@ -19,9 +21,9 @@ class GameViewController: UIViewController {
         //let sceneSize = CGSize(width: 320  , height: 480)
         
         //Create game Scene
-        let gameScene = GameScene(size: sceneSize)
+        let gameScene = GameScene(size: sceneSize , level: self.levelToLoad, holderViewController:self)
         gameScene.backgroundColor = UIColor.green
-                
+        
         // Configure the view.
         let skView = self.gameView as! SKView
         skView.showsFPS = true

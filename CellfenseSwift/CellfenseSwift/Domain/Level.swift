@@ -11,18 +11,10 @@ import UIKit
 
 class Level {
     
+    var name = ""
     var image = UIImage()
     var enemies = [Enemy]()
     var number : Int!
     
-    static func randomLevel() -> Level{
-        let newRandomLevel = Level()
-        
-        let newEnemy = Enemy(type: EnemyType.SPIDER)
-        newEnemy?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        newEnemy?.position = CGPoint(x: 150, y: 840)
-        newRandomLevel.enemies.append(newEnemy!)
-        return newRandomLevel
-    }
     
 }

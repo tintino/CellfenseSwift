@@ -16,6 +16,7 @@ enum EnemyType : String {
 
 class Enemy: SKSpriteNode {
     
+    var type : EnemyType = EnemyType.SPIDER
     var enemyFrames = [SKTexture]()
     var path = [Any]()
     
@@ -24,8 +25,8 @@ class Enemy: SKSpriteNode {
     var dirY : CGFloat = 0
     var life : CGFloat = 0
     var pathIndex = 0
-    var col = 7
-    var row = 23
+    public var col = 0
+    public var row = 0
     
     let myLabel = SKLabelNode()
     
@@ -37,7 +38,7 @@ class Enemy: SKSpriteNode {
     init?(type: EnemyType){
         
         //TODO: This code is the same on Tower, try to optimize
-        
+        self.type = type
         //Create all Tower Textures
         let enemyAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfEnemyFrames = enemyAnimatedAtlas.textureNames.count
@@ -54,12 +55,13 @@ class Enemy: SKSpriteNode {
         self.speed = 1.4
         
         //Debug Information
-        /*
+        
         myLabel.fontSize = 12
-        myLabel.position = CGPointMake(0,self.frame.minY)
-        myLabel.fontColor = UIColor.whiteColor()
+        myLabel.position = CGPoint(x: 0, y: self.frame.minY)
+        myLabel.fontColor = UIColor.white
         self.addChild(myLabel)
-        */
+         
+        
     }
     
     override var position: CGPoint{
@@ -92,5 +94,13 @@ class Enemy: SKSpriteNode {
         }
         
         //TODO: calc life width bar
+    }
+    
+    override func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Enemy(type: type)
+        copy?.position = self.position
+        copy?.col = self.col
+        copy?.row = self.row
+        return copy!
     }
 }
