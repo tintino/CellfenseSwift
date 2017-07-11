@@ -38,7 +38,7 @@ class GameScene: SKScene, GameSceneProtocol {
     var touchedTower : SKSpriteNode?
     var labelMessage = SKLabelNode()
     
-    var holderViewController : UIViewController!
+    weak var holderViewController : UIViewController!
     
     
     required init(size: CGSize, level: Level, holderViewController: UIViewController) {

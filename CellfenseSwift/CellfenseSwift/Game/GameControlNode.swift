@@ -17,7 +17,7 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
     var hud : SKNode!
     var rushButton = SKSpriteNode()
     var hudBackground = SKSpriteNode()
-    var holderViewController : UIViewController!
+    weak var holderViewController : UIViewController!
     var energy = 0
     var lives = 0
     var state : States!
