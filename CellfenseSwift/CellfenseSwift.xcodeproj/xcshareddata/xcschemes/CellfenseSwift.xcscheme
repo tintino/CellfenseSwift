@@ -29,6 +29,16 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4B33EF1C206B242500B08BB7"
+               BuildableName = "CellfenseSwiftTests.xctest"
+               BlueprintName = "CellfenseSwiftTests"
+               ReferencedContainer = "container:CellfenseSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

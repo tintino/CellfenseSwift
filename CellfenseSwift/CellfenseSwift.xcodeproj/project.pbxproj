@@ -13,6 +13,7 @@
 		4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B2150C51EFDD51000CF9FDC /* levels.xml */; };
 		4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */; };
 		4B2293B21CF1097D009798B8 /* Spider.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B2293B11CF1097D009798B8 /* Spider.atlas */; };
+		4B33EF20206B242500B08BB7 /* CellfenseSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */; };
 		4B3CB3CA1CE560CA001DE1A2 /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */; };
 		4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */; };
 		4B3CB3CF1CE56149001DE1A2 /* rush_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CD1CE56149001DE1A2 /* rush_button.png */; };
@@ -42,6 +43,16 @@
 		4BEA47871EF772EE005CAA69 /* PathfindNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47861EF772EE005CAA69 /* PathfindNode.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4B33EF22206B242600B08BB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B9C2AD11CDE70C50003B193 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9C2AD81CDE70C50003B193;
+			remoteInfo = CellfenseSwift;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4B02CD591F0417D60049E7DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		4B0C68B91F0987E40042D9F5 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extensions/StringExtension.swift; sourceTree = "<group>"; };
@@ -49,6 +60,9 @@
 		4B2150C51EFDD51000CF9FDC /* levels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = levels.xml; path = Resources/Levels/levels.xml; sourceTree = "<group>"; };
 		4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelCollectionCell.swift; path = ViewController/Cells/LevelCollectionCell.swift; sourceTree = "<group>"; };
 		4B2293B11CF1097D009798B8 /* Spider.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Spider.atlas; sourceTree = "<group>"; };
+		4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CellfenseSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellfenseSwiftTests.swift; sourceTree = "<group>"; };
+		4B33EF21206B242600B08BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B3CB3C71CE560CA001DE1A2 /* CellfenseSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CellfenseSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B3CB3C81CE560CA001DE1A2 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = "Domain/objective-c/PathFinder.h"; sourceTree = "<group>"; };
 		4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFinder.m; path = "Domain/objective-c/PathFinder.m"; sourceTree = "<group>"; };
@@ -84,6 +98,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B33EF1A206B242500B08BB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9C2AD61CDE70C50003B193 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,6 +142,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		4B33EF1E206B242500B08BB7 /* CellfenseSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */,
+				4B33EF21206B242600B08BB7 /* Info.plist */,
+			);
+			path = CellfenseSwiftTests;
+			sourceTree = "<group>";
+		};
 		4B3CB3C61CE560B3001DE1A2 /* objective-c */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9C2ADB1CDE70C50003B193 /* CellfenseSwift */,
+				4B33EF1E206B242500B08BB7 /* CellfenseSwiftTests */,
 				4B9C2ADA1CDE70C50003B193 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9C2AD91CDE70C50003B193 /* CellfenseSwift.app */,
+				4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +278,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4B33EF1C206B242500B08BB7 /* CellfenseSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B33EF24206B242600B08BB7 /* Build configuration list for PBXNativeTarget "CellfenseSwiftTests" */;
+			buildPhases = (
+				4B33EF19206B242500B08BB7 /* Sources */,
+				4B33EF1A206B242500B08BB7 /* Frameworks */,
+				4B33EF1B206B242500B08BB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B33EF23206B242600B08BB7 /* PBXTargetDependency */,
+			);
+			name = CellfenseSwiftTests;
+			productName = CellfenseSwiftTests;
+			productReference = 4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4B9C2AD81CDE70C50003B193 /* CellfenseSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B9C2AEF1CDE70C60003B193 /* Build configuration list for PBXNativeTarget "CellfenseSwift" */;
@@ -269,10 +319,16 @@
 		4B9C2AD11CDE70C50003B193 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = quitarts;
 				TargetAttributes = {
+					4B33EF1C206B242500B08BB7 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ED7WEVK6D2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4B9C2AD81CDE70C50003B193;
+					};
 					4B9C2AD81CDE70C50003B193 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = ED7WEVK6D2;
@@ -294,11 +350,19 @@
 			projectRoot = "";
 			targets = (
 				4B9C2AD81CDE70C50003B193 /* CellfenseSwift */,
+				4B33EF1C206B242500B08BB7 /* CellfenseSwiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B33EF1B206B242500B08BB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9C2AD71CDE70C50003B193 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +389,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4B33EF19206B242500B08BB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B33EF20206B242500B08BB7 /* CellfenseSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9C2AD51CDE70C50003B193 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,6 +422,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B33EF23206B242600B08BB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9C2AD81CDE70C50003B193 /* CellfenseSwift */;
+			targetProxy = 4B33EF22206B242600B08BB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4B9C2AE41CDE70C60003B193 /* Main.storyboard */ = {
@@ -381,6 +461,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4B33EF25206B242600B08BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CellfenseSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quitarts.CellfenseSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CellfenseSwift.app/CellfenseSwift";
+			};
+			name = Debug;
+		};
+		4B33EF26206B242600B08BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CellfenseSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quitarts.CellfenseSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CellfenseSwift.app/CellfenseSwift";
+			};
+			name = Release;
+		};
 		4B9C2AED1CDE70C60003B193 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,6 +643,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B33EF24206B242600B08BB7 /* Build configuration list for PBXNativeTarget "CellfenseSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B33EF25206B242600B08BB7 /* Debug */,
+				4B33EF26206B242600B08BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4B9C2AD41CDE70C50003B193 /* Build configuration list for PBXProject "CellfenseSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
