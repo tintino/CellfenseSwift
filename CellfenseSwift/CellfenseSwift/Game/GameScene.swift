@@ -237,7 +237,7 @@ class GameScene: SKScene, GameSceneProtocol {
         self.labelMessage.isHidden = false
     }
     
-    func hideMessage(){
+    @objc func hideMessage(){
         self.labelMessage.isHidden = true
     }
     
