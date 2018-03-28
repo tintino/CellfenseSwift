@@ -102,6 +102,5 @@ class Enemy: SKSpriteNode {
         copy?.col = self.col
         copy?.row = self.row
         return copy!
-    }
-    
+    }    
 }
