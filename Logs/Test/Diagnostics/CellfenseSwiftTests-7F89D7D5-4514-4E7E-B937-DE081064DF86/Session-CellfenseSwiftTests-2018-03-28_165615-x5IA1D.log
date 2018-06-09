@@ -1,0 +1,279 @@
+16:56:15.420 xcodebuild[19905:14972843] Beginning test session CellfenseSwiftTests-57619B77-2C85-4485-A8EB-EA35851B4E0D at 2018-03-28 16:56:15.419 with Xcode 9C40b on target <DVTiPhoneSimulator: 0x7f9a4794d500> {
+		SimDevice: iPhone 5s (F378DE58-D991-4582-BCE0-D1C6D53EBCDE, iOS 11.2, Booted)
+} (11.2 (15C107))
+16:56:15.421 xcodebuild[19905:14972843] 	/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild
+-scheme
+CellfenseSwiftTests
+-project
+./CellfenseSwift.xcodeproj
+-destination
+platform=iOS Simulator,id=F378DE58-D991-4582-BCE0-D1C6D53EBCDE
+-derivedDataPath
+/Users/tincho/Documents/repos/CellfenseSwift
+build
+test
+16:56:15.421 xcodebuild[19905:14972843] Launching with Xcode.IDEFoundation.Launcher.PosixSpawn
+16:56:15.424 xcodebuild[19905:14972843] Test standard output and standard error is at /var/folders/bx/kcl6583938s1ppd1mhmw725c0000gn/T/com.apple.dt.XCTest/IDETestRunSession-3D72D524-5EE3-4F1C-AE3B-A25A591BAA97/CellfenseSwiftTests-7F89D7D5-4514-4E7E-B937-DE081064DF86/StandardOutputAndStandardError.txt
+16:56:15.425 xcodebuild[19905:14972843] Simulator F378DE58-D991-4582-BCE0-D1C6D53EBCDE was claimed by TestSessionClaim_IDETestRunSession-3D72D524-5EE3-4F1C-AE3B-A25A591BAA97
+16:56:15.539 xcodebuild[19905:14972843] Setting up test runner session
+16:56:15.541 xcodebuild[19905:14972846] Sim iPhone 5s: Unregistering for sim device notification with token 4
+16:56:15.542 xcodebuild[19905:14972846] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+16:56:15.544 xcodebuild[19905:14972846] Sim iPhone 5s has testmanagerd socket at /private/tmp/com.apple.launchd.hYcnpcixa6/com.apple.testmanagerd.unix-domain.socket
+16:56:15.544 xcodebuild[19905:14972846] Validating test connection socket path (/private/tmp/com.apple.launchd.hYcnpcixa6/com.apple.testmanagerd.unix-domain.socket)
+16:56:15.544 xcodebuild[19905:14972846] Constructing transport for test connection socket
+16:56:15.544 xcodebuild[19905:14972846] Connected socket 20 to testmanagerd for Sim iPhone 5s
+16:56:15.549 xcodebuild[19905:14972843] Launch session started.
+16:56:15.551 xcodebuild[19905:14973636] Received connection for test runner session
+16:56:15.551 xcodebuild[19905:14973636] Listening for proxy connection request from the test bundle
+16:56:15.552 xcodebuild[19905:14973636] Initiating session with identifier: 57619B77-2C85-4485-A8EB-EA35851B4E0D
+16:56:15.553 xcodebuild[19905:14972843] Test runner session acquired connection.
+16:56:15.553 xcodebuild[19905:14972843] Waiting for test process to launch.
+16:56:15.555 xcodebuild[19905:14972846] Simulator F378DE58-D991-4582-BCE0-D1C6D53EBCDE was claimed by LaunchSessionClaim_0x7f9a47791020
+16:56:15.559 xcodebuild[19905:14972843] Adding console adaptor <IDEConsoleAdaptor: 0x7f9a476f6080 'target' stdin: <IDEMasterPtyFileHandle: 0x7f9a47d204b0 MasterFH: <NSConcreteFileHandle: 0x7f9a47822040> 23 SlaveFH: <NSConcreteFileHandle: 0x7f9a47d20750> 24> 23 stdout: <IDEMasterPtyFileHandle: 0x7f9a47d204b0 MasterFH: <NSConcreteFileHandle: 0x7f9a47822040> 23 SlaveFH: <NSConcreteFileHandle: 0x7f9a47d20750> 24> 23 stderr: (null) 0> for test session 57619B77-2C85-4485-A8EB-EA35851B4E0D.
+16:56:15.560 xcodebuild[19905:14973713] Simulator F378DE58-D991-4582-BCE0-D1C6D53EBCDE was claimed by LaunchSessionClaim_0x7f9a47791020
+16:56:15.560 xcodebuild[19905:14973713] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Registered for sim device notification, got token 5
+16:56:15.560 xcodebuild[19905:14972846] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Unregistering for sim device notification with token 5
+16:56:15.562 xcodebuild[19905:14972846] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Installing app at path: /Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/Build/Debug-iphonesimulator/CellfenseSwift.app and options: {
+    CFBundleIdentifier = "com.quitarts.CellfenseSwift";
+}
+16:56:17.193 xcodebuild[19905:14972846] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Installed app at path: /Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/Build/Debug-iphonesimulator/CellfenseSwift.app and options: {
+    CFBundleIdentifier = "com.quitarts.CellfenseSwift";
+}
+16:56:17.193 xcodebuild[19905:14972846] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Registered for sim device notification, got token 6
+16:56:17.193 xcodebuild[19905:14972901] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Unregistering for sim device notification with token 6
+16:56:18.149 xcodebuild[19905:14972846] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Launching app with identifier: com.quitarts.CellfenseSwift and options: {
+    arguments =     (
+        "-NSTreatUnknownArgumentsAsOpen",
+        NO,
+        "-ApplePersistenceIgnoreState",
+        YES
+    );
+    environment =     {
+        "DYLD_FRAMEWORK_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/Developer/Library/PrivateFrameworks";
+        "DYLD_INSERT_LIBRARIES" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib/libMainThreadChecker.dylib";
+        "DYLD_LIBRARY_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/Developer/Library/PrivateFrameworks";
+        "MTC_CRASH_ON_REPORT" = 1;
+        NSUnbufferedIO = YES;
+        "OS_ACTIVITY_DT_MODE" = YES;
+        XCInjectBundleInto = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator/CellfenseSwift.app/CellfenseSwift";
+        "XCODE_DBG_XPC_EXCLUSIONS" = "com.apple.dt.xctestSymbolicator";
+        XCTestConfigurationFilePath = "/var/folders/bx/kcl6583938s1ppd1mhmw725c0000gn/T/com.apple.dt.XCTest/IDETestRunSession-3D72D524-5EE3-4F1C-AE3B-A25A591BAA97/CellfenseSwiftTests-7F89D7D5-4514-4E7E-B937-DE081064DF86/LaunchSessions/57619B77-2C85-4485-A8EB-EA35851B4E0D/remote-container/tmp/CellfenseSwiftTests-57619B77-2C85-4485-A8EB-EA35851B4E0D.xctestconfiguration";
+        "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator";
+        "__XPC_DYLD_FRAMEWORK_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator";
+        "__XPC_DYLD_LIBRARY_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator";
+    };
+    stderr = "/dev/ttys032";
+    stdout = "/dev/ttys032";
+    "wait_for_debugger" = 0;
+}
+16:56:18.234 xcodebuild[19905:14973713] F378DE58-D991-4582-BCE0-D1C6D53EBCDE: Launched app with identifier: com.quitarts.CellfenseSwift (pid = 20131)
+16:56:18.235 xcodebuild[19905:14973713] Tracking pid 20131 for simulator <DVTiPhoneSimulator: 0x7f9a4794d500> {
+		SimDevice: iPhone 5s (F378DE58-D991-4582-BCE0-D1C6D53EBCDE, iOS 11.2, Booted)
+}
+16:56:18.235 xcodebuild[19905:14973713] Checking to see if pid 20131 is valid: kill(pid, 0) = 0 (YES, it's still running)
+16:56:18.235 xcodebuild[19905:14973713] Setting up DVTTaskNotifyOnProcDeath for pid 20131
+16:56:18.235 xcodebuild[19905:14972843] Test process runnable PID is 20131.
+16:56:22.067 xcodebuild[19905:14973713] Got reply to session initiation request with identifier 57619B77-2C85-4485-A8EB-EA35851B4E0D (result:error): 25: (null)
+16:56:22.077 xcodebuild[19905:14973713] Handling proxy channel request from test runner
+16:56:22.077 xcodebuild[19905:14973713] Test runner is ready, running protocol 25, requires at least version 8. Control framework is running 25 and requires at least 8
+16:56:22.078 xcodebuild[19905:14972843] Test runner session successfully initiated.
+16:56:22.078 xcodebuild[19905:14972843] Creating the daemon control session.
+16:56:22.078 xcodebuild[19905:14972843] Whitelisting test process ID 20131
+16:56:22.078 xcodebuild[19905:14972843] Got authorization request for pid 20131
+16:56:22.078 xcodebuild[19905:14973882] Sim iPhone 5s: Unregistering for sim device notification with token 7
+16:56:22.078 xcodebuild[19905:14973882] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+16:56:22.080 xcodebuild[19905:14973882] Sim iPhone 5s has testmanagerd socket at /private/tmp/com.apple.launchd.hYcnpcixa6/com.apple.testmanagerd.unix-domain.socket
+16:56:22.080 xcodebuild[19905:14973882] Validating test connection socket path (/private/tmp/com.apple.launchd.hYcnpcixa6/com.apple.testmanagerd.unix-domain.socket)
+16:56:22.080 xcodebuild[19905:14973882] Constructing transport for test connection socket
+16:56:22.080 xcodebuild[19905:14973882] Connected socket 30 to testmanagerd for Sim iPhone 5s
+16:56:22.081 xcodebuild[19905:14972901] Requesting authorization for pid 20131
+16:56:22.118 xcodebuild[19905:14973713] Got reply to authorization request for pid 20131 (result:error): 25: (null)
+16:56:22.118 xcodebuild[19905:14972843] Got whitelisting response from test daemon. Success: 1
+16:56:22.118 xcodebuild[19905:14972843] Registering/updating daemon-based crash report observer for process names (
+    XCTRunner,
+    CellfenseSwift,
+    xctest
+), report directories: (
+    "/Users/tincho/Library/Logs/DiagnosticReports",
+    "/Library/Logs/DiagnosticReports"
+).
+16:56:22.119 testmanagerd[20125:14974136] Received request to collect crash reports in directories '/Users/tincho/Library/Logs/DiagnosticReports', '/Library/Logs/DiagnosticReports' for processes with names 'XCTRunner', 'CellfenseSwift', 'xctest'
+16:56:22.121 testmanagerd[20125:14974136] Initializing crash report observer for /Users/tincho/Library/Logs/DiagnosticReports
+16:56:22.121 testmanagerd[20125:14974136] Getting files in /Users/tincho/Library/Logs/DiagnosticReports
+16:56:22.123 testmanagerd[20125:14974136] Found 29 files in /Users/tincho/Library/Logs/DiagnosticReports
+16:56:22.123 testmanagerd[20125:14974136] Started monitoring /Users/tincho/Library/Logs/DiagnosticReports
+16:56:22.123 testmanagerd[20125:14974136] Initializing crash report observer for /Library/Logs/DiagnosticReports
+16:56:22.124 testmanagerd[20125:14974136] Getting files in /Library/Logs/DiagnosticReports
+16:56:22.161 testmanagerd[20125:14974794] Created process assertion for pid 20131: <BKSProcessAssertion: 0x7f86cf60fdd0>, waiting for response from assertiond.
+16:56:22.162 testmanagerd[20125:14974794] Starting to monitor com.quitarts.CellfenseSwift
+16:56:22.162 testmanagerd[20125:14974795] Got application state update: com.quitarts.CellfenseSwift (20131) -> 8
+16:56:22.257 testmanagerd[20125:14974795] Got reply for process assertion request, success: YES
+16:56:22.264 xcodebuild[19905:14972843] Telling test runner to start executing tests.
+16:56:22.262 testmanagerd[20125:14974136] Found 97 files in /Library/Logs/DiagnosticReports
+16:56:20.992 CellfenseSwift[20131:14974670] Linked XCTest.framework from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/XCTest, built with Xcode 0920(9C34c), modified on viernes, 17 de noviembre de 2017, 5:56:49 a. m. hora estándar de Argentina
+XCTest.framework bundle version: 13764
+16:56:21.000 CellfenseSwift[20131:14974670] System uptime: 1:38:27
+16:56:21.001 CellfenseSwift[20131:14974670] Process arguments: (
+    "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/Containers/Bundle/Application/639700F3-4273-4E7C-92D9-3F3B78ECAE6A/CellfenseSwift.app/CellfenseSwift",
+    "-NSTreatUnknownArgumentsAsOpen",
+    NO,
+    "-ApplePersistenceIgnoreState",
+    YES
+)
+16:56:21.001 CellfenseSwift[20131:14974670] Process environment: {
+    "CFFIXED_USER_HOME" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/Containers/Data/Application/BA19BDB3-CCD6-42FF-B336-CD16968592F6";
+    CLASSIC = 0;
+    "CUPS_SERVER" = "/private/tmp/com.apple.launchd.hxXx3bXTjz/Listeners";
+    "DYLD_FALLBACK_FRAMEWORK_PATH" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks";
+    "DYLD_FALLBACK_LIBRARY_PATH" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/lib";
+    "DYLD_FRAMEWORK_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/Developer/Library/PrivateFrameworks";
+    "DYLD_LIBRARY_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/Developer/Library/PrivateFrameworks";
+    "DYLD_ROOT_PATH" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot";
+    HOME = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/Containers/Data/Application/BA19BDB3-CCD6-42FF-B336-CD16968592F6";
+    "IOS_SIMULATOR_SYSLOG_SOCKET" = "/private/tmp/com.apple.CoreSimulator.SimDevice.F378DE58-D991-4582-BCE0-D1C6D53EBCDE/syslogsock";
+    "IPHONE_SHARED_RESOURCES_DIRECTORY" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data";
+    "IPHONE_SIMULATOR_ROOT" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot";
+    "IPHONE_TVOUT_EXTENDED_PROPERTIES" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/Library/Application Support/Simulator/extended_display.plist";
+    "MTC_CRASH_ON_REPORT" = 1;
+    NSUnbufferedIO = YES;
+    "OS_ACTIVITY_DT_MODE" = YES;
+    PATH = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/sbin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/sbin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/usr/local/bin";
+    "SIMULATOR_AUDIO_DEVICES_PLIST_PATH" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/var/run/com.apple.coresimulator.audio.plist";
+    "SIMULATOR_AUDIO_SETTINGS_PATH" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/var/run/simulatoraudio/audiosettings.plist";
+    "SIMULATOR_BOOT_TIME" = 1522261073;
+    "SIMULATOR_CAPABILITIES" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/DeviceTypes/iPhone 5s.simdevicetype/Contents/Resources/capabilities.plist";
+    "SIMULATOR_DEVICE_NAME" = "iPhone 5s";
+    "SIMULATOR_EXTENDED_DISPLAY_PROPERTIES" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/Library/Application Support/Simulator/extended_display.plist";
+    "SIMULATOR_HID_SYSTEM_MANAGER" = "/Library/Developer/PrivateFrameworks/CoreSimulator.framework/Resources/Platforms/iphoneos/Library/Frameworks/SimulatorHID.framework";
+    "SIMULATOR_HOST_HOME" = "/Users/tincho";
+    "SIMULATOR_LEGACY_ASSET_SUFFIX" = iphone;
+    "SIMULATOR_LOG_ROOT" = "/Users/tincho/Library/Logs/CoreSimulator/F378DE58-D991-4582-BCE0-D1C6D53EBCDE";
+    "SIMULATOR_MAINSCREEN_HEIGHT" = 1136;
+    "SIMULATOR_MAINSCREEN_PITCH" = "326.000000";
+    "SIMULATOR_MAINSCREEN_SCALE" = "2.000000";
+    "SIMULATOR_MAINSCREEN_WIDTH" = 640;
+    "SIMULATOR_MEMORY_WARNINGS" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/var/run/memory_warning_simulation";
+    "SIMULATOR_MODEL_IDENTIFIER" = "iPhone6,1";
+    "SIMULATOR_PRODUCT_CLASS" = N51;
+    "SIMULATOR_ROOT" = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot";
+    "SIMULATOR_RUNTIME_BUILD_VERSION" = 15C107;
+    "SIMULATOR_RUNTIME_VERSION" = "11.2";
+    "SIMULATOR_SHARED_RESOURCES_DIRECTORY" = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data";
+    "SIMULATOR_UDID" = "F378DE58-D991-4582-BCE0-D1C6D53EBCDE";
+    "SIMULATOR_VERSION_INFO" = "CoreSimulator 494.33 - Device: iPhone 5s - Runtime: iOS 11.2 (15C107) - DeviceType: iPhone 5s";
+    "TESTMANAGERD_SIM_SOCK" = "/private/tmp/com.apple.launchd.hYcnpcixa6/com.apple.testmanagerd.unix-domain.socket";
+    TMPDIR = "/Users/tincho/Library/Developer/CoreSimulator/Devices/F378DE58-D991-4582-BCE0-D1C6D53EBCDE/data/Containers/Data/Application/BA19BDB3-CCD6-42FF-B336-CD16968592F6/tmp";
+    XCInjectBundleInto = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator/CellfenseSwift.app/CellfenseSwift";
+    "XCODE_DBG_XPC_EXCLUSIONS" = "com.apple.dt.xctestSymbolicator";
+    XCTestConfigurationFilePath = "/var/folders/bx/kcl6583938s1ppd1mhmw725c0000gn/T/com.apple.dt.XCTest/IDETestRunSession-3D72D524-5EE3-4F1C-AE3B-A25A591BAA97/CellfenseSwiftTests-7F89D7D5-4514-4E7E-B937-DE081064DF86/LaunchSessions/57619B77-2C85-4485-A8EB-EA35851B4E0D/remote-container/tmp/CellfenseSwiftTests-57619B77-2C85-4485-A8EB-EA35851B4E0D.xctestconfiguration";
+    "XPC_FLAGS" = 0x0;
+    "XPC_SERVICE_NAME" = "UIKitApplication:com.quitarts.CellfenseSwift[0x131b][6500]";
+    "XPC_SIMULATOR_LAUNCHD_NAME" = "com.apple.CoreSimulator.SimDevice.F378DE58-D991-4582-BCE0-D1C6D53EBCDE";
+    "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator";
+    "__XPC_DYLD_FRAMEWORK_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator";
+    "__XPC_DYLD_LIBRARY_PATH" = "/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator";
+}
+16:56:21.002 CellfenseSwift[20131:14974670] App Sandbox active: NO
+16:56:21.002 CellfenseSwift[20131:14974670] Loading test bundle at: file:///Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/build/Debug-iphonesimulator/CellfenseSwift.app/PlugIns/CellfenseSwiftTests.xctest/
+16:56:21.002 CellfenseSwift[20131:14974670] Finished loading test bundle
+16:56:21.002 CellfenseSwift[20131:14974670] Readying IDE session
+16:56:21.005 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001bf40, state: XCTWaiterStateInProgress> entering wait loop for 5.00s with expectations: (
+    "Exchange protocol versions with daemon"
+)
+16:56:22.072 CellfenseSwift[20131:14974715] Got daemon protocol version 18
+16:56:22.072 CellfenseSwift[20131:14974745] <XCTWaiter: 0x60000001bf40, state: XCTWaiterStateSucceeded>: cancelWaiting
+16:56:22.072 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001bf40, state: XCTWaiterStateSucceeded> done waiting
+16:56:22.072 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001bf40, state: XCTWaiterStateSucceeded> cleaning up Exchange protocol versions with daemon
+16:56:22.072 CellfenseSwift[20131:14974670] Requesting IDE connection transport
+16:56:22.072 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001bfd0, state: XCTWaiterStateInProgress> entering wait loop for 60.00s with expectations: (
+    "Transport for IDE session acquired"
+)
+16:56:22.075 CellfenseSwift[20131:14974715] Creating transport with received transport data
+16:56:22.075 CellfenseSwift[20131:14974709] <XCTWaiter: 0x60000001bfd0, state: XCTWaiterStateSucceeded>: cancelWaiting
+16:56:22.075 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001bfd0, state: XCTWaiterStateSucceeded> done waiting
+16:56:22.075 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001bfd0, state: XCTWaiterStateSucceeded> cleaning up Transport for IDE session acquired
+16:56:22.075 CellfenseSwift[20131:14974670] Creating connection with transport <DTXFileDescriptorTransport: 0x6000000fc800>
+16:56:22.076 CellfenseSwift[20131:14974670] Creating the proxy channel with connection <DTXConnection 0x6000001f9700 : x1>
+16:56:22.076 CellfenseSwift[20131:14974670] Messaging IDE proxy - _XCT_testBundleReadyWithProtocolVersion:25 minimumVersion:8
+16:56:22.077 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001c100, state: XCTWaiterStateInProgress> entering wait loop for 60.00s with expectations: (
+    "IDE session ready for test plan"
+)
+16:56:22.078 CellfenseSwift[20131:14974709] _XCT_testBundleReadyWithProtocolVersion:minimumVersion: reply received
+16:56:22.264 CellfenseSwift[20131:14974709] _IDE_startExecutingTestPlanWithProtocolVersion:25
+16:56:22.264 CellfenseSwift[20131:14974710] <XCTWaiter: 0x60000001c100, state: XCTWaiterStateSucceeded>: cancelWaiting
+16:56:22.264 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001c100, state: XCTWaiterStateSucceeded> done waiting
+16:56:22.264 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001c100, state: XCTWaiterStateSucceeded> cleaning up IDE session ready for test plan
+16:56:22.268 xcodebuild[19905:14972843] Starting test plan, clearing initialization timeout timer.
+16:56:22.268 CellfenseSwift[20131:14974670] Loading test suite...
+16:56:22.263 testmanagerd[20125:14974136] Started monitoring /Library/Logs/DiagnosticReports
+16:56:22.326 CellfenseSwift[20131:14974670] Finished loading test suite, took 0.058s
+16:56:22.326 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testBundleWillStart:]
+16:56:22.326 CellfenseSwift[20131:14974670] Running suite...
+16:56:22.327 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testSuiteWillStart:]
+16:56:22.328 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: parseConsoleOutputFromOriginalOutput: called, 58 bytes written out to StandardOutputAndStandardError
+16:56:22.328 xcodebuild[19905:14972843] _XCT_testSuite:All tests didStartAt:2018-03-28 19:56:22 +0000
+16:56:22.330 xcodebuild[19905:14973637] (LOG ARBITER) Rotating message buffer with 6 messages.
+16:56:22.331 xcodebuild[19905:14973637] (LOG ARBITER) Dumping buffered message data; 6 messages.
+16:56:22.601 xcodebuild[19905:14972846] (LOG ARBITER) Dumping buffered message data; 0 messages.
+16:56:22.328 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testSuiteWillStart:]
+16:56:22.330 xcodebuild[19905:14972843] _XCT_testSuite:CellfenseSwiftTests didStartAt:2018-03-28 19:56:22 +0000
+16:56:22.330 xcodebuild[19905:14972843] _XCT_testCaseDidStartForTestClass:CellfenseSwiftTests.CellfenseSwiftTests method:testExample
+16:56:22.328 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testCaseWillStart:] CellfenseSwiftTests.CellfenseSwiftTests testExample
+16:56:22.329 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testCaseDidFinish:]
+Test Case '-[CellfenseSwiftTests.CellfenseSwiftTests testExample]' started.
+Test Case '-[CellfenseSwiftTests.CellfenseSwiftTests testExample]' passed (0.001 seconds).
+16:56:22.331 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: parseConsoleOutputFromOriginalOutput: called, 178 bytes written out to StandardOutputAndStandardError
+16:56:22.331 xcodebuild[19905:14972843] _XCT_testCaseDidFinishForTestClass:CellfenseSwiftTests.CellfenseSwiftTests method:testExample withStatus:passed duration:0.0007240772247314453
+16:56:22.329 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testCaseWillStart:] CellfenseSwiftTests.CellfenseSwiftTests testPerformanceExample
+16:56:22.331 xcodebuild[19905:14972843] _XCT_testCaseDidStartForTestClass:CellfenseSwiftTests.CellfenseSwiftTests method:testPerformanceExample
+Test Case '-[CellfenseSwiftTests.CellfenseSwiftTests testPerformanceExample]' started.
+16:56:22.433 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: parseConsoleOutputFromOriginalOutput: called, 0 bytes written out to StandardOutputAndStandardError
+16:56:22.595 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession _testCase:didMeasureValues:forPerformanceMetricID:name:unitsOfMeasurement:baselineName:baselineAverage:maxPercentRegression:maxPercentRelativeStandardDeviation:maxRegression:maxStandardDeviation:file:line:]
+16:56:22.599 xcodebuild[19905:14972843] -[XCTTestRunnerSession _XCT_testMethod:ofClass:didMeasureMetric:file:line:]_block_invoke
+16:56:22.596 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testCaseDidFinish:]
+16:56:22.600 xcodebuild[19905:14972843] _XCT_testCaseDidFinishForTestClass:CellfenseSwiftTests.CellfenseSwiftTests method:testPerformanceExample withStatus:passed duration:0.2670849561691284
+16:56:22.596 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testSuiteDidFinish:]
+16:56:22.601 xcodebuild[19905:14972843] _XCT_testSuite:CellfenseSwiftTests didFinishAt:2018-03-28 19:56:22 +0000 runCount:2 withFailures:0 unexpected:0 testDuration:0.2678090333938599 totalDuration:0.2688460350036621
+16:56:22.601 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: parseConsoleOutputFromOriginalOutput: called, 608 bytes written out to StandardOutputAndStandardError
+16:56:22.597 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testSuiteDidFinish:]
+16:56:22.602 xcodebuild[19905:14972843] _XCT_testSuite:CellfenseSwiftTests.xctest didFinishAt:2018-03-28 19:56:22 +0000 runCount:2 withFailures:0 unexpected:0 testDuration:0.2678090333938599 totalDuration:0.2696579694747925
+16:56:22.598 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testSuiteDidFinish:]
+16:56:22.602 xcodebuild[19905:14972843] _XCT_testSuite:All tests didFinishAt:2018-03-28 19:56:22 +0000 runCount:2 withFailures:0 unexpected:0 testDuration:0.2678090333938599 totalDuration:0.2711009979248047
+16:56:22.598 CellfenseSwift[20131:14974670] Finished running suite.
+16:56:22.598 CellfenseSwift[20131:14974670] -[XCTRunnerIDESession testBundleDidFinish:], Flushing connection to IDE...
+16:56:22.602 xcodebuild[19905:14972843] -[XCTTestRunnerSession _XCT_didFinishExecutingTestPlan]_block_invoke
+16:56:22.599 CellfenseSwift[20131:14974670] Calling completion.
+/Users/tincho/Documents/repos/CellfenseSwift/CellfenseSwift/CellfenseSwiftTests/CellfenseSwiftTests.swift:33: Test Case '-[CellfenseSwiftTests.CellfenseSwiftTests testPerformanceExample]' measured [Time, seconds] average: 0.000, relative standard deviation: 140.181%, values: [0.000005, 0.000001, 0.000001, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[CellfenseSwiftTests.CellfenseSwiftTests testPerformanceExample]' passed (0.267 seconds).
+Test Suite 'CellfenseSwiftTests' passed at 2018-03-28 16:56:22.596.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.268 (0.269) seconds
+Test Suite 'CellfenseSwiftTests.xctest' passed at 2018-03-28 16:56:22.597.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.268 (0.270) seconds
+16:56:22.603 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: parseConsoleOutputFromOriginalOutput: called, 531 bytes written out to StandardOutputAndStandardError
+16:56:22.600 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001c830, state: XCTWaiterStateInProgress> entering wait loop for 15.00s with expectations: (
+    "IDE confirmed the end of session"
+)
+16:56:22.604 CellfenseSwift[20131:14974710] <XCTWaiter: 0x60000001c830, state: XCTWaiterStateSucceeded>: cancelWaiting
+16:56:22.604 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001c830, state: XCTWaiterStateSucceeded> done waiting
+16:56:22.605 CellfenseSwift[20131:14974670] <XCTWaiter: 0x60000001c830, state: XCTWaiterStateSucceeded> cleaning up IDE confirmed the end of session
+16:56:22.646 xcodebuild[19905:14972843] Got death notice for pid 20131, removing from SimulatorSessionMap
+16:56:22.648 xcodebuild[19905:14972843] Claim LaunchSessionClaim_0x7f9a47791020 on simulator F378DE58-D991-4582-BCE0-D1C6D53EBCDE was relinquished
+16:56:22.649 xcodebuild[19905:14972843] Claim LaunchSessionClaim_0x7f9a47791020 on simulator F378DE58-D991-4582-BCE0-D1C6D53EBCDE was relinquished
+16:56:22.676 xcodebuild[19905:14973637] Closing socket 20 to testmanagerd for Sim iPhone 5s
+Test Suite 'All tests' passed at 2018-03-28 16:56:22.598.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.268 (0.271) seconds
+16:56:22.706 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: parseConsoleOutputFromOriginalOutput: called, 0 bytes written out to StandardOutputAndStandardError
+16:56:22.660 testmanagerd[20125:14974799] Test process connection invalidated or interrupted, closing test session <XCTestSession: 0x7f86cf4016e0>.
+16:56:22.661 testmanagerd[20125:14974799] Closed <XCTestSession: 0x7f86cf4016e0>, removing from (
+    "<XCTestSession: 0x7f86cf4016e0>"
+)
+16:56:22.670 testmanagerd[20125:14974799] Tearing down test session <XCTestSession: 0x7f86cf4016e0>.
+16:56:22.670 testmanagerd[20125:14974799] XCTestSession is responsible for cleaning up its socket from an XCIDESession
+16:56:22.725 testmanagerd[20125:14974799] Considering exiting:
+16:56:22.725 testmanagerd[20125:14974799] Session summary: 0 test sessions, 0 sessions with identifiers, 0 unidentified sessions, has control sessions, 0 pending connections
+16:56:22.726 testmanagerd[20125:14974799] Control sessions: (
+    "<XCIDESession: 0x7f86cf6051f0> (socket 5) created Wednesday, March 28, 2018 at 4:56:22 PM Argentina Standard Time"
+)
+16:56:22.900 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60> finished receiving data from <IDEConsoleAdaptor: 0x7f9a476f6080 'target' stdin: (null) 0 stdout: (null) 0 stderr: (null) 0>
+16:56:22.900 xcodebuild[19905:14972843] <IDETestOperationCoordinator: 0x7f9a479ede60>: _considerFlushingDelegateBlockQueue - nothing to flush
+16:56:22.900 xcodebuild[19905:14972843] _finishWithError:(null)

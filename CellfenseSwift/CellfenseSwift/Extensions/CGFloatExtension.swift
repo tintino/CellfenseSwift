@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 
 /** The value of π as a CGFloat */
-let π = CGFloat(Double.pi)
+let πValue = CGFloat(Double.pi)
 
 extension CGFloat {
-    
+
     /**
      * Converts an angle in degrees to radians.
      */
     public func degreesToRadians() -> CGFloat {
-        return π * self / 180.0
+        return πValue * self / 180.0
     }
-    
+
     /**
      * Converts an angle in radians to degrees.
      */
     public func radiansToDegrees() -> CGFloat {
-        return self * 180.0 / π
+        return self * 180.0 / πValue
     }
 }

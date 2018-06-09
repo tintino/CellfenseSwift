@@ -10,16 +10,14 @@ import UIKit
 
 class PathfindNode: NSObject {
 
-    var x : Int = 0
-    var y : Int = 0
-    var cost : Int = 0
-    var parentNode : PathfindNode?
+    var posX: Int = 0
+    var posY: Int = 0
+    var cost: Int = 0
+    var parentNode: PathfindNode?
 
-    
-    required init?(cost: Int, x: Int, y: Int){
-        self.x = x
-        self.y = y
-        self.cost = cost        
+    required init?(cost: Int, posX: Int, posY: Int) {
+        self.posX = posX
+        self.posY = posY
+        self.cost = cost
     }
-    
 }

@@ -13,6 +13,7 @@
 		4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B2150C51EFDD51000CF9FDC /* levels.xml */; };
 		4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */; };
 		4B2293B21CF1097D009798B8 /* Spider.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B2293B11CF1097D009798B8 /* Spider.atlas */; };
+		4B33EF20206B242500B08BB7 /* CellfenseSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */; };
 		4B3CB3CA1CE560CA001DE1A2 /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */; };
 		4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */; };
 		4B3CB3CF1CE56149001DE1A2 /* rush_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CD1CE56149001DE1A2 /* rush_button.png */; };
@@ -40,15 +41,31 @@
 		4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BCCDCC71F09849900273C0D /* Localizable.strings */; };
 		4BEA47841EF77133005CAA69 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47831EF77133005CAA69 /* Pathfinder.swift */; };
 		4BEA47871EF772EE005CAA69 /* PathfindNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47861EF772EE005CAA69 /* PathfindNode.swift */; };
+		5DE4D0FA3A67C25B6A209220 /* Pods_CellfenseSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD7F49CB98031DE856F7E62 /* Pods_CellfenseSwiftTests.framework */; };
+		B7D2E27DD30BD2D1A16BE8B2 /* Pods_CellfenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9F3215EB927414FAC6B79A /* Pods_CellfenseSwift.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4B33EF22206B242600B08BB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B9C2AD11CDE70C50003B193 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9C2AD81CDE70C50003B193;
+			remoteInfo = CellfenseSwift;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4A9F3215EB927414FAC6B79A /* Pods_CellfenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CellfenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B02CD591F0417D60049E7DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		4B0C68B91F0987E40042D9F5 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extensions/StringExtension.swift; sourceTree = "<group>"; };
 		4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelsViewController.swift; path = ViewController/LevelsViewController.swift; sourceTree = "<group>"; };
 		4B2150C51EFDD51000CF9FDC /* levels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = levels.xml; path = Resources/Levels/levels.xml; sourceTree = "<group>"; };
 		4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelCollectionCell.swift; path = ViewController/Cells/LevelCollectionCell.swift; sourceTree = "<group>"; };
 		4B2293B11CF1097D009798B8 /* Spider.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Spider.atlas; sourceTree = "<group>"; };
+		4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CellfenseSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellfenseSwiftTests.swift; sourceTree = "<group>"; };
+		4B33EF21206B242600B08BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B3CB3C71CE560CA001DE1A2 /* CellfenseSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CellfenseSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B3CB3C81CE560CA001DE1A2 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = "Domain/objective-c/PathFinder.h"; sourceTree = "<group>"; };
 		4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFinder.m; path = "Domain/objective-c/PathFinder.m"; sourceTree = "<group>"; };
@@ -81,13 +98,27 @@
 		4BCCDCC81F09849D00273C0D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4BEA47831EF77133005CAA69 /* Pathfinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pathfinder.swift; path = IA/Pathfinder.swift; sourceTree = "<group>"; };
 		4BEA47861EF772EE005CAA69 /* PathfindNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PathfindNode.swift; path = IA/PathfindNode.swift; sourceTree = "<group>"; };
+		5561312EA0A0469F285DD352 /* Pods-CellfenseSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellfenseSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CellfenseSwiftTests/Pods-CellfenseSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		627C09F4E7054BD0C683CA1A /* Pods-CellfenseSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellfenseSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CellfenseSwift/Pods-CellfenseSwift.release.xcconfig"; sourceTree = "<group>"; };
+		6DD7F49CB98031DE856F7E62 /* Pods_CellfenseSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CellfenseSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AB935EB88AEFCC280E5FC1E /* Pods-CellfenseSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellfenseSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CellfenseSwiftTests/Pods-CellfenseSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		B16BF763E89B554B59EBC6B7 /* Pods-CellfenseSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellfenseSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CellfenseSwift/Pods-CellfenseSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B33EF1A206B242500B08BB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DE4D0FA3A67C25B6A209220 /* Pods_CellfenseSwiftTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9C2AD61CDE70C50003B193 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D2E27DD30BD2D1A16BE8B2 /* Pods_CellfenseSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +152,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		4B33EF1E206B242500B08BB7 /* CellfenseSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */,
+				4B33EF21206B242600B08BB7 /* Info.plist */,
+			);
+			path = CellfenseSwiftTests;
+			sourceTree = "<group>";
+		};
 		4B3CB3C61CE560B3001DE1A2 /* objective-c */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +185,10 @@
 			isa = PBXGroup;
 			children = (
 				4B9C2ADB1CDE70C50003B193 /* CellfenseSwift */,
+				4B33EF1E206B242500B08BB7 /* CellfenseSwiftTests */,
 				4B9C2ADA1CDE70C50003B193 /* Products */,
+				F50DA5E3FD04124DD28B6519 /* Pods */,
+				6B89EA90483639DACC783716 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9C2AD91CDE70C50003B193 /* CellfenseSwift.app */,
+				4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,16 +287,61 @@
 			name = IA;
 			sourceTree = "<group>";
 		};
+		6B89EA90483639DACC783716 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A9F3215EB927414FAC6B79A /* Pods_CellfenseSwift.framework */,
+				6DD7F49CB98031DE856F7E62 /* Pods_CellfenseSwiftTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F50DA5E3FD04124DD28B6519 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B16BF763E89B554B59EBC6B7 /* Pods-CellfenseSwift.debug.xcconfig */,
+				627C09F4E7054BD0C683CA1A /* Pods-CellfenseSwift.release.xcconfig */,
+				5561312EA0A0469F285DD352 /* Pods-CellfenseSwiftTests.debug.xcconfig */,
+				7AB935EB88AEFCC280E5FC1E /* Pods-CellfenseSwiftTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4B33EF1C206B242500B08BB7 /* CellfenseSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B33EF24206B242600B08BB7 /* Build configuration list for PBXNativeTarget "CellfenseSwiftTests" */;
+			buildPhases = (
+				AF0A238A4D0BC389761F402F /* [CP] Check Pods Manifest.lock */,
+				4B33EF19206B242500B08BB7 /* Sources */,
+				4B33EF1A206B242500B08BB7 /* Frameworks */,
+				4B33EF1B206B242500B08BB7 /* Resources */,
+				E84DA7D00E02D8F48FB0AB8A /* [CP] Embed Pods Frameworks */,
+				314608862CCEEF6679A59305 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B33EF23206B242600B08BB7 /* PBXTargetDependency */,
+			);
+			name = CellfenseSwiftTests;
+			productName = CellfenseSwiftTests;
+			productReference = 4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4B9C2AD81CDE70C50003B193 /* CellfenseSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B9C2AEF1CDE70C60003B193 /* Build configuration list for PBXNativeTarget "CellfenseSwift" */;
 			buildPhases = (
+				4B529760206F54600039F94F /* ShellScript */,
+				6B486CAF13B15F7E7D90EBA2 /* [CP] Check Pods Manifest.lock */,
 				4B9C2AD51CDE70C50003B193 /* Sources */,
 				4B9C2AD61CDE70C50003B193 /* Frameworks */,
 				4B9C2AD71CDE70C50003B193 /* Resources */,
+				FFCCFEAC80C4880205CADDC4 /* [CP] Embed Pods Frameworks */,
+				A857C9C8D735B486B29C1AD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,14 +358,21 @@
 		4B9C2AD11CDE70C50003B193 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = quitarts;
 				TargetAttributes = {
+					4B33EF1C206B242500B08BB7 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ED7WEVK6D2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4B9C2AD81CDE70C50003B193;
+					};
 					4B9C2AD81CDE70C50003B193 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = ED7WEVK6D2;
+						DevelopmentTeam = G2RJZT4Q4P;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -294,11 +390,19 @@
 			projectRoot = "";
 			targets = (
 				4B9C2AD81CDE70C50003B193 /* CellfenseSwift */,
+				4B33EF1C206B242500B08BB7 /* CellfenseSwiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B33EF1B206B242500B08BB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9C2AD71CDE70C50003B193 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,7 +428,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		314608862CCEEF6679A59305 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CellfenseSwiftTests/Pods-CellfenseSwiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B529760206F54600039F94F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+		};
+		6B486CAF13B15F7E7D90EBA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CellfenseSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A857C9C8D735B486B29C1AD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CellfenseSwift/Pods-CellfenseSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF0A238A4D0BC389761F402F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CellfenseSwiftTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E84DA7D00E02D8F48FB0AB8A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CellfenseSwiftTests/Pods-CellfenseSwiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFCCFEAC80C4880205CADDC4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CellfenseSwift/Pods-CellfenseSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		4B33EF19206B242500B08BB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B33EF20206B242500B08BB7 /* CellfenseSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9C2AD51CDE70C50003B193 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,6 +574,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B33EF23206B242600B08BB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9C2AD81CDE70C50003B193 /* CellfenseSwift */;
+			targetProxy = 4B33EF22206B242600B08BB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4B9C2AE41CDE70C60003B193 /* Main.storyboard */ = {
@@ -381,23 +613,96 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4B33EF25206B242600B08BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5561312EA0A0469F285DD352 /* Pods-CellfenseSwiftTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				INFOPLIST_FILE = CellfenseSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quitarts.CellfenseSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "CellfenseSwift/CellfenseSwift-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CellfenseSwift.app/CellfenseSwift";
+			};
+			name = Debug;
+		};
+		4B33EF26206B242600B08BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AB935EB88AEFCC280E5FC1E /* Pods-CellfenseSwiftTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				INFOPLIST_FILE = CellfenseSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quitarts.CellfenseSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CellfenseSwift/CellfenseSwift-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CellfenseSwift.app/CellfenseSwift";
+			};
+			name = Release;
+		};
 		4B9C2AED1CDE70C60003B193 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -426,6 +731,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -433,19 +739,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -467,42 +782,67 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		4B9C2AF01CDE70C60003B193 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B16BF763E89B554B59EBC6B7 /* Pods-CellfenseSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = G2RJZT4Q4P;
 				INFOPLIST_FILE = CellfenseSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quitarts.CellfenseSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tincho.cellfenseswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0500a023-86f8-4d8e-a962-6f18d36b6f2c";
+				PROVISIONING_PROFILE_SPECIFIER = "Cellfense Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "CellfenseSwift/CellfenseSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		4B9C2AF11CDE70C60003B193 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 627C09F4E7054BD0C683CA1A /* Pods-CellfenseSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = G2RJZT4Q4P;
 				INFOPLIST_FILE = CellfenseSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quitarts.CellfenseSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tincho.cellfenseswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9f6395b7-d367-498b-b820-d0463fb9720f";
+				PROVISIONING_PROFILE_SPECIFIER = "CellfenseS Add Hoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "CellfenseSwift/CellfenseSwift-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B33EF24206B242600B08BB7 /* Build configuration list for PBXNativeTarget "CellfenseSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B33EF25206B242600B08BB7 /* Debug */,
+				4B33EF26206B242600B08BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4B9C2AD41CDE70C50003B193 /* Build configuration list for PBXProject "CellfenseSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

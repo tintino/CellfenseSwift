@@ -9,93 +9,92 @@
 import Foundation
 import SpriteKit
 
-enum EnemyType : String {
+enum EnemyType: String {
     case CATERPILLAR = "Caterpillar"
     case SPIDER = "Spider"
 }
 
 class Enemy: SKSpriteNode {
-    
-    var type : EnemyType = EnemyType.SPIDER
+
+    var type: EnemyType = EnemyType.SPIDER
     var enemyFrames = [SKTexture]()
     var path = [Any]()
-    
+
     //TODO: directioPathFindNodens to integers
-    var dirX : CGFloat = 0
-    var dirY : CGFloat = 0
-    var life : CGFloat = 0
+    var dirX: CGFloat = 0
+    var dirY: CGFloat = 0
+    var life: CGFloat = 0
     var pathIndex = 0
     public var col = 0
     public var row = 0
-    
+
     let myLabel = SKLabelNode()
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
-    
-    init?(type: EnemyType){
-        
+
+    init?(type: EnemyType) {
+
         //TODO: This code is the same on Tower, try to optimize
         self.type = type
         //Create all Tower Textures
         let enemyAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfEnemyFrames = enemyAnimatedAtlas.textureNames.count
-        for i in 0..<numberOfEnemyFrames {
-            let enemyTextureName = "\(type)_frame\(i)"
+        for frameIndex in 0..<numberOfEnemyFrames {
+            let enemyTextureName = "\(type)_frame\(frameIndex)"
             self.enemyFrames.append(enemyAnimatedAtlas.textureNamed(enemyTextureName))
         }
-        
+
         //Initialize Sprite with First Frame
-        super.init(texture: self.enemyFrames[0], color: UIColor.black, size:self.enemyFrames[0].size())
-                
+        super.init(texture: self.enemyFrames[0], color: UIColor.black, size: self.enemyFrames[0].size())
+
         self.name = Constants.NodeName.enemy
         self.life = 100
         self.speed = 1.4
-        
+
         //Debug Information
-        
+
         myLabel.fontSize = 12
         myLabel.position = CGPoint(x: 0, y: self.frame.minY)
         myLabel.fontColor = UIColor.white
         self.addChild(myLabel)
-         
-        
+
     }
-    
-    override var position: CGPoint{
+
+    override var position: CGPoint {
         willSet {
-            myLabel.text = "Y: \(newValue.y)";
+            myLabel.text = "Y: \(newValue.y)"
         }
     }
-    
-    func Walk(){
+
+    func walk() {
         let animatedAction = SKAction.animate(with: self.enemyFrames, timePerFrame: 0.1)
         let walkAction = SKAction.repeatForever(animatedAction)
         self.run(walkAction, withKey: "enemyWalk")
     }
-    
-    func rotate(angle: Int){
+
+    func rotate(angle: Int) {
         self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
     }
-    
-    func  shoot(damage: CGFloat){
+
+    func  shoot(damage: CGFloat) {
         if self.life != 0 {
             self.life -= damage
         }
-        
+
         if self.life <= 0 {
             self.life = 0
-            
+
             //TODO: enemy destroy
-            
+
             self.removeAllActions()
         }
-        
+
         //TODO: calc life width bar
     }
-    
+
     override func copy(with zone: NSZone? = nil) -> Any {
         let copy = Enemy(type: type)
         copy?.position = self.position
