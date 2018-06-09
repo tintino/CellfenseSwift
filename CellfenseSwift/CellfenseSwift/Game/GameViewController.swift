@@ -11,52 +11,52 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var gameView: UIView!
-    
+
     public var levelToLoad = Level()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //Create size of the game on the screen
         let sceneSize = self.gameView.frame.size
         //let sceneSize = CGSize(width: 320  , height: 480)
-        
+
         //Create game Scene
-        let gameScene = GameScene(size: sceneSize , level: self.levelToLoad, holderViewController:self)
+        let gameScene = GameScene(size: sceneSize, level: self.levelToLoad, holderViewController: self)
         gameScene.backgroundColor = UIColor.green
-        
+
         // Configure the view.
-        let skView = self.gameView as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        
-        /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skView.ignoresSiblingOrder = true
-        
-        /* Set the scale mode to scale to fit the window */
-        gameScene.scaleMode = .aspectFit
-        
-        skView.presentScene(gameScene)
-        
+        if let skView = self.gameView as? SKView {
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+
+            /* Sprite Kit applies additional optimizations to improve rendering performance */
+            skView.ignoresSiblingOrder = true
+
+            /* Set the scale mode to scale to fit the window */
+            gameScene.scaleMode = .aspectFit
+
+            skView.presentScene(gameScene)
+        }
     }
-    
-    override var shouldAutorotate : Bool {
+
+    override var shouldAutorotate: Bool {
         return false
     }
-    
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
         } else {
             return .all
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-    
-    override var prefersStatusBarHidden : Bool {
+
+    override var prefersStatusBarHidden: Bool {
         return true
     }
 }

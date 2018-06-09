@@ -107,22 +107,22 @@
 			<array>
 				<dict>
 					<key>Duration</key>
-					<real>0.30674397945404053</real>
+					<real>0.27110099792480469</real>
 					<key>Subtests</key>
 					<array>
 						<dict>
 							<key>Duration</key>
-							<real>0.30526494979858398</real>
+							<real>0.26965796947479248</real>
 							<key>Subtests</key>
 							<array>
 								<dict>
 									<key>Duration</key>
-									<real>0.30448007583618164</real>
+									<real>0.26884603500366211</real>
 									<key>Subtests</key>
 									<array>
 										<dict>
 											<key>Duration</key>
-											<real>0.00086092948913574219</real>
+											<real>0.00072407722473144531</real>
 											<key>TestIdentifier</key>
 											<string>CellfenseSwiftTests/testExample()</string>
 											<key>TestName</key>
@@ -132,11 +132,11 @@
 											<key>TestStatus</key>
 											<string>Success</string>
 											<key>TestSummaryGUID</key>
-											<string>1F85084A-AF9C-46CE-BF13-9FD52322B178</string>
+											<string>C6488FD9-B526-49D1-B89C-CF051B18398B</string>
 										</dict>
 										<dict>
 											<key>Duration</key>
-											<real>0.30247402191162109</real>
+											<real>0.26708495616912842</real>
 											<key>PerformanceMetrics</key>
 											<array>
 												<dict>
@@ -152,16 +152,16 @@
 													<real>0.10000000000000001</real>
 													<key>Measurements</key>
 													<array>
-														<real>5.1479999999999997e-06</real>
-														<real>1.0860000000000001e-06</real>
+														<real>4.6480000000000002e-06</real>
+														<real>8.6400000000000001e-07</real>
+														<real>5.3200000000000005e-07</real>
 														<real>4.3500000000000002e-07</real>
-														<real>4.3700000000000001e-07</real>
-														<real>6.68e-07</real>
-														<real>4.4000000000000002e-07</real>
-														<real>4.3500000000000002e-07</real>
-														<real>3.9400000000000001e-07</real>
-														<real>3.5100000000000001e-07</real>
-														<real>3.9900000000000001e-07</real>
+														<real>4.1399999999999997e-07</real>
+														<real>4.1300000000000001e-07</real>
+														<real>4.3099999999999998e-07</real>
+														<real>4.1899999999999998e-07</real>
+														<real>4.0699999999999998e-07</real>
+														<real>4.0699999999999998e-07</real>
 													</array>
 													<key>Name</key>
 													<string>Time</string>
@@ -178,7 +178,7 @@
 											<key>TestStatus</key>
 											<string>Success</string>
 											<key>TestSummaryGUID</key>
-											<string>4A00B0BC-BD9E-47C1-905F-6B9EB092CE78</string>
+											<string>FB521515-9462-486E-990D-772DB770F22C</string>
 										</dict>
 									</array>
 									<key>TestIdentifier</key>

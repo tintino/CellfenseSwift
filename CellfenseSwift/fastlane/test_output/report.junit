@@ -1,7 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='CellfenseSwiftTests.xctest' tests='2' failures='0'>
-  <testsuite name='CellfenseSwiftTests.CellfenseSwiftTests' tests='2' failures='0'>
-    <testcase classname='CellfenseSwiftTests.CellfenseSwiftTests' name='testExample' time='0.001'/>
-    <testcase classname='CellfenseSwiftTests.CellfenseSwiftTests' name='testPerformanceExample' time='0.267'/>
-  </testsuite>
-</testsuites>
+<testsuites tests='0' failures='0'/>
