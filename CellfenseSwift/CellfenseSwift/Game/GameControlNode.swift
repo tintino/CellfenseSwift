@@ -114,12 +114,12 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
 
         let alertController = UIAlertController(title: "LevelCompleted".localized,
                                                 message: "\("YourScoreIs".localized) \(lastScore)",
-            preferredStyle: UIAlertControllerStyle.alert)
+            preferredStyle: UIAlertController.Style.alert)
 
-        let okAction = UIAlertAction(title: "Continue".localized, style: UIAlertActionStyle.default) { (result: UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: "Continue".localized, style: UIAlertAction.Style.default) { (result: UIAlertAction) -> Void in
             self.continueGame()
         }
-        let okCancel = UIAlertAction(title: "TryAgain".localized, style: UIAlertActionStyle.cancel) { (result: UIAlertAction) -> Void in
+        let okCancel = UIAlertAction(title: "TryAgain".localized, style: UIAlertAction.Style.cancel) { (result: UIAlertAction) -> Void in
             self.tryAgain()
         }
         alertController.addAction(okAction)
@@ -171,12 +171,12 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
             self.gameSceneProtocol?.pauseGame()
             let alertController = UIAlertController(title: "GameOver".localized,
                                                     message: "Defeated".localized,
-                                                    preferredStyle: UIAlertControllerStyle.alert)
+                                                    preferredStyle: UIAlertController.Style.alert)
 
-            let okAction = UIAlertAction(title: "TryAgain".localized, style: UIAlertActionStyle.default) { (result: UIAlertAction) -> Void in
+            let okAction = UIAlertAction(title: "TryAgain".localized, style: UIAlertAction.Style.default) { (result: UIAlertAction) -> Void in
                 self.tryAgain()
             }
-            let okCancel = UIAlertAction(title: "Back".localized, style: UIAlertActionStyle.cancel) { (result: UIAlertAction) -> Void in
+            let okCancel = UIAlertAction(title: "Back".localized, style: UIAlertAction.Style.cancel) { (result: UIAlertAction) -> Void in
                 self.continueGame()
             }
             alertController.addAction(okAction)

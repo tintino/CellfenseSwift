@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    // MARK: Outlets
     @IBOutlet weak var gameView: UIView!
 
     public var levelToLoad = Level()
@@ -37,23 +38,7 @@ class GameViewController: UIViewController {
 
             skView.presentScene(gameScene)
         }
-    }
-
-    override var shouldAutorotate: Bool {
-        return false
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     override var prefersStatusBarHidden: Bool {

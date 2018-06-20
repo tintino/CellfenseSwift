@@ -36,6 +36,9 @@ xcuserdata/
 ## Swift Package Manager
 .build/
 
+## Pods
+CellfenseSwift/Pods
+
 ## Carthage
 Carthage/Build
 
