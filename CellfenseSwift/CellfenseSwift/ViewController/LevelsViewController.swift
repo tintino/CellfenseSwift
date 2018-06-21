@@ -77,12 +77,12 @@ extension LevelsViewController: XMLParserDelegate {
         if elementName == "string-array" {
             let newLevel = Level()
             newLevel.enemies = currentEnemies
-            newLevel.name = self.currentLevelName
-            self.levels.append(newLevel)
-            self.currentEnemies = [Enemy]()
-            self.count = 0
+            newLevel.name = currentLevelName
+            levels.append(newLevel)
+            currentEnemies = [Enemy]()
+            count = 0
         } else if elementName == "item" && self.count == 4 {
-            self.count = 1
+            count = 1
         }
     }
 }
@@ -94,14 +94,14 @@ extension LevelsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.levels.count
+        return levels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath)
         if let levelCell = cell as? LevelCollectionCell {
-            levelCell.configureCell(level: self.levels[indexPath.row])
+            levelCell.configureCell(level: levels[indexPath.row])
         }
         return cell
     }

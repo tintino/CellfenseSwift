@@ -48,43 +48,39 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
 
         // Create the scene’s contents.
-        self.gameControl = GameControlNode(level: self.levelLoaded!)
-        //**self.gameControl.gameSceneProtocol = self
+        gameControl = GameControlNode(level: levelLoaded!)
 
         // GameControlNode is ccamera child, the center of the camera is (0,0),
         // width and height are the same as gamescene view
-        self.gameControl.position = CGPoint(x: -self.frame.midX, y: -self.frame.midY)
+        gameControl.position = CGPoint(x: -frame.midX, y: -frame.midY)
 
         setupWorldNode()
 
-        // TODO: better way to do this? a pattern? cross dependency cannot use constructor to inyect dependency
-        //**self.gameWorld.gameControl = self.gameControl
-        //**self.gameControl.gameWorld = self.gameWorld
         setupControlNode()
 
         // Add Camera Scene
         // The camera’s viewport is the same size as the scene’s viewport (determined by the scene’s size property)
         sceneCam = SKCameraNode()
-        self.camera = sceneCam
+        camera = sceneCam
 
         // The energy bar, with button and play button is part of the controls,
         // they need to be on the screen always (they move with the camera)
-        self.camera?.addChild(self.gameControl)
+        camera?.addChild(gameControl)
         addChild(sceneCam)
 
         // position the camera on the scene. the center of the camera is tied to its position (No anchorpoint)
-        sceneCam.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        sceneCam.position = CGPoint(x: frame.midX, y: frame.midY)
 
-        self.enemyFieldOffset = self.frame.midY + self.frame.maxY
-        self.defenseFieldOffset = self.frame.midY
-        self.cameraOffSet = enemyFieldOffset
+        enemyFieldOffset = frame.midY + frame.maxY
+        defenseFieldOffset = frame.midY
+        cameraOffSet = enemyFieldOffset
 
         // Center on the screen
-        self.labelMessage.position = self.sceneCam.position
-        self.labelMessage.fontSize = 40
-        self.labelMessage.fontColor = UIColor.white
+        labelMessage.position = sceneCam.position
+        labelMessage.fontSize = 40
+        labelMessage.fontColor = UIColor.white
         // self.labelMessage.hidden = true
-        self.addChild(self.labelMessage)
+        addChild(labelMessage)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,7 +88,7 @@ class GameScene: SKScene {
         for touch in touches {
 
             let location = (touch as UITouch).location(in: self)
-            let nodeTouched = self.atPoint(location)
+            let nodeTouched = atPoint(location)
 
             if nodeTouched.name == Constants.NodeName.hudSwitch {
                 moveCamera()
@@ -101,25 +97,25 @@ class GameScene: SKScene {
 
             // Add a new Tower
             if nodeTouched.name == Constants.NodeName.hudTower {
-                self.touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
-                self.touchedTower?.alpha = 0.5
+                touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
+                touchedTower?.alpha = 0.5
 
-                //Offset on Y: avoid the tower to be under the finger
-                self.touchedTower!.position = CGPoint(x: location.x,
-                                                      y: location.y + self.touchedTower!.size.height)
-                self.addChild(self.touchedTower!)
+                // Offset on Y: avoid the tower to be under the finger
+                touchedTower!.position = CGPoint(x: location.x,
+                                                      y: location.y + touchedTower!.size.height)
+                addChild(touchedTower!)
             }
             // Relocate a Tower
-            else if let worldTower = self.gameWorld.towerAtLocation(location) {
+            else if let worldTower = gameWorld.towerAtLocation(location) {
                 // Reuse same flow as "add a new tower" to Keep It Simple
-                self.touchedTower = worldTower
-                self.gameWorld.removeTowerAtLocation(location)
+                touchedTower = worldTower
+                gameWorld.removeTowerAtLocation(location)
             } else if nodeTouched.name == Constants.NodeName.hudRush {
-                self.gameWorld.startDefending()
+                gameWorld.startDefending()
                 //TODO: hideButtons not working
                 //self.gameControl.hideButtons()
                 //self.gameControl.hideHud()
-                self.gameControl.isHidden = true
+                gameControl.isHidden = true
             }
         }
     }
@@ -130,15 +126,15 @@ class GameScene: SKScene {
 
             let location = (touch as UITouch).location(in: self)
             // let nodeTouched = self.atPoint(location)
-            _ = self.atPoint(location)
+            _ = atPoint(location)
 
-            if let touchedTower = self.touchedTower {
+            if let touchedTower = touchedTower {
 
                 // Offset on Y: mantain the tower on the finger
-                touchedTower.position = self.gameWorld.worldToGrid(location)
+                touchedTower.position = gameWorld.worldToGrid(location)
 
                 // If Overlaping another tower, show it red
-                if self.gameWorld.towerAtLocation(touchedTower.position) != nil {
+                if gameWorld.towerAtLocation(touchedTower.position) != nil {
 
                     touchedTower.color = UIColor.red
                     touchedTower.colorBlendFactor = Constants.Tower.opacity
@@ -146,8 +142,8 @@ class GameScene: SKScene {
                     touchedTower.colorBlendFactor = 0.0
                 }
 
-                if self.gameControl.isHudArea(position: touchedTower.position) {
-                    self.showMessage(message: "SELL?")
+                if gameControl.isHudArea(position: touchedTower.position) {
+                    showMessage(message: "SELL?")
                 } else {
                     self.hideMessage()
                 }
@@ -160,24 +156,24 @@ class GameScene: SKScene {
         for touch in touches {
 
             let location = (touch as UITouch).location(in: self)
-            //let nodeTouched = self.atPoint(location)
-            _ = self.atPoint(location)
+            // let nodeTouched = self.atPoint(location)
+            _ = atPoint(location)
 
-            //User is holding a new tower
-            if let touchedTower = self.touchedTower {
+            // User is holding a new tower
+            if let touchedTower = touchedTower {
 
-                //And Want to sell it
-                if self.gameControl.isHudArea(position: touchedTower.position) {
-                    self.showAutoHideMessage(message: "SELL?")
+                // And Want to sell it
+                if gameControl.isHudArea(position: touchedTower.position) {
+                    showAutoHideMessage(message: "SELL?")
                 }
-                    //And want to place it
-                else if self.gameWorld.towerAtLocation(touchedTower.position) == nil {
+                // And want to place it
+                else if gameWorld.towerAtLocation(touchedTower.position) == nil {
 
-                    //And is not blocking the path
-                    if self.gameWorld.doesBlockPathIfAddedTo(position: touchedTower.position) {
-                        self.gameWorld.addTower(touchedTower.position)
+                    // And is not blocking the path
+                    if gameWorld.doesBlockPathIfAddedTo(position: touchedTower.position) {
+                        gameWorld.addTower(touchedTower.position)
                     } else {
-                        self.showAutoHideMessage(message: "BLOCKING!")
+                        showAutoHideMessage(message: "BLOCKING!")
                     }
                 }
 
@@ -190,11 +186,11 @@ class GameScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
-        if !self.isPaused {
+        if !isPaused {
             let timeSinceLastUpdate = currentTime - lastUpdateTime
             lastUpdateTime = currentTime
 
-            self.gameWorld.update(dTime: timeSinceLastUpdate)
+            gameWorld.update(dTime: timeSinceLastUpdate)
         }
     }
 
@@ -202,7 +198,7 @@ class GameScene: SKScene {
     }
 
     func setupWorldNode() {
-        gameWorld = GameWorldNode(level: self.levelLoaded!)
+        gameWorld = GameWorldNode(level: levelLoaded!)
 
         gameWorld.onGameComplete = { time in
             print("CF: gameWorld.onGameComplete")
@@ -257,20 +253,19 @@ class GameScene: SKScene {
     func moveCamera() {
         // All these variables and logic, are just to handle if the user touches
         // very quickly the "switch button" before the action finished
-        self.sceneCam.run(SKAction.moveTo(y: cameraOffSet, duration: 0.3))
-        if self.cameraOffSet == self.enemyFieldOffset {
-
-            self.cameraOffSet = self.defenseFieldOffset
-            self.gameControl.hideHud()
+        sceneCam.run(SKAction.moveTo(y: cameraOffSet, duration: 0.3))
+        if cameraOffSet == enemyFieldOffset {
+            cameraOffSet = defenseFieldOffset
+            gameControl.hideHud()
         } else {
-            self.cameraOffSet = self.enemyFieldOffset
-            self.gameControl.showHud()
+            cameraOffSet = enemyFieldOffset
+            gameControl.showHud()
         }
     }
 
     func showAutoHideMessage(message: String) {
 
-        self.showMessage(message: message)
+        showMessage(message: message)
         Timer.scheduledTimer(timeInterval: 1,
                              target: self,
                              selector: #selector(GameScene.hideMessage),
@@ -284,24 +279,24 @@ class GameScene: SKScene {
     }
 
     @objc func hideMessage() {
-        self.labelMessage.isHidden = true
+        labelMessage.isHidden = true
     }
 
     func pauseGame() {
-        self.scene?.isPaused = true
+        scene?.isPaused = true
     }
 
     func resumeGame() {
-        self.scene?.isPaused = false
+        scene?.isPaused = false
     }
 
     func dissmissGame() {
-        self.holderViewController.dismiss(animated: true, completion: nil)
+        holderViewController.dismiss(animated: true, completion: nil)
     }
 
     func gameRestart() {
-        self.gameControl.showHud()
-        self.gameWorld.restart()
-        self.resumeGame()
+        gameControl.showHud()
+        gameWorld.restart()
+        resumeGame()
     }
 }

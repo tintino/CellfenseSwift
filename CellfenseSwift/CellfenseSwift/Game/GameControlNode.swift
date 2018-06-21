@@ -20,7 +20,7 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
     var hudBackground = SKSpriteNode()
     var energy = 0
     var lives = 0
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
@@ -29,79 +29,77 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
     init(level: Level) {
         super.init()
 
-        //Create Hud container, will contain availables towers
-        self.hud = SKNode()
-        self.hud.position = CGPoint(x: 0, y: 0)
-        self.addChild(self.hud)
+        // Create Hud container, will contain availables towers
+       hud = SKNode()
+       hud.position = CGPoint(x: 0, y: 0)
+       addChild(self.hud)
 
-        //Create background
-        self.hudBackground = SKSpriteNode(imageNamed: "hud")
-        self.hudBackground.name = Constants.NodeName.hudBackground
-        self.hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
-        self.hudBackground.position = CGPoint(x: 0, y: 0)
-        self.hudBackground.alpha = 0.3
-        self.hudBackground.zPosition = Constants.Zposition.hudbackground
-        self.hud.addChild(hudBackground)
+        // Create background
+       hudBackground = SKSpriteNode(imageNamed: "hud")
+       hudBackground.name = Constants.NodeName.hudBackground
+       hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
+       hudBackground.position = CGPoint(x: 0, y: 0)
+       hudBackground.alpha = 0.3
+       hudBackground.zPosition = Constants.Zposition.hudbackground
+       hud.addChild(hudBackground)
 
-        //Create Tower Button
-        self.tower = SKSpriteNode(imageNamed: "turret_frame0")
-        self.tower.name = Constants.NodeName.hudTower
-        self.tower.anchorPoint = CGPoint(x: 1, y: -1)
-        self.tower.position = CGPoint(x: 320, y: 0)
-        self.hud.addChild(self.tower)
+        // Create Tower Button
+       tower = SKSpriteNode(imageNamed: "turret_frame0")
+       tower.name = Constants.NodeName.hudTower
+       tower.anchorPoint = CGPoint(x: 1, y: -1)
+       tower.position = CGPoint(x: 320, y: 0)
+       hud.addChild(self.tower)
 
-        //Create Up/Down Button
-        self.upButton = SKSpriteNode(imageNamed: "up_button")
-        self.upButton.name = Constants.NodeName.hudSwitch
-        self.upButton.anchorPoint = CGPoint(x: 0, y: 0)
-        self.upButton.position = CGPoint(x: 0, y: 0)
-        self.addChild(self.upButton)
+        // Create Up/Down Button
+       upButton = SKSpriteNode(imageNamed: "up_button")
+       upButton.name = Constants.NodeName.hudSwitch
+       upButton.anchorPoint = CGPoint(x: 0, y: 0)
+       upButton.position = CGPoint(x: 0, y: 0)
+       addChild(self.upButton)
 
-        //Create Rushs Button
-        self.rushButton = SKSpriteNode(imageNamed: "rush_button")
-        self.rushButton.name = Constants.NodeName.hudRush
-        self.rushButton.anchorPoint = CGPoint(x: 0, y: 0)
-        self.rushButton.position = CGPoint(x: self.rushButton.frame.size.width, y: 0)
-        self.addChild(self.rushButton)
+        // Create Rushs Button
+       rushButton = SKSpriteNode(imageNamed: "rush_button")
+       rushButton.name = Constants.NodeName.hudRush
+       rushButton.anchorPoint = CGPoint(x: 0, y: 0)
+       rushButton.position = CGPoint(x: rushButton.frame.size.width, y: 0)
+       addChild(self.rushButton)
 
     }
 
     func hideHud() {
-        self.rushButton.alpha = 0.5
-        self.hud.isHidden = true
+       rushButton.alpha = 0.5
+       hud.isHidden = true
     }
 
     func showHud() {
-        self.rushButton.alpha = 1
-        self.hud.isHidden = false
-        self.isHidden = false
+       rushButton.alpha = 1
+       hud.isHidden = false
+       isHidden = false
     }
 
     func isHudArea(position: CGPoint) -> Bool {
-        return position.y < self.hudBackground.frame.height ? true : false
+        return position.y < hudBackground.frame.height ? true : false
     }
 
     func hideButtons() {
         //TODO: action not working
-        self.upButton.run(SKAction.moveBy(x: -self.upButton.frame.width, y: 0, duration: 2000))
+       upButton.run(SKAction.moveBy(x: -upButton.frame.width, y: 0, duration: 2000))
     }
 
     func gameCompleted(elapsedTime: Double) {
-        //TODO: update game control data
+        // TODO: update game control data
 
-        //Calc Score
+        // Calc Score
         let intElapsedTime = Int(elapsedTime)
         let rootSquare = Double(intElapsedTime*intElapsedTime)
         let lastScore = ((1.0/rootSquare) * 100000.0) + Double(energy * 30)
 
-        //**delegate?.gameCompleted(score: lastScore)
         onGameComplete?(lastScore)
-
     }
 
     func updateLives(lives: Int) {
-        self.lives = lives
-        if self.lives == 0 {
+       self.lives = lives
+        if lives == 0 {
             onGameLost?()
         }
     }
