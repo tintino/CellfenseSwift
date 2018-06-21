@@ -98,7 +98,7 @@ class Tower: SKSpriteNode {
         if self.shootTimer  >= Int(self.defaultRate * 1000) {
             self.shootTimer = 0
 
-            victim.shoot(damage: self.damage(enemy: victim))
+            victim.shoot(damage: damage(enemy: victim))
 
             self.fire()
             return true
@@ -108,9 +108,9 @@ class Tower: SKSpriteNode {
         }
     }
 
-    func damage(enemy: Enemy) -> CGFloat {
+    func damage(enemy: Enemy) -> Double {
         //TODO compare all towers and enemies
-        return 13
+        return 13.0
     }
 
     func tick(dt: Double) {

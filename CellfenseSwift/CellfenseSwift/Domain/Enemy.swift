@@ -23,7 +23,7 @@ class Enemy: SKSpriteNode {
     //TODO: directioPathFindNodens to integers
     var dirX: CGFloat = 0
     var dirY: CGFloat = 0
-    var life: CGFloat = 0
+    var life: Double = 0
     var pathIndex = 0
     public var col = 0
     public var row = 0
@@ -79,13 +79,13 @@ class Enemy: SKSpriteNode {
         self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
     }
 
-    func  shoot(damage: CGFloat) {
-        if self.life != 0 {
+    func  shoot(damage: Double) {
+        if self.life != 0.0 {
             self.life -= damage
         }
 
-        if self.life <= 0 {
-            self.life = 0
+        if self.life <= 0.0 {
+            self.life = 0.0
 
             //TODO: enemy destroy
 

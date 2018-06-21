@@ -8,25 +8,6 @@
 
 import Foundation
 import SpriteKit
-private func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (left?, right?):
-    return left < right
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-private func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (left?, right?):
-    return left > right
-  default:
-    return rhs < lhs
-  }
-}
 
 class GameWorldNode: SKNode {
 
@@ -40,6 +21,7 @@ class GameWorldNode: SKNode {
     var enemies = [Enemy]()
     var addedEnemies = [Enemy]()
     var background = SKSpriteNode()
+    var elapsed = 0.0
     var lives: Int = 0 {
         willSet (newValue) {
             if lives != newValue {
@@ -47,7 +29,6 @@ class GameWorldNode: SKNode {
             }
         }
     }
-    var elapsed = 0.0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -455,11 +436,13 @@ class GameWorldNode: SKNode {
                 // Fire!
                 if tower.tryShoot(victim: tower.shootingAt!) {
 
-                    if tower.shootingAt?.life > 0 {
-                        // TODO: spare blood particles
-                    } else {
-                        enemyKilled(enemy: tower.shootingAt!)
-                        tower.shootingAt = nil
+                    if let victim = tower.shootingAt {
+                        if victim.life > 0.0 {
+                            // TODO: spare blood particles
+                        } else {
+                            enemyKilled(enemy: tower.shootingAt!)
+                            tower.shootingAt = nil
+                        }
                     }
                 }
             }
