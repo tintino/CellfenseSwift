@@ -66,6 +66,7 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
         addChild(self.rushButton)
     }
 
+    // MARK: public methods
     func hideHud() {
         rushButton.alpha = 0.5
         rushButton.isUserInteractionEnabled = true

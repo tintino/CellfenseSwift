@@ -15,13 +15,14 @@ enum TowerType: String {
 
 class Tower: SKSpriteNode {
 
-    var towerFrames = [SKTexture]()
-    var fireSoundFileName = ""
-    var range: CGFloat = 0.0
     var shootingAt: Enemy?
-    var shootTimer: Int = 0
-    var turboTimer: Int = 0
-    var defaultRate: CGFloat = 0.0
+    var range: Double = 0.0
+
+    private var towerFrames = [SKTexture]()
+    private var fireSoundFileName = ""
+    private var shootTimer: Int = 0
+    private var turboTimer: Int = 0
+    private var defaultRate: Double = 0.0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,32 +36,30 @@ class Tower: SKSpriteNode {
         let numberOfTowerFrames = towerAnimatedAtlas.textureNames.count
         for frameIndex in 0..<numberOfTowerFrames {
             let towerTextureName = "\(type)_frame\(frameIndex)"
-            self.towerFrames.append(towerAnimatedAtlas.textureNamed(towerTextureName))
+            towerFrames.append(towerAnimatedAtlas.textureNamed(towerTextureName))
         }
 
         //Initialize Sprite with First Frame
-        super.init(texture: self.towerFrames[0], color: UIColor.black, size: self.towerFrames[0].size())
+        super.init(texture: towerFrames[0], color: UIColor.black, size: towerFrames[0].size())
 
         //Shared init values
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         //Custom init values for each tower type
         switch type {
-
         case TowerType.TURRET:
-            self.range = Constants.Tower.range
-            self.fireSoundFileName = "chain_gun.wav"
-            self.defaultRate = Constants.Tower.defaultRate
+            range = Constants.Tower.range
+            fireSoundFileName = "chain_gun.wav"
+            defaultRate = Constants.Tower.defaultRate
         }
 
         //Shoot Radio. This will not affect the SKSpriteNode Size
-
-        let radioShootArea = SKShapeNode(circleOfRadius: self.frame.size.width * self.range )
+        let radioShootArea = SKShapeNode(circleOfRadius: frame.size.width * CGFloat(range) )
         radioShootArea.position = CGPoint(x: frame.midX, y: frame.midY)
         radioShootArea.strokeColor = SKColor.green
         radioShootArea.lineWidth = 1
         radioShootArea.alpha = 0.2
-        self.addChild(radioShootArea)
+        addChild(radioShootArea)
 
         /*
         let blockArea = SKShapeNode(rect: self.frame)
@@ -72,34 +71,34 @@ class Tower: SKSpriteNode {
     }
 
     func fire() {
-        let animatedAction = SKAction.animate(with: self.towerFrames, timePerFrame: 0.1)
+        let animatedAction = SKAction.animate(with: towerFrames, timePerFrame: 0.1)
         let fireAction = SKAction.repeat(animatedAction, count: 1)
         //let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
         self.run(fireAction, withKey: "towerFire")
         //self.run(fireSoundAction)
     }
 
-    func rotate(angle: CGFloat) {
-        self.run(SKAction.rotate(toAngle: angle.degreesToRadians(), duration: Constants.Tower.rotateSpeed))
+    func rotate(angle: Double) {
+        self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Tower.rotateSpeed))
     }
 
-    func rate() -> CGFloat {
-        if self.turboTimer < Constants.Tower.turboTime {
-            return self.defaultRate/3
+    func rate() -> Double {
+        if turboTimer < Constants.Tower.turboTime {
+            return defaultRate/3
         } else {
-            return self.defaultRate
+            return defaultRate
         }
     }
 
     func tryShoot(victim: Enemy) -> Bool {
 
         //Shoot only if im not shooting
-        if self.shootTimer  >= Int(self.defaultRate * 1000) {
-            self.shootTimer = 0
+        if shootTimer  >= Int(defaultRate * 1000) {
+            shootTimer = 0
 
             victim.shoot(damage: damage(enemy: victim))
 
-            self.fire()
+            fire()
             return true
         } else {
             //Im shooting
@@ -112,8 +111,8 @@ class Tower: SKSpriteNode {
         return 13.0
     }
 
-    func tick(dt: Double) {
-        let intTime = Int(dt*1000)
+    func tick(dTime: Double) {
+        let intTime = Int(dTime*1000)
         self.turboTimer += intTime
         self.shootTimer += intTime
 
