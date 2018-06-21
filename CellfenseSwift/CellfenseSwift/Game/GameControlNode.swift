@@ -10,31 +10,24 @@ import Foundation
 import SpriteKit
 
 class GameControlNode: SKNode, UIAlertViewDelegate {
-    var gameSceneProtocol: GameSceneProtocol?
-    var gameWorld: GameWorldNode!
+    var onGameComplete: ((_ score: Double) -> Void)?
+    var onGameLost: (() -> Void)?
+
     var upButton = SKSpriteNode()
     var tower = SKSpriteNode()
     var hud: SKNode!
     var rushButton = SKSpriteNode()
     var hudBackground = SKSpriteNode()
-    weak var holderViewController: UIViewController!
     var energy = 0
     var lives = 0
-    var state: States!
-
-    enum States {
-        case PLANNING, DEFENDING, ENDED, RESTARTING, PAUSED
-    }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(level: Level, viewController: UIViewController) {
+    init(level: Level) {
         super.init()
-
-        self.holderViewController = viewController
 
         //Create Hud container, will contain availables towers
         self.hud = SKNode()
@@ -71,8 +64,6 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
         self.rushButton.position = CGPoint(x: self.rushButton.frame.size.width, y: 0)
         self.addChild(self.rushButton)
 
-        self.state = .PLANNING
-
     }
 
     func hideHud() {
@@ -87,11 +78,7 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
     }
 
     func isHudArea(position: CGPoint) -> Bool {
-        if position.y < self.hudBackground.frame.height {
-            return true
-        } else {
-            return false
-        }
+        return position.y < self.hudBackground.frame.height ? true : false
     }
 
     func hideButtons() {
@@ -102,88 +89,20 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
     func gameCompleted(elapsedTime: Double) {
         //TODO: update game control data
 
-        if self.gameSceneProtocol != nil {
-            self.gameSceneProtocol!.pauseGame()
-        }
-
         //Calc Score
         let intElapsedTime = Int(elapsedTime)
-
         let rootSquare = Double(intElapsedTime*intElapsedTime)
         let lastScore = ((1.0/rootSquare) * 100000.0) + Double(energy * 30)
 
-        let alertController = UIAlertController(title: "LevelCompleted".localized,
-                                                message: "\("YourScoreIs".localized) \(lastScore)",
-            preferredStyle: UIAlertController.Style.alert)
+        //**delegate?.gameCompleted(score: lastScore)
+        onGameComplete?(lastScore)
 
-        let okAction = UIAlertAction(title: "Continue".localized, style: UIAlertAction.Style.default) { (result: UIAlertAction) -> Void in
-            self.continueGame()
-        }
-        let okCancel = UIAlertAction(title: "TryAgain".localized, style: UIAlertAction.Style.cancel) { (result: UIAlertAction) -> Void in
-            self.tryAgain()
-        }
-        alertController.addAction(okAction)
-        alertController.addAction(okCancel)
-
-        self.holderViewController.present(alertController, animated: true, completion: nil)
-        self.state = .ENDED
-
-    }
-
-    func restart() {
-        self.state = .PLANNING
-        //TODO: [self showButtons];
-        self.showHud()
-        self.gameWorld.restart()
-        self.gameSceneProtocol?.resumeGame()
-    }
-
-    func continueGame() {
-        switch self.state! {
-        case .ENDED:
-            // LEVEL PASSED
-            self.gameSceneProtocol?.dismissGameGame()
-
-        default:
-            print("")
-        }
-
-    }
-
-    func tryAgain() {
-        //ObjC code: - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-
-        switch self.state! {
-        case .ENDED:
-
-            // DEFEATED
-            self.restart()
-
-        default:
-            print("")
-        }
     }
 
     func updateLives(lives: Int) {
         self.lives = lives
-
         if self.lives == 0 {
-            self.gameSceneProtocol?.pauseGame()
-            let alertController = UIAlertController(title: "GameOver".localized,
-                                                    message: "Defeated".localized,
-                                                    preferredStyle: UIAlertController.Style.alert)
-
-            let okAction = UIAlertAction(title: "TryAgain".localized, style: UIAlertAction.Style.default) { (result: UIAlertAction) -> Void in
-                self.tryAgain()
-            }
-            let okCancel = UIAlertAction(title: "Back".localized, style: UIAlertAction.Style.cancel) { (result: UIAlertAction) -> Void in
-                self.continueGame()
-            }
-            alertController.addAction(okAction)
-            alertController.addAction(okCancel)
-
-            self.holderViewController.present(alertController, animated: true, completion: nil)
-            self.state = .ENDED
+            onGameLost?()
         }
     }
 }

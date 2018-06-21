@@ -18,22 +18,22 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Create size of the game on the screen
-        let sceneSize = self.gameView.frame.size
+        let sceneSize = gameView.frame.size
         //let sceneSize = CGSize(width: 320  , height: 480)
 
         //Create game Scene
-        let gameScene = GameScene(size: sceneSize, level: self.levelToLoad, holderViewController: self)
+        let gameScene = GameScene(size: sceneSize, level: levelToLoad, holderViewController: self)
         gameScene.backgroundColor = UIColor.green
 
         // Configure the view.
-        if let skView = self.gameView as? SKView {
+        if let skView = gameView as? SKView {
             skView.showsFPS = true
             skView.showsNodeCount = true
 
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
+            // Sprite Kit applies additional optimizations to improve rendering performance.
             skView.ignoresSiblingOrder = true
 
-            /* Set the scale mode to scale to fit the window */
+            //Set the scale mode to scale to fit the window.
             gameScene.scaleMode = .aspectFit
 
             skView.presentScene(gameScene)

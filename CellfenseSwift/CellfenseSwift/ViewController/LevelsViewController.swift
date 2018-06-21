@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-class  LevelsViewController: UIViewController,
-                             UICollectionViewDataSource,
-                             UICollectionViewDelegate,
-                             XMLParserDelegate {
+class  LevelsViewController: UIViewController {
 
     @IBOutlet weak var levelsCollectionView: UICollectionView!
 
@@ -26,26 +23,17 @@ class  LevelsViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var parser: XMLParser?
-        let path = Bundle.main.path(forResource: "levels", ofType: "xml")
-        if path != nil {
-            parser = XMLParser(contentsOf: NSURL(fileURLWithPath: path!) as URL)
+        if let path = Bundle.main.path(forResource: "levels", ofType: "xml"),
+           let parser = XMLParser(contentsOf: NSURL(fileURLWithPath: path) as URL) {
+                parser.delegate = self
+                parser.parse()
         } else {
-            NSLog("Failed to find MyFile.xml")
+            print("Failed to find MyFile.xml")
         }
-
-        if parser != nil {
-            // Do stuff with the parser here.
-            parser?.delegate = self
-            parser?.parse()
-
-        }
-        self.levelsCollectionView.delegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGameViewController"{
-            //goGame
             if let toGameViewController = segue.destination as? GameViewController {
                 if let selectedCell = sender as? LevelCollectionCell {
                     toGameViewController.levelToLoad = selectedCell.level
@@ -53,65 +41,54 @@ class  LevelsViewController: UIViewController,
             }
         }
     }
+}
 
-    // MARK: - XMLParserDelegate
+extension LevelsViewController: XMLParserDelegate {
 
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
 
         if elementName == "string-array"{
-            self.currentLevelName = attributeDict["name"]!
-            self.count = 1
+            currentLevelName = attributeDict["name"]!
+            count = 1
         }
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        //NSLog("foundCharacters %@", string)
+        let test = String(string.filter { !" \n\t\r".contains($0) })
 
-        let test = String(string.characters.filter { !" \n\t\r".characters.contains($0) })
+        guard test != "" else { return }
 
-        if test == ""{
-            return
-        }
-        if self.count == 1 {
-
-            //if string == "spider" {
-            self.currentEnemies.append(Enemy(type: EnemyType.SPIDER)!)
-            //}
-
-            self.count = 2
+        if count == 1 {
+            currentEnemies.append(Enemy(type: EnemyType.SPIDER)!)
+            count = 2
         } else if count == 2 {
-
-            let currentEnemy = self.currentEnemies.last!
+            let currentEnemy = currentEnemies.last!
             currentEnemy.col = Int(string)!
-            self.count = 3
-
+            count = 3
         } else if count == 3 {
-            let currentEnemy = self.currentEnemies.last!
+            let currentEnemy = currentEnemies.last!
             currentEnemy.row = Int(string)!
-            self.count = 4
+            count = 4
         }
-
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        //NSLog("didEndElement %@", elementName)
 
-        if elementName == "string-array"{
-
+        if elementName == "string-array" {
             let newLevel = Level()
             newLevel.enemies = currentEnemies
             newLevel.name = self.currentLevelName
-
             self.levels.append(newLevel)
             self.currentEnemies = [Enemy]()
             self.count = 0
-        } else if (elementName == "item" && self.count == 4) {
+        } else if elementName == "item" && self.count == 4 {
             self.count = 1
         }
-
     }
+}
 
-    // MARK: - XMLParserDelegateUICollectionViewDataSource
+extension LevelsViewController: UICollectionViewDataSource {
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -122,16 +99,10 @@ class  LevelsViewController: UIViewController,
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                         for: indexPath)
+                                                      for: indexPath)
         if let levelCell = cell as? LevelCollectionCell {
             levelCell.configureCell(level: self.levels[indexPath.row])
         }
         return cell
-
-    }
-
-    // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
     }
 }
