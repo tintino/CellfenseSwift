@@ -573,5 +573,9 @@ class GameWorldNode: SKNode {
                 addChild(copyEnemy)
             }
         }
+
+        for tower in towers {
+            tower.rotate(angle: 0)
+        }
     }
 }
