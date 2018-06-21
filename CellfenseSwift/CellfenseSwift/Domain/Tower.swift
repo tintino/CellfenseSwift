@@ -51,7 +51,6 @@ class Tower: SKSpriteNode {
             self.range = Constants.Tower.range
             self.fireSoundFileName = "chain_gun.wav"
             self.defaultRate = Constants.Tower.defaultRate
-
         }
 
         //Shoot Radio. This will not affect the SKSpriteNode Size

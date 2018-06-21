@@ -64,16 +64,17 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
         rushButton.anchorPoint = CGPoint(x: 0, y: 0)
         rushButton.position = CGPoint(x: rushButton.frame.size.width, y: 0)
         addChild(self.rushButton)
-
     }
 
     func hideHud() {
         rushButton.alpha = 0.5
+        rushButton.isUserInteractionEnabled = true
         hud.isHidden = true
     }
 
     func showHud() {
         rushButton.alpha = 1
+        rushButton.isUserInteractionEnabled = false
         hud.isHidden = false
         isHidden = false
     }

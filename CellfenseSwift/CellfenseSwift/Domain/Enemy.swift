@@ -28,7 +28,7 @@ class Enemy: SKSpriteNode {
     public var col = 0
     public var row = 0
 
-    let myLabel = SKLabelNode()
+    let labelDebugInfo = SKLabelNode()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -56,16 +56,16 @@ class Enemy: SKSpriteNode {
 
         //Debug Information
 
-        myLabel.fontSize = 12
-        myLabel.position = CGPoint(x: 0, y: self.frame.minY)
-        myLabel.fontColor = UIColor.white
-        self.addChild(myLabel)
+        //labelDebugInfo.fontSize = 12
+        //labelDebugInfo.position = CGPoint(x: 0, y: self.frame.minY)
+        //labelDebugInfo.fontColor = UIColor.white
+        //self.addChild(labelDebugInfo)
 
     }
 
     override var position: CGPoint {
         willSet {
-            myLabel.text = "Y: \(newValue.y)"
+            labelDebugInfo.text = "Y: \(newValue.y)"
         }
     }
 

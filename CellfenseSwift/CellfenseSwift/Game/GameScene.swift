@@ -201,12 +201,10 @@ class GameScene: SKScene {
         gameWorld = GameWorldNode(level: levelLoaded!)
 
         gameWorld.onGameComplete = { time in
-            print("CF: gameWorld.onGameComplete")
             self.gameControl.gameCompleted(elapsedTime: time)
         }
 
         gameWorld.onUpdateLives = { lives in
-            print("CF: gameWorld.onUpdateLives")
             self.gameControl.updateLives(lives: lives)
         }
 
