@@ -10,16 +10,17 @@ import Foundation
 import SpriteKit
 
 class GameControlNode: SKNode, UIAlertViewDelegate {
+    // Delegate methods
     var onGameComplete: ((_ score: Double) -> Void)?
     var onGameLost: (() -> Void)?
 
-    var upButton = SKSpriteNode()
-    var tower = SKSpriteNode()
-    var hud: SKNode!
-    var rushButton = SKSpriteNode()
-    var hudBackground = SKSpriteNode()
-    var energy = 0
-    var lives = 0
+    private var hudBackground = SKSpriteNode()
+    private var rushButton = SKSpriteNode()
+    private var upButton = SKSpriteNode()
+    private var tower = SKSpriteNode()
+    private var hud: SKNode!
+    private var energy = 0
+    private var lives = 0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

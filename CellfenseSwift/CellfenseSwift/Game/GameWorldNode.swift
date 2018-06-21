@@ -559,7 +559,7 @@ class GameWorldNode: SKNode {
 
         // Restart initial values
         lives = 1
-        elapsed = 0        
+        elapsed = 0
         levelDone = false
 
         prepareLevel()

@@ -55,7 +55,7 @@ class GameScene: SKScene {
         gameControl.position = CGPoint(x: -frame.midX, y: -frame.midY)
 
         setupWorldNode()
-
+    
         setupControlNode()
 
         // Add Camera Scene
@@ -197,7 +197,7 @@ class GameScene: SKScene {
     override func didFinishUpdate() {
     }
 
-    func setupWorldNode() {
+    private func setupWorldNode() {
         gameWorld = GameWorldNode(level: levelLoaded!)
 
         gameWorld.onGameComplete = { time in
@@ -213,7 +213,7 @@ class GameScene: SKScene {
         addChild(gameWorld)
     }
 
-    func setupControlNode() {
+    private func setupControlNode() {
 
         gameControl.onGameComplete = { score in
             self.pauseGame()
@@ -250,7 +250,7 @@ class GameScene: SKScene {
         }
     }
 
-    func moveCamera() {
+    private func moveCamera() {
         // All these variables and logic, are just to handle if the user touches
         // very quickly the "switch button" before the action finished
         sceneCam.run(SKAction.moveTo(y: cameraOffSet, duration: 0.3))
@@ -263,7 +263,7 @@ class GameScene: SKScene {
         }
     }
 
-    func showAutoHideMessage(message: String) {
+    private func showAutoHideMessage(message: String) {
 
         showMessage(message: message)
         Timer.scheduledTimer(timeInterval: 1,
@@ -273,7 +273,7 @@ class GameScene: SKScene {
                              repeats: false)
     }
 
-    func showMessage(message: String) {
+    private func showMessage(message: String) {
         self.labelMessage.text = message
         self.labelMessage.isHidden = false
     }
@@ -282,19 +282,19 @@ class GameScene: SKScene {
         labelMessage.isHidden = true
     }
 
-    func pauseGame() {
+    private func pauseGame() {
         scene?.isPaused = true
     }
 
-    func resumeGame() {
+    private func resumeGame() {
         scene?.isPaused = false
     }
 
-    func dissmissGame() {
+    private func dissmissGame() {
         holderViewController.dismiss(animated: true, completion: nil)
     }
 
-    func gameRestart() {
+    private func gameRestart() {
         gameControl.showHud()
         gameWorld.restart()
         resumeGame()
