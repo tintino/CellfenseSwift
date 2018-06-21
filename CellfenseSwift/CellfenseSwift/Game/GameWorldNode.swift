@@ -96,7 +96,8 @@ class GameWorldNode: SKNode {
         for tower in towers {
             var rectArea = CGRect()
             rectArea.size = tower.size
-            rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2, y: tower.position.y - rectArea.size.height/2)
+            rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2,
+                                      y: tower.position.y - rectArea.size.height/2)
             if rectArea.contains(position) {
                 towers.remove(at: arrayIndex)
             }
@@ -108,7 +109,8 @@ class GameWorldNode: SKNode {
         for tower in towers {
             var rectArea = CGRect()
             rectArea.size = tower.size
-            rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2, y: tower.position.y - rectArea.size.height/2)
+            rectArea.origin = CGPoint(x: tower.position.x - rectArea.size.width/2,
+                                      y: tower.position.y - rectArea.size.height/2)
             if rectArea.contains(position) {
                 return tower
             }
@@ -206,7 +208,9 @@ class GameWorldNode: SKNode {
         for enemy in enemies {
 
             // Find path
-            enemy.path = (pathFinder?.findPathRow(Int32(enemy.row) - 1, col: Int32(enemy.col) - 1, toRow: 23, toCol: 0))!
+            enemy.path = (pathFinder?.findPathRow(Int32(enemy.row) - 1,
+                                                  col: Int32(enemy.col) - 1,
+                                                  toRow: 23, toCol: 0))!
 
             // For debug draw enemy path
             /*
@@ -415,7 +419,7 @@ class GameWorldNode: SKNode {
 
         for tower in towers {
 
-            // Before shoot or keep shooting we check if it is already dead (maybe kill by another tower) or out of range
+            // Before shoot or keep shooting check if it is already dead (maybe kill by another tower) or out of range
             if (tower.shootingAt == nil ||
                 tower.shootingAt?.life == 0 ||
                 !isInRange(tower: tower, enemy: tower.shootingAt!)) {
@@ -427,16 +431,12 @@ class GameWorldNode: SKNode {
                 var nearestEnemy: Enemy? = nil
                 var nearestDist = CGFloat.greatestFiniteMagnitude
                 for enemy in enemies {
-
                     // the closest one
                     if isInRange(tower: tower, enemy: enemy) {
-
                         if nearestEnemy == nil {
-
                             nearestEnemy = enemy
                             nearestDist = distance(tower: tower, enemy: enemy)
                         } else {
-
                             let distance = self.distance(tower: tower, enemy: enemy)
                             if distance <= nearestDist {
                                 nearestDist = distance
@@ -502,26 +502,26 @@ class GameWorldNode: SKNode {
 
     private func distance(tower: Tower, enemy: Enemy) -> CGFloat {
         // Calc Deltas
-        let dx = abs(tower.position.x - enemy.position.x)
-        let dy = abs(tower.position.y - enemy.position.y)
+        let deltaX = abs(tower.position.x - enemy.position.x)
+        let deltaY = abs(tower.position.y - enemy.position.y)
 
         // If it is closer, ready and steady to shoot
-        if dy > cellSize().height * Constants.Tower.getReadyDistance {
+        if deltaY > cellSize().height * Constants.Tower.getReadyDistance {
             // TODO: this is use to tutorial, by this version will be used to target enemy and wait for shoot range
         }
 
         let ndx, ndy, proportion: CGFloat
 
-        if dx < dy {
-            proportion = dx/dy
+        if deltaX < deltaY {
+            proportion = deltaX/deltaY
             ndy = cellSize().height/2
             ndx = ndy * proportion
         } else {
-            proportion = dy/dx
+            proportion = deltaY/deltaX
             ndx = cellSize().width/2
             ndy = ndx * proportion
         }
-        return sqrt(dx*dx + dy*dy) - sqrt(ndx*ndx + ndy*ndy)
+        return sqrt(deltaX*deltaX + deltaY*deltaY) - sqrt(ndx*ndx + ndy*ndy)
     }
 
     private func gameCompleted() {
