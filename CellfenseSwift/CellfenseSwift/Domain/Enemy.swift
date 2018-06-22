@@ -59,8 +59,8 @@ class Enemy: SKSpriteNode {
         energyBar.path = UIBezierPath(roundedRect: CGRect(x: 0,
                                                           y: 0,
                                                           width: size.width,
-                                                          height: 3), cornerRadius: 0).cgPath
-        energyBar.position = CGPoint(x: -size.width/2, y: (size.height/2) + 10)
+                                                          height: Constants.Enemy.energyBarHeight), cornerRadius: 0).cgPath
+        energyBar.position = CGPoint(x: -size.width/2, y: (size.height/2) + Constants.Enemy.energyBarPadding)
         energyBar.fillColor = Constants.Color.energyBarGreen
         energyBar.lineWidth = 0
         addChild(energyBar)
@@ -83,6 +83,9 @@ class Enemy: SKSpriteNode {
     private func updateEnergyBar() {
         let newSize = life*100 / Constants.Enemy.startLife
         energyBar.xScale = CGFloat(newSize/100)
+        if life < Constants.Enemy.criticPercentageLife {
+            energyBar.fillColor = Constants.Color.energyBarYellow
+        }
     }
     // MARK: public methods
 
