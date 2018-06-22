@@ -202,15 +202,15 @@ class GameWorldNode: SKNode {
     private func planEnemiesPath() {
 
         // Create Grid with walls where the tower are
-        let pathFinder = PathFinder(rows: rows(), columns: cols(), walls: towerNodesForPathFinding())
+        guard let pathFinder = PathFinder(rows: rows(), columns: cols(), walls: towerNodesForPathFinding()) else {
+            return
+        }
 
         // Calc path from grid block from each enemy
         for enemy in enemies {
 
             // Find path
-            enemy.path = (pathFinder?.findPathRow(Int32(enemy.row) - 1,
-                                                  col: Int32(enemy.col) - 1,
-                                                  toRow: 23, toCol: 0))!
+            enemy.path = getShorterExitFrom(index: 0, row: enemy.row - 1, col: enemy.col - 1, finder: pathFinder)
 
             // For debug draw enemy path
             /*
@@ -261,6 +261,20 @@ class GameWorldNode: SKNode {
             // Start Animation
             enemy.walk()
         }
+    }
+
+    private func getShorterExitFrom(index: Double, row: Int, col: Int, finder: PathFinder) -> [Any] {
+        var paths: [[Any]] = []
+
+        // Calc path for every exit point posible
+        for index in 0..<cols() {
+            let path = (finder.findPathRow(Int32(row),
+                                     col: Int32(col),
+                                     toRow: self.rows() - 1, toCol: index))!
+            paths.append(path)
+        }
+        let sortedArray = paths.sorted { $0.count < $1.count }
+        return sortedArray.first != nil ? sortedArray.first! : []
     }
 
     private func gridToWorld(_ position: CGPoint) -> CGPoint {
