@@ -11,29 +11,27 @@ import Foundation
 import SpriteKit
 
 class GameScene: SKScene {
+    // Parent controller needed to show ui alerts.
+    weak var holderViewController: UIViewController!
 
-    let levelLoaded: Level?
-    var lastUpdateTime = TimeInterval()
-
-    // Control: Has the play button, switch screen button, hud to add new towers
-    var gameControl: GameControlNode!
-
-    // World: Has the enemies, installed towers
-    var gameWorld: GameWorldNode!
-
-    var sceneCam: SKCameraNode!
+    private var sceneCam: SKCameraNode!
+    private var touchedTower: SKSpriteNode?
 
     // Vars to hande action on switch area button
-    var cameraOffSet: CGFloat = 0
-    var enemyFieldOffset: CGFloat = 0
-    var defenseFieldOffset: CGFloat = 0
+    private var cameraOffSet: CGFloat = 0
+    private var enemyFieldOffset: CGFloat = 0
+    private var defenseFieldOffset: CGFloat = 0
 
-    var touchedTower: SKSpriteNode?
-    
+    // Control: Has the play button, switch screen button, hud to add new towers
+    private var gameControl: GameControlNode!
+    private let levelLoaded: Level?
+    private var lastUpdateTime = TimeInterval()
+
+    // World: Has the enemies, installed towers
+    private var gameWorld: GameWorldNode!
+
     // To show messages to the user as position errors, sell?, etc
-    var labelMessage = SKLabelNode()
-
-    weak var holderViewController: UIViewController!
+    private var labelMessage = SKLabelNode()
 
     required init(size: CGSize, level: Level, holderViewController: UIViewController) {
         self.levelLoaded = level
@@ -55,7 +53,7 @@ class GameScene: SKScene {
         gameControl.position = CGPoint(x: -frame.midX, y: -frame.midY)
 
         setupWorldNode()
-    
+
         setupControlNode()
 
         // Add Camera Scene
@@ -125,7 +123,7 @@ class GameScene: SKScene {
         for touch in touches {
 
             let location = (touch as UITouch).location(in: self)
-            // let nodeTouched = self.atPoint(location)
+            // let nodeTouched = atPoint(location)
             _ = atPoint(location)
 
             if let touchedTower = touchedTower {

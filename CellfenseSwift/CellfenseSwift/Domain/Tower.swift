@@ -70,6 +70,8 @@ class Tower: SKSpriteNode {
         */
     }
 
+    // MARK: public methods
+    
     func fire() {
         let animatedAction = SKAction.animate(with: towerFrames, timePerFrame: 0.1)
         let fireAction = SKAction.repeat(animatedAction, count: 1)
@@ -118,5 +120,4 @@ class Tower: SKSpriteNode {
 
         //TODO:random crazy tower
     }
-
 }

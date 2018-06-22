@@ -384,7 +384,7 @@ class GameWorldNode: SKNode {
                 enemy.rotate(angle: 90)
             }
         }
-            // Walking up or down
+        // Walking up or down
         else {
 
             enemy.dirX = Constants.Direction.STOP
@@ -507,7 +507,7 @@ class GameWorldNode: SKNode {
 
         // If it is closer, ready and steady to shoot
         if deltaY > cellSize().height * Constants.Tower.getReadyDistance {
-            // TODO: this is use to tutorial, by this version will be used to target enemy and wait for shoot range
+            // TODO: this is use totutorial, in this version will be used to target enemy and wait for shoot range
         }
 
         let ndx, ndy, proportion: CGFloat

@@ -26,10 +26,10 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     init(level: Level) {
         super.init()
-        
+
         // Create Hud container, will contain availables towers
         hud = SKNode()
         hud.position = CGPoint(x: 0, y: 0)

@@ -35,6 +35,9 @@ struct Constants {
 
     struct Enemy {
         static let rotateSpeed: Double = 0.2
+        static let energyResizeDuration: Double = 0.3
+        static let startLife: Double = 100
+
     }
 
     struct Direction {
@@ -43,5 +46,10 @@ struct Constants {
         static let DOWN: CGFloat = -1
         static let UPWARD: CGFloat = 1
         static let STOP: CGFloat = 0
+    }
+
+    struct Color {
+        static let energyBarGreen =  UIColor(red: 43/255, green: 180/255, blue: 9/255, alpha: 1.0)
+    
     }
 }

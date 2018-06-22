@@ -20,7 +20,7 @@ class Enemy: SKSpriteNode {
     var type: EnemyType = EnemyType.SPIDER
     var dirX: CGFloat = 0
     var dirY: CGFloat = 0
-    var life: Double = 0
+    var life: Double = Constants.Enemy.startLife
     var path = [Any]()
     var pathIndex = 0
     var col = 0
@@ -28,6 +28,8 @@ class Enemy: SKSpriteNode {
 
     private var enemyFrames = [SKTexture]()
     private let labelDebugInfo = SKLabelNode()
+    private var energyBar: SKShapeNode!
+    private var lifeWidth = 0.0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,9 +38,9 @@ class Enemy: SKSpriteNode {
 
     init?(type: EnemyType) {
 
-        //TODO: This code is the same on Tower, try to optimize
+        // TODO: This code is the same on Tower, try to optimize
         self.type = type
-        //Create all Tower Textures
+        // Create all Tower Textures
         let enemyAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfEnemyFrames = enemyAnimatedAtlas.textureNames.count
         for frameIndex in 0..<numberOfEnemyFrames {
@@ -46,14 +48,24 @@ class Enemy: SKSpriteNode {
             enemyFrames.append(enemyAnimatedAtlas.textureNamed(enemyTextureName))
         }
 
-        //Initialize Sprite with First Frame
+        // Initialize Sprite with First Frame
         super.init(texture: enemyFrames[0], color: UIColor.black, size: enemyFrames[0].size())
 
         name = Constants.NodeName.enemy
-        life = 100
         speed = 1.4
 
-        //Debug Information
+        // Enery bar
+        energyBar = SKShapeNode()
+        energyBar.path = UIBezierPath(roundedRect: CGRect(x: 0,
+                                                          y: 0,
+                                                          width: size.width,
+                                                          height: 3), cornerRadius: 0).cgPath
+        energyBar.position = CGPoint(x: -size.width/2, y: (size.height/2) + 10)
+        energyBar.fillColor = Constants.Color.energyBarGreen
+        energyBar.lineWidth = 0
+        addChild(energyBar)
+
+        // Debug Information
 
         //labelDebugInfo.fontSize = 12
         //labelDebugInfo.position = CGPoint(x: 0, y: frame.minY)
@@ -62,11 +74,17 @@ class Enemy: SKSpriteNode {
 
     }
 
-    override var position: CGPoint {
+    /*override var position: CGPoint {
         willSet {
             labelDebugInfo.text = "Y: \(newValue.y)"
         }
+    }*/
+
+    private func updateEnergyBar() {
+        let newSize = life*100 / Constants.Enemy.startLife
+        energyBar.xScale = CGFloat(newSize/100)
     }
+    // MARK: public methods
 
     func walk() {
         let animatedAction = SKAction.animate(with: enemyFrames, timePerFrame: 0.1)
@@ -85,13 +103,11 @@ class Enemy: SKSpriteNode {
 
         if life <= 0.0 {
             life = 0.0
-
-            //TODO: enemy destroy
-
+            // TODO: enemy destroy
             removeAllActions()
         }
-
-        //TODO: calc life width bar
+        
+        updateEnergyBar()
     }
 
     override func copy(with zone: NSZone? = nil) -> Any {
