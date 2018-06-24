@@ -7,36 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B02CD5A1F0417D60049E7DD /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B02CD591F0417D60049E7DD /* menu.png */; };
 		4B0C68BA1F0987E40042D9F5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C68B91F0987E40042D9F5 /* StringExtension.swift */; };
 		4B2150C01EFDCC6D00CF9FDC /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */; };
 		4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B2150C51EFDD51000CF9FDC /* levels.xml */; };
 		4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */; };
-		4B2293B21CF1097D009798B8 /* Spider.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B2293B11CF1097D009798B8 /* Spider.atlas */; };
 		4B33EF20206B242500B08BB7 /* CellfenseSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */; };
 		4B3CB3CA1CE560CA001DE1A2 /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */; };
-		4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */; };
-		4B3CB3CF1CE56149001DE1A2 /* rush_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B3CB3CD1CE56149001DE1A2 /* rush_button.png */; };
 		4B3DC2901EFCB08D0051744F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3DC28F1EFCB08D0051744F /* MenuViewController.swift */; };
+		4B4F662220E03D3800377D45 /* chip.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B4F662120E03D3800377D45 /* chip.atlas */; };
+		4B4F662520E0449100377D45 /* bomb.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B4F662420E0449100377D45 /* bomb.atlas */; };
+		4B4F662620E04DBD00377D45 /* tank.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B4F662320E043F600377D45 /* tank.atlas */; };
+		4B7ED07720DDB3D300FC036D /* spider.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B7ED07620DDB3D300FC036D /* spider.atlas */; };
+		4B7ED07920DDB3DF00FC036D /* turret.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B7ED07820DDB3DF00FC036D /* turret.atlas */; };
+		4B7ED07B20DDB3FB00FC036D /* caterpillar.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B7ED07A20DDB3FA00FC036D /* caterpillar.atlas */; };
 		4B9C2ADD1CDE70C50003B193 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9C2ADC1CDE70C50003B193 /* AppDelegate.swift */; };
 		4B9C2AE11CDE70C60003B193 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE01CDE70C60003B193 /* GameScene.swift */; };
 		4B9C2AE31CDE70C60003B193 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE21CDE70C60003B193 /* GameViewController.swift */; };
 		4B9C2AE61CDE70C60003B193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE41CDE70C60003B193 /* Main.storyboard */; };
 		4B9C2AE81CDE70C60003B193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE71CDE70C60003B193 /* Assets.xcassets */; };
 		4B9C2AEB1CDE70C60003B193 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE91CDE70C60003B193 /* LaunchScreen.storyboard */; };
-		4B9C2AF31CDE76BA0003B193 /* Turret.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AF21CDE76BA0003B193 /* Turret.atlas */; };
 		4B9C2AF61CDE77040003B193 /* chain_gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AF51CDE77040003B193 /* chain_gun.wav */; };
-		4B9C2AF91CDE77260003B193 /* sceneBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AF81CDE77260003B193 /* sceneBackground.png */; };
-		4B9C2AFB1CDE8F500003B193 /* Caterpillar.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AFA1CDE8F500003B193 /* Caterpillar.atlas */; };
-		4B9C2AFD1CDE9C2B0003B193 /* quitartsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AFC1CDE9C2B0003B193 /* quitartsLogo.png */; };
-		4B9C2AFF1CDEA4940003B193 /* up_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AFE1CDEA4940003B193 /* up_button.png */; };
 		4BA604AB1CE2A12A0017BC95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA604AA1CE2A12A0017BC95 /* Constants.swift */; };
 		4BC6AF141CDFD0B200901E43 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF131CDFD0B200901E43 /* Tower.swift */; };
 		4BC6AF161CE035DA00901E43 /* GameControlNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF151CE035DA00901E43 /* GameControlNode.swift */; };
 		4BC6AF181CE037EA00901E43 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF171CE037EA00901E43 /* Level.swift */; };
 		4BC6AF1A1CE0387F00901E43 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF191CE0387F00901E43 /* Enemy.swift */; };
 		4BC6AF1C1CE03B4900901E43 /* GameWorldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */; };
-		4BC6AF2C1CE18FAA00901E43 /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6AF2B1CE18FAA00901E43 /* hud.png */; };
 		4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */; };
 		4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BCCDCC71F09849900273C0D /* Localizable.strings */; };
 		4BEA47841EF77133005CAA69 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47831EF77133005CAA69 /* Pathfinder.swift */; };
@@ -57,21 +53,23 @@
 
 /* Begin PBXFileReference section */
 		4A9F3215EB927414FAC6B79A /* Pods_CellfenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CellfenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B02CD591F0417D60049E7DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		4B0C68B91F0987E40042D9F5 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extensions/StringExtension.swift; sourceTree = "<group>"; };
 		4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelsViewController.swift; path = ViewController/LevelsViewController.swift; sourceTree = "<group>"; };
 		4B2150C51EFDD51000CF9FDC /* levels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = levels.xml; path = Resources/Levels/levels.xml; sourceTree = "<group>"; };
 		4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelCollectionCell.swift; path = ViewController/Cells/LevelCollectionCell.swift; sourceTree = "<group>"; };
-		4B2293B11CF1097D009798B8 /* Spider.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Spider.atlas; sourceTree = "<group>"; };
 		4B33EF1D206B242500B08BB7 /* CellfenseSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CellfenseSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellfenseSwiftTests.swift; sourceTree = "<group>"; };
 		4B33EF21206B242600B08BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B3CB3C71CE560CA001DE1A2 /* CellfenseSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CellfenseSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B3CB3C81CE560CA001DE1A2 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = "Domain/objective-c/PathFinder.h"; sourceTree = "<group>"; };
 		4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFinder.m; path = "Domain/objective-c/PathFinder.m"; sourceTree = "<group>"; };
-		4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rush_button_off.png; sourceTree = "<group>"; };
-		4B3CB3CD1CE56149001DE1A2 /* rush_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rush_button.png; sourceTree = "<group>"; };
 		4B3DC28F1EFCB08D0051744F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = ViewController/MenuViewController.swift; sourceTree = "<group>"; };
+		4B4F662120E03D3800377D45 /* chip.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = chip.atlas; sourceTree = "<group>"; };
+		4B4F662320E043F600377D45 /* tank.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tank.atlas; sourceTree = "<group>"; };
+		4B4F662420E0449100377D45 /* bomb.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bomb.atlas; sourceTree = "<group>"; };
+		4B7ED07620DDB3D300FC036D /* spider.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spider.atlas; sourceTree = "<group>"; };
+		4B7ED07820DDB3DF00FC036D /* turret.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = turret.atlas; sourceTree = "<group>"; };
+		4B7ED07A20DDB3FA00FC036D /* caterpillar.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = caterpillar.atlas; sourceTree = "<group>"; };
 		4B9C2AD91CDE70C50003B193 /* CellfenseSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CellfenseSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9C2ADC1CDE70C50003B193 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B9C2AE01CDE70C60003B193 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = Game/GameScene.swift; sourceTree = "<group>"; };
@@ -80,19 +78,13 @@
 		4B9C2AE71CDE70C60003B193 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B9C2AEA1CDE70C60003B193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9C2AEC1CDE70C60003B193 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B9C2AF21CDE76BA0003B193 /* Turret.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Turret.atlas; sourceTree = "<group>"; };
 		4B9C2AF51CDE77040003B193 /* chain_gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chain_gun.wav; sourceTree = "<group>"; };
-		4B9C2AF81CDE77260003B193 /* sceneBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sceneBackground.png; sourceTree = "<group>"; };
-		4B9C2AFA1CDE8F500003B193 /* Caterpillar.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Caterpillar.atlas; sourceTree = "<group>"; };
-		4B9C2AFC1CDE9C2B0003B193 /* quitartsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quitartsLogo.png; sourceTree = "<group>"; };
-		4B9C2AFE1CDEA4940003B193 /* up_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_button.png; sourceTree = "<group>"; };
 		4BA604AA1CE2A12A0017BC95 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4BC6AF131CDFD0B200901E43 /* Tower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tower.swift; path = Domain/Tower.swift; sourceTree = "<group>"; };
 		4BC6AF151CE035DA00901E43 /* GameControlNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameControlNode.swift; path = Game/GameControlNode.swift; sourceTree = "<group>"; };
 		4BC6AF171CE037EA00901E43 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level.swift; path = Domain/Level.swift; sourceTree = "<group>"; };
 		4BC6AF191CE0387F00901E43 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = Domain/Enemy.swift; sourceTree = "<group>"; };
 		4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameWorldNode.swift; path = Game/GameWorldNode.swift; sourceTree = "<group>"; };
-		4BC6AF2B1CE18FAA00901E43 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatExtension.swift; path = Extensions/CGFloatExtension.swift; sourceTree = "<group>"; };
 		4BCCDCC61F09849900273C0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4BCCDCC81F09849D00273C0D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -234,16 +226,12 @@
 		4B9C2AF71CDE77260003B193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4B2293B11CF1097D009798B8 /* Spider.atlas */,
-				4B9C2AFA1CDE8F500003B193 /* Caterpillar.atlas */,
-				4B9C2AF21CDE76BA0003B193 /* Turret.atlas */,
-				4B9C2AF81CDE77260003B193 /* sceneBackground.png */,
-				4BC6AF2B1CE18FAA00901E43 /* hud.png */,
-				4B9C2AFC1CDE9C2B0003B193 /* quitartsLogo.png */,
-				4B9C2AFE1CDEA4940003B193 /* up_button.png */,
-				4B3CB3CC1CE56149001DE1A2 /* rush_button_off.png */,
-				4B3CB3CD1CE56149001DE1A2 /* rush_button.png */,
-				4B02CD591F0417D60049E7DD /* menu.png */,
+				4B4F662420E0449100377D45 /* bomb.atlas */,
+				4B4F662120E03D3800377D45 /* chip.atlas */,
+				4B7ED07A20DDB3FA00FC036D /* caterpillar.atlas */,
+				4B7ED07820DDB3DF00FC036D /* turret.atlas */,
+				4B4F662320E043F600377D45 /* tank.atlas */,
+				4B7ED07620DDB3D300FC036D /* spider.atlas */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -413,22 +401,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B2293B21CF1097D009798B8 /* Spider.atlas in Resources */,
 				4B9C2AEB1CDE70C60003B193 /* LaunchScreen.storyboard in Resources */,
-				4BC6AF2C1CE18FAA00901E43 /* hud.png in Resources */,
-				4B9C2AFF1CDEA4940003B193 /* up_button.png in Resources */,
-				4B3CB3CF1CE56149001DE1A2 /* rush_button.png in Resources */,
-				4B9C2AFD1CDE9C2B0003B193 /* quitartsLogo.png in Resources */,
-				4B9C2AF91CDE77260003B193 /* sceneBackground.png in Resources */,
+				4B4F662220E03D3800377D45 /* chip.atlas in Resources */,
+				4B4F662520E0449100377D45 /* bomb.atlas in Resources */,
 				4B9C2AE81CDE70C60003B193 /* Assets.xcassets in Resources */,
+				4B7ED07B20DDB3FB00FC036D /* caterpillar.atlas in Resources */,
 				4B9C2AF61CDE77040003B193 /* chain_gun.wav in Resources */,
 				4B9C2AE61CDE70C60003B193 /* Main.storyboard in Resources */,
-				4B3CB3CE1CE56149001DE1A2 /* rush_button_off.png in Resources */,
-				4B02CD5A1F0417D60049E7DD /* menu.png in Resources */,
-				4B9C2AFB1CDE8F500003B193 /* Caterpillar.atlas in Resources */,
 				4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */,
+				4B7ED07720DDB3D300FC036D /* spider.atlas in Resources */,
 				4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */,
-				4B9C2AF31CDE76BA0003B193 /* Turret.atlas in Resources */,
+				4B4F662620E04DBD00377D45 /* tank.atlas in Resources */,
+				4B7ED07920DDB3DF00FC036D /* turret.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = G2RJZT4Q4P;
 				INFOPLIST_FILE = CellfenseSwift/Info.plist;
@@ -746,8 +731,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tincho.cellfenseswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0500a023-86f8-4d8e-a962-6f18d36b6f2c";
-				PROVISIONING_PROFILE_SPECIFIER = "Cellfense Dev";
+				PROVISIONING_PROFILE = "509f80b5-b636-407f-b52d-ff2019430305";
+				PROVISIONING_PROFILE_SPECIFIER = CellfenseAdHocMid17;
 				SWIFT_OBJC_BRIDGING_HEADER = "CellfenseSwift/CellfenseSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -761,6 +746,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = G2RJZT4Q4P;
@@ -769,8 +755,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tincho.cellfenseswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f6395b7-d367-498b-b820-d0463fb9720f";
-				PROVISIONING_PROFILE_SPECIFIER = "CellfenseS Add Hoc";
+				PROVISIONING_PROFILE = "c8c0f424-eae7-4dc5-95f1-253dbaacdf8a";
+				PROVISIONING_PROFILE_SPECIFIER = "Cellfense Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "CellfenseSwift/CellfenseSwift-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -10,7 +10,9 @@ import Foundation
 import SpriteKit
 
 enum TowerType: String {
-    case TURRET = "Turret"
+    case TURRET = "turret"
+    case TANK = "tank"
+    case BOMB = "bomb"
 }
 
 class Tower: SKSpriteNode {
@@ -31,7 +33,7 @@ class Tower: SKSpriteNode {
 
     init?(type: TowerType) {
 
-        //Create all Tower Textures
+        // Create all Tower Textures
         let towerAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfTowerFrames = towerAnimatedAtlas.textureNames.count
         for frameIndex in 0..<numberOfTowerFrames {
@@ -39,16 +41,25 @@ class Tower: SKSpriteNode {
             towerFrames.append(towerAnimatedAtlas.textureNamed(towerTextureName))
         }
 
-        //Initialize Sprite with First Frame
+        // Initialize Sprite with First Frame
         super.init(texture: towerFrames[0], color: UIColor.black, size: towerFrames[0].size())
 
-        //Shared init values
+        // Shared init values
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
-        //Custom init values for each tower type
+        // Custom init values for each tower type
+        // TODO: change inital values
         switch type {
-        case TowerType.TURRET:
+        case .TURRET:
             range = Constants.Tower.range
+            fireSoundFileName = "chain_gun.wav"
+            defaultRate = Constants.Tower.defaultRate
+        case .TANK:
+            range = Constants.Tank.range
+            fireSoundFileName = "chain_gun.wav"
+            defaultRate = Constants.Tower.defaultRate
+        case .BOMB:
+            range = Constants.Tank.range
             fireSoundFileName = "chain_gun.wav"
             defaultRate = Constants.Tower.defaultRate
         }
@@ -94,7 +105,7 @@ class Tower: SKSpriteNode {
 
     func tryShoot(victim: Enemy) -> Bool {
 
-        //Shoot only if im not shooting
+        // Shoot only if im not shooting
         if shootTimer  >= Int(defaultRate * 1000) {
             shootTimer = 0
 
@@ -110,7 +121,7 @@ class Tower: SKSpriteNode {
 
     func damage(enemy: Enemy) -> Double {
         //TODO compare all towers and enemies
-        return 13.0
+        return 0.0
     }
 
     func tick(dTime: Double) {

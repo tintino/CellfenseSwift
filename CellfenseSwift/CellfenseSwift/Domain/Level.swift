@@ -15,5 +15,6 @@ class Level {
     var image = UIImage()
     var enemies = [Enemy]()
     var number: Int!
+    var towers = [TowerType]()
 
 }

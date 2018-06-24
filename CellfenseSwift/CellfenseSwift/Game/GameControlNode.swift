@@ -9,15 +9,15 @@
 import Foundation
 import SpriteKit
 
-class GameControlNode: SKNode, UIAlertViewDelegate {
+class GameControlNode: SKNode {
     // Delegate methods
     var onGameComplete: ((_ score: Double) -> Void)?
     var onGameLost: (() -> Void)?
 
-    private var hudBackground = SKSpriteNode()
+    private var hudBackground = SKShapeNode()
     private var rushButton = SKSpriteNode()
     private var upButton = SKSpriteNode()
-    private var tower = SKSpriteNode()
+    private var armory: [SKSpriteNode] = []
     private var hud: SKNode!
     private var energy = 0
     private var lives = 0
@@ -26,44 +26,51 @@ class GameControlNode: SKNode, UIAlertViewDelegate {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
-    
-    init(level: Level) {
+
+    init(level: Level, gameFrame: CGRect) {
         super.init()
 
-        // Create Hud container, will contain availables towers
+        // Create Hud Container
         hud = SKNode()
         hud.position = CGPoint(x: 0, y: 0)
         addChild(hud)
-
-        // Create background
-        hudBackground = SKSpriteNode(imageNamed: "hud")
-        hudBackground.name = Constants.NodeName.hudBackground
-        hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
-        hudBackground.position = CGPoint(x: 0, y: 0)
-        hudBackground.alpha = 0.3
-        hudBackground.zPosition = Constants.Zposition.hudbackground
-        hud.addChild(hudBackground)
-
-        // Create Tower Button
-        tower = SKSpriteNode(imageNamed: "turret_frame0")
-        tower.name = Constants.NodeName.hudTower
-        tower.anchorPoint = CGPoint(x: 1, y: -1)
-        tower.position = CGPoint(x: 320, y: 0)
-        hud.addChild(self.tower)
 
         // Create Up/Down Button
         upButton = SKSpriteNode(imageNamed: "up_button")
         upButton.name = Constants.NodeName.hudSwitch
         upButton.anchorPoint = CGPoint(x: 0, y: 0)
         upButton.position = CGPoint(x: 0, y: 0)
-        addChild(self.upButton)
+        addChild(upButton)
 
         // Create Rushs Button
         rushButton = SKSpriteNode(imageNamed: "rush_button")
         rushButton.name = Constants.NodeName.hudRush
         rushButton.anchorPoint = CGPoint(x: 0, y: 0)
-        rushButton.position = CGPoint(x: rushButton.frame.size.width, y: 0)
-        addChild(self.rushButton)
+        rushButton.position = CGPoint(x: upButton.frame.size.width, y: 0)
+        addChild(rushButton)
+
+        // Create background
+        let hudBackgroundSize = CGRect(x: 0, y: 0, width: gameFrame.width, height: upButton.frame.size.height)
+        hudBackground = SKShapeNode(rect: hudBackgroundSize)
+        hudBackground.name = Constants.NodeName.hudBackground
+        hudBackground.fillColor = .black
+        hudBackground.lineWidth = 0
+        //hudBackground.anchorPoint = CGPoint(x: 0, y: 0)
+        hudBackground.position = CGPoint(x: 0, y: 0)
+        hudBackground.alpha = 0.3
+        hudBackground.zPosition = Constants.Zposition.hudbackground
+        hud.addChild(hudBackground)
+
+        // Create Tower Button
+        for (index, type) in level.towers.enumerated() {
+            let spriteName = type == .TANK ? "gun_turret_tank" : "\(type.rawValue)_frame0"
+            let tower = SKSpriteNode(imageNamed: spriteName)
+            tower.name = Constants.NodeName.hudTower
+            tower.anchorPoint = CGPoint(x: 1, y: -1)
+            tower.position = CGPoint(x: (Int(hudBackgroundSize.width) - (index * Int(rushButton.frame.size.width))),
+                                         y: 0)
+            hud.addChild(tower)
+        }
     }
 
     // MARK: public methods

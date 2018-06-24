@@ -278,7 +278,6 @@ class GameWorldNode: SKNode {
     }
 
     private func gridToWorld(_ position: CGPoint) -> CGPoint {
-
         return CGPoint(x: cellSize().width/2 + position.x * cellSize().width,
                        y: position.y * cellSize().height + cellSize().height/2)
     }

@@ -19,6 +19,8 @@ class  LevelsViewController: UIViewController {
     var count = 0
     var currentEnemies = [Enemy]()
     var currentLevelName = ""
+    var currentResource = ""
+    var currentTowers: [TowerType] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +47,29 @@ class  LevelsViewController: UIViewController {
 
 extension LevelsViewController: XMLParserDelegate {
 
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String,
+                namespaceURI: String?, qualifiedName qName: String?,
+                attributes attributeDict: [String: String] = [:]) {
 
-        if elementName == "string-array"{
-            currentLevelName = attributeDict["name"]!
+        if elementName == "string-array" {
+            if let levelName = attributeDict["name"],
+                let levelResource = attributeDict["resource"],
+                let levelTowers = attributeDict["towers"] {
+                currentLevelName = levelName
+                currentResource = levelResource
+                for tower in levelTowers.split(separator: ",") {
+                    switch tower {
+                    case "tc":
+                        currentTowers.append(.TURRET)
+                    case "tt":
+                        currentTowers.append(.TANK)
+                    case "tb":
+                        currentTowers.append(.BOMB)
+                    default:
+                        break
+                    }
+                }
+            }
             count = 1
         }
     }
@@ -58,9 +79,21 @@ extension LevelsViewController: XMLParserDelegate {
 
         guard test != "" else { return }
 
+        if currentLevelName == "Chip" {
+            print("Enemy type: \(string)")
+        }
         if count == 1 {
-            currentEnemies.append(Enemy(type: EnemyType.SPIDER)!)
             count = 2
+            if let type = EnemyType(rawValue: string) {
+                switch type {
+                case .SPIDER:
+                    self.currentEnemies.append(Enemy(type: EnemyType.SPIDER)!)
+                case .CATERPILLAR:
+                    self.currentEnemies.append(Enemy(type: EnemyType.CATERPILLAR)!)
+                case .CHIP:
+                    self.currentEnemies.append(Enemy(type: EnemyType.CHIP)!)
+                }
+            }
         } else if count == 2 {
             let currentEnemy = currentEnemies.last!
             currentEnemy.col = Int(string)!
@@ -72,12 +105,14 @@ extension LevelsViewController: XMLParserDelegate {
         }
     }
 
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String,
+                namespaceURI: String?, qualifiedName qName: String?) {
 
         if elementName == "string-array" {
             let newLevel = Level()
             newLevel.enemies = currentEnemies
             newLevel.name = currentLevelName
+            newLevel.towers = currentTowers
             levels.append(newLevel)
             currentEnemies = [Enemy]()
             count = 0
@@ -97,7 +132,8 @@ extension LevelsViewController: UICollectionViewDataSource {
         return levels.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath)
         if let levelCell = cell as? LevelCollectionCell {

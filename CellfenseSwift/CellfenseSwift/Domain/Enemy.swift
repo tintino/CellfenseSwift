@@ -10,8 +10,9 @@ import Foundation
 import SpriteKit
 
 enum EnemyType: String {
-    case CATERPILLAR = "Caterpillar"
-    case SPIDER = "Spider"
+    case CATERPILLAR = "caterpillar"
+    case SPIDER = "spider"
+    case CHIP = "chip"
 }
 
 class Enemy: SKSpriteNode {
@@ -59,7 +60,8 @@ class Enemy: SKSpriteNode {
         energyBar.path = UIBezierPath(roundedRect: CGRect(x: 0,
                                                           y: 0,
                                                           width: size.width,
-                                                          height: Constants.Enemy.energyBarHeight), cornerRadius: 0).cgPath
+                                                          height: Constants.Enemy.energyBarHeight),
+                                      cornerRadius: 0).cgPath
         energyBar.position = CGPoint(x: -size.width/2, y: (size.height/2) + Constants.Enemy.energyBarPadding)
         energyBar.fillColor = Constants.Color.energyBarGreen
         energyBar.lineWidth = 0
@@ -109,7 +111,7 @@ class Enemy: SKSpriteNode {
             // TODO: enemy destroy
             removeAllActions()
         }
-        
+
         updateEnergyBar()
     }
 

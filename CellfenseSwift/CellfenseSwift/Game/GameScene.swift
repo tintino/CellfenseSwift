@@ -46,7 +46,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
 
         // Create the scene’s contents.
-        gameControl = GameControlNode(level: levelLoaded!)
+        gameControl = GameControlNode(level: levelLoaded!, gameFrame: frame)
 
         // GameControlNode is ccamera child, the center of the camera is (0,0),
         // width and height are the same as gamescene view
