@@ -15,7 +15,7 @@ enum EnemyType: String {
     case CHIP = "chip"
 }
 
-class Enemy: SKSpriteNode {
+class Enemy: SKNode {
     //TODO: directioPathFindNodens to integers
 
     var type: EnemyType = EnemyType.SPIDER
@@ -31,6 +31,7 @@ class Enemy: SKSpriteNode {
     private let labelDebugInfo = SKLabelNode()
     private var energyBar: SKShapeNode!
     private var lifeWidth = 0.0
+    private var critrure: SKSpriteNode!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,7 +39,7 @@ class Enemy: SKSpriteNode {
     }
 
     init?(type: EnemyType) {
-
+        super.init()
         // TODO: This code is the same on Tower, try to optimize
         self.type = type
         // Create all Tower Textures
@@ -50,8 +51,8 @@ class Enemy: SKSpriteNode {
         }
 
         // Initialize Sprite with First Frame
-        super.init(texture: enemyFrames[0], color: UIColor.black, size: enemyFrames[0].size())
-
+        critrure = SKSpriteNode(texture: enemyFrames[0], color: UIColor.black, size: enemyFrames[0].size())
+        addChild(critrure)
         name = Constants.NodeName.enemy
         speed = 1.4
 
@@ -59,14 +60,16 @@ class Enemy: SKSpriteNode {
         energyBar = SKShapeNode()
         energyBar.path = UIBezierPath(roundedRect: CGRect(x: 0,
                                                           y: 0,
-                                                          width: size.width,
+                                                          width: critrure.size.width,
                                                           height: Constants.Enemy.energyBarHeight),
                                       cornerRadius: 0).cgPath
-        energyBar.position = CGPoint(x: -size.width/2, y: (size.height/2) + Constants.Enemy.energyBarPadding)
+        energyBar.position = CGPoint(x: -critrure.size.width/2,
+                                     y: (critrure.size.height/2) + Constants.Enemy.energyBarPadding)
         energyBar.fillColor = Constants.Color.energyBarGreen
         energyBar.lineWidth = 0
         addChild(energyBar)
 
+        //zRotation = CGFloat(90).degreesToRadians()
         // Debug Information
 
         //labelDebugInfo.fontSize = 12
@@ -94,11 +97,11 @@ class Enemy: SKSpriteNode {
     func walk() {
         let animatedAction = SKAction.animate(with: enemyFrames, timePerFrame: 0.1)
         let walkAction = SKAction.repeatForever(animatedAction)
-        run(walkAction, withKey: "enemyWalk")
+        critrure.run(walkAction, withKey: "enemyWalk")
     }
 
     func rotate(angle: Int) {
-        run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
+        critrure.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
     }
 
     func  shoot(damage: Double) {

@@ -14,13 +14,13 @@ class  LevelsViewController: UIViewController {
     @IBOutlet weak var levelsCollectionView: UICollectionView!
 
     fileprivate let reuseIdentifier = "LevelCell"
-    var levels = [Level]()
+    private var levels = [Level]()
     //Parse xml aux vars
-    var count = 0
-    var currentEnemies = [Enemy]()
-    var currentLevelName = ""
-    var currentResource = ""
-    var currentTowers: [TowerType] = []
+    private var count = 0
+    private var currentEnemies = [Enemy]()
+    private var currentLevelName = ""
+    private var currentResource = ""
+    private var currentTowers: [TowerType] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,5 +140,12 @@ extension LevelsViewController: UICollectionViewDataSource {
             levelCell.configureCell(level: levels[indexPath.row])
         }
         return cell
+    }
+}
+
+extension LevelsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 110, height: 110)
     }
 }

@@ -28,7 +28,7 @@ struct Constants {
         static let opacity: CGFloat = 0.5
         static let range: Double = 1.8
         static let getReadyDistance: CGFloat = 3
-        static let rotateSpeed: Double = 0.3
+        static let rotateSpeed: Double = 0.0
         static let turboTime: Int = 2000
         static let defaultRate: Double = 0.5
     }
@@ -43,7 +43,7 @@ struct Constants {
     }
 
     struct Enemy {
-        static let rotateSpeed: Double = 0.2
+        static let rotateSpeed: Double = 0.0
         static let startLife: Double = 100
         static let criticPercentageLife: Double = 25
         static let energyBarHeight: CGFloat = 2

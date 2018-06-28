@@ -26,6 +26,7 @@ class Tower: SKSpriteNode {
     private var shootTimer: Int = 0
     private var turboTimer: Int = 0
     private var defaultRate: Double = 0.0
+    private var tankBase: SKSpriteNode?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,8 +35,6 @@ class Tower: SKSpriteNode {
 
     init?(type: TowerType) {
 
-        self.type = type
-        
         // Create all Tower Textures
         let towerAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfTowerFrames = towerAnimatedAtlas.textureNames.count
@@ -46,6 +45,9 @@ class Tower: SKSpriteNode {
 
         // Initialize Sprite with First Frame
         super.init(texture: towerFrames[0], color: UIColor.black, size: towerFrames[0].size())
+
+        self.type = type
+        self.name = type.rawValue
 
         // Shared init values
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -61,9 +63,9 @@ class Tower: SKSpriteNode {
             range = Constants.Tank.range
             fireSoundFileName = "chain_gun.wav"
             defaultRate = Constants.Tower.defaultRate
-            if let tankBase = SKSpriteNode(fileNamed: "gun_turret_tank_base") {
-               addChild(tankBase)
-            }
+            tankBase =  SKSpriteNode(imageNamed: "gun_turret_tank_base")
+            tankBase?.zPosition = -1
+            addChild(tankBase!)
         case .BOMB:
             range = Constants.Tank.range
             fireSoundFileName = "chain_gun.wav"
@@ -88,7 +90,7 @@ class Tower: SKSpriteNode {
     }
 
     // MARK: public methods
-    
+
     func fire() {
         let animatedAction = SKAction.animate(with: towerFrames, timePerFrame: 0.1)
         let fireAction = SKAction.repeat(animatedAction, count: 1)
@@ -98,7 +100,10 @@ class Tower: SKSpriteNode {
     }
 
     func rotate(angle: Double) {
-        self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Tower.rotateSpeed))
+        // Avoid tank to rotate
+        tankBase?.zRotation = -CGFloat(angle).degreesToRadians()
+
+        run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Tower.rotateSpeed))
     }
 
     func rate() -> Double {

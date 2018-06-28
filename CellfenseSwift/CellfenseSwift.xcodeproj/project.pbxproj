@@ -197,11 +197,11 @@
 		4B9C2ADB1CDE70C50003B193 /* CellfenseSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4B3DC2911EFCB0970051744F /* ViewController */,
+				4BC6AF1E1CE03C4300901E43 /* Model */,
 				4BA4610220DA0AD700E2ECA3 /* View */,
-				4B2150C31EFDD4D800CF9FDC /* Resources */,
+				4B3DC2911EFCB0970051744F /* ViewController */,
 				4BC6AF1D1CE03C2D00901E43 /* Game */,
-				4BC6AF1E1CE03C4300901E43 /* Domain */,
+				4B2150C31EFDD4D800CF9FDC /* Resources */,
 				4BEA47851EF7713C005CAA69 /* IA */,
 				4BC9E3441CEA9E5200E74A89 /* Extensions */,
 				4B9C2AE71CDE70C60003B193 /* Assets.xcassets */,
@@ -255,14 +255,14 @@
 			name = Game;
 			sourceTree = "<group>";
 		};
-		4BC6AF1E1CE03C4300901E43 /* Domain */ = {
+		4BC6AF1E1CE03C4300901E43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4BC6AF131CDFD0B200901E43 /* Tower.swift */,
 				4BC6AF191CE0387F00901E43 /* Enemy.swift */,
 				4BC6AF171CE037EA00901E43 /* Level.swift */,
 			);
-			name = Domain;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		4BC9E3441CEA9E5200E74A89 /* Extensions */ = {
