@@ -15,7 +15,7 @@ class GameScene: SKScene {
     weak var holderViewController: UIViewController!
 
     private var sceneCam: SKCameraNode!
-    private var touchedTower: SKSpriteNode?
+    private var touchedTower: Tower?
 
     // Vars to hande action on switch area button
     private var cameraOffSet: CGFloat = 0
@@ -94,13 +94,15 @@ class GameScene: SKScene {
             }
 
             // Add a new Tower
-            if nodeTouched.name == Constants.NodeName.hudTower {
-                touchedTower = SKSpriteNode(imageNamed: "turret_frame0")
-                touchedTower?.alpha = 0.5
+            if let hudTowerName = nodeTouched.name,
+                gameControl.isHudTowerName(name: hudTowerName),
+                let hudTowerType = TowerType(rawValue: hudTowerName) {
 
+                touchedTower = Tower(type: hudTowerType)
+                touchedTower?.alpha = 0.5
                 // Offset on Y: avoid the tower to be under the finger
                 touchedTower!.position = CGPoint(x: location.x,
-                                                      y: location.y + touchedTower!.size.height)
+                                                 y: location.y + touchedTower!.size.height)
                 addChild(touchedTower!)
             }
             // Relocate a Tower
@@ -126,21 +128,21 @@ class GameScene: SKScene {
             // let nodeTouched = atPoint(location)
             _ = atPoint(location)
 
-            if let touchedTower = touchedTower {
+            if let tower = touchedTower {
 
                 // Offset on Y: mantain the tower on the finger
-                touchedTower.position = gameWorld.worldToGrid(location)
+                tower.position = gameWorld.worldToGrid(location)
 
                 // If Overlaping another tower, show it red
-                if gameWorld.towerAtLocation(touchedTower.position) != nil {
+                if gameWorld.towerAtLocation(tower.position) != nil {
 
-                    touchedTower.color = UIColor.red
-                    touchedTower.colorBlendFactor = Constants.Tower.opacity
+                    tower.color = UIColor.red
+                    tower.colorBlendFactor = Constants.Tower.opacity
                 } else {
-                    touchedTower.colorBlendFactor = 0.0
+                    tower.colorBlendFactor = 0.0
                 }
 
-                if gameControl.isHudArea(position: touchedTower.position) {
+                if gameControl.isHudArea(position: tower.position) {
                     showMessage(message: "SELL?")
                 } else {
                     self.hideMessage()
@@ -168,8 +170,10 @@ class GameScene: SKScene {
                 else if gameWorld.towerAtLocation(touchedTower.position) == nil {
 
                     // And is not blocking the path
-                    if gameWorld.doesBlockPathIfAddedTo(position: touchedTower.position) {
-                        gameWorld.addTower(touchedTower.position)
+                    if gameWorld.doesBlockPathIfAddedTo(position: touchedTower.position),
+                        let towerName = touchedTower.name,
+                        let towerType = TowerType(rawValue: towerName) {
+                        gameWorld.add(towerType: towerType, atPosition: touchedTower.position)
                     } else {
                         showAutoHideMessage(message: "BLOCKING!")
                     }

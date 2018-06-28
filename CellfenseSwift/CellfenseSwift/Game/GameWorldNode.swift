@@ -70,13 +70,13 @@ class GameWorldNode: SKNode {
         }
     }
 
-    func addTower(_ position: CGPoint) {
-
-        let newTower = Tower(type: TowerType.TURRET)
-        newTower?.position = position
-        towers.append(newTower!)
-        // newTower?.name
-        addChild(newTower!)
+    func add(towerType type: TowerType, atPosition position: CGPoint) {
+        if let newTower = Tower(type: type) {
+            newTower.position = position
+            towers.append(newTower)
+            // newTower?.name
+            addChild(newTower)
+        }
     }
 
     func removeTowerAtLocation(_ position: CGPoint) {

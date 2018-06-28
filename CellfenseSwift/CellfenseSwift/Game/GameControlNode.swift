@@ -21,6 +21,7 @@ class GameControlNode: SKNode {
     private var hud: SKNode!
     private var energy = 0
     private var lives = 0
+    private var towerTypesOnLevel = Set<String>()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -63,13 +64,14 @@ class GameControlNode: SKNode {
 
         // Create Tower Button
         for (index, type) in level.towers.enumerated() {
-            let spriteName = type == .TANK ? "gun_turret_tank" : "\(type.rawValue)_frame0"
-            let tower = SKSpriteNode(imageNamed: spriteName)
-            tower.name = Constants.NodeName.hudTower
+            let fileName = Tower.hudFileName(forType: type)
+            let tower = SKSpriteNode(imageNamed: fileName)
+            tower.name = type.rawValue
             tower.anchorPoint = CGPoint(x: 1, y: -1)
             tower.position = CGPoint(x: (Int(hudBackgroundSize.width) - (index * Int(rushButton.frame.size.width))),
                                          y: 0)
             hud.addChild(tower)
+            towerTypesOnLevel.insert(type.rawValue)
         }
     }
 
@@ -110,5 +112,12 @@ class GameControlNode: SKNode {
     func updateLives(lives: Int) {
         self.lives = lives
         if lives == 0 { onGameLost?() }
+    }
+
+    func isHudTowerName(name: String) -> Bool {
+        let result = towerTypesOnLevel.first {
+            $0 == name
+        }
+        return result != nil ? true : false
     }
 }

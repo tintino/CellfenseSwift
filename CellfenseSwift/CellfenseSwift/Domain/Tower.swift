@@ -19,6 +19,7 @@ class Tower: SKSpriteNode {
 
     var shootingAt: Enemy?
     var range: Double = 0.0
+    var type: TowerType!
 
     private var towerFrames = [SKTexture]()
     private var fireSoundFileName = ""
@@ -33,6 +34,8 @@ class Tower: SKSpriteNode {
 
     init?(type: TowerType) {
 
+        self.type = type
+        
         // Create all Tower Textures
         let towerAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfTowerFrames = towerAnimatedAtlas.textureNames.count
@@ -58,6 +61,9 @@ class Tower: SKSpriteNode {
             range = Constants.Tank.range
             fireSoundFileName = "chain_gun.wav"
             defaultRate = Constants.Tower.defaultRate
+            if let tankBase = SKSpriteNode(fileNamed: "gun_turret_tank_base") {
+               addChild(tankBase)
+            }
         case .BOMB:
             range = Constants.Tank.range
             fireSoundFileName = "chain_gun.wav"
@@ -130,5 +136,9 @@ class Tower: SKSpriteNode {
         self.shootTimer += intTime
 
         //TODO:random crazy tower
+    }
+
+    static func hudFileName(forType type: TowerType) -> String {
+        return (type == .TANK ? "gun_turret_tank" : "\(type.rawValue)_frame0")
     }
 }
