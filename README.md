@@ -10,7 +10,7 @@ Cellfense is a mix between a Tower defense and a Puzzle game. This flavor make i
 * 1.0
     * Work in progress
 
-## Contact me
+## ME
 
 Martin Gonzalez Vega – [@T1ncho](https://twitter.com/T1ncho) – gonzalez.vega.martin@gmail.com
 
@@ -18,6 +18,6 @@ Martin Gonzalez Vega – [@T1ncho](https://twitter.com/T1ncho) – gonzalez.vega
 
 ## Contributing
 
-1. Original project made on Objective-c and Cocos2d (<https://github.com/lucholaf/CFense>)
+1. Original project developed on Objective-c and Cocos2d (<https://github.com/lucholaf/CFense>)
 2. Android version (<https://github.com/eliseche/cellfense-android)
 
