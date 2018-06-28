@@ -10,25 +10,27 @@ import Foundation
 import SpriteKit
 
 enum EnemyType: String {
-    case CATERPILLAR = "Caterpillar"
-    case SPIDER = "Spider"
+    case CATERPILLAR = "caterpillar"
+    case SPIDER = "spider"
+    case CHIP = "chip"
 }
 
 class Enemy: SKSpriteNode {
+    //TODO: directioPathFindNodens to integers
 
     var type: EnemyType = EnemyType.SPIDER
-    var enemyFrames = [SKTexture]()
-    var path = [Any]()
-
-    //TODO: directioPathFindNodens to integers
     var dirX: CGFloat = 0
     var dirY: CGFloat = 0
-    var life: CGFloat = 0
+    var life: Double = Constants.Enemy.startLife
+    var path = [Any]()
     var pathIndex = 0
-    public var col = 0
-    public var row = 0
+    var col = 0
+    var row = 0
 
-    let myLabel = SKLabelNode()
+    private var enemyFrames = [SKTexture]()
+    private let labelDebugInfo = SKLabelNode()
+    private var energyBar: SKShapeNode!
+    private var lifeWidth = 0.0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -37,69 +39,87 @@ class Enemy: SKSpriteNode {
 
     init?(type: EnemyType) {
 
-        //TODO: This code is the same on Tower, try to optimize
+        // TODO: This code is the same on Tower, try to optimize
         self.type = type
-        //Create all Tower Textures
+        // Create all Tower Textures
         let enemyAnimatedAtlas = SKTextureAtlas(named: "\(type.rawValue)")
         let numberOfEnemyFrames = enemyAnimatedAtlas.textureNames.count
         for frameIndex in 0..<numberOfEnemyFrames {
             let enemyTextureName = "\(type)_frame\(frameIndex)"
-            self.enemyFrames.append(enemyAnimatedAtlas.textureNamed(enemyTextureName))
+            enemyFrames.append(enemyAnimatedAtlas.textureNamed(enemyTextureName))
         }
 
-        //Initialize Sprite with First Frame
-        super.init(texture: self.enemyFrames[0], color: UIColor.black, size: self.enemyFrames[0].size())
+        // Initialize Sprite with First Frame
+        super.init(texture: enemyFrames[0], color: UIColor.black, size: enemyFrames[0].size())
 
-        self.name = Constants.NodeName.enemy
-        self.life = 100
-        self.speed = 1.4
+        name = Constants.NodeName.enemy
+        speed = 1.4
 
-        //Debug Information
+        // Enery bar
+        energyBar = SKShapeNode()
+        energyBar.path = UIBezierPath(roundedRect: CGRect(x: 0,
+                                                          y: 0,
+                                                          width: size.width,
+                                                          height: Constants.Enemy.energyBarHeight),
+                                      cornerRadius: 0).cgPath
+        energyBar.position = CGPoint(x: -size.width/2, y: (size.height/2) + Constants.Enemy.energyBarPadding)
+        energyBar.fillColor = Constants.Color.energyBarGreen
+        energyBar.lineWidth = 0
+        addChild(energyBar)
 
-        myLabel.fontSize = 12
-        myLabel.position = CGPoint(x: 0, y: self.frame.minY)
-        myLabel.fontColor = UIColor.white
-        self.addChild(myLabel)
+        // Debug Information
+
+        //labelDebugInfo.fontSize = 12
+        //labelDebugInfo.position = CGPoint(x: 0, y: frame.minY)
+        //labelDebugInfo.fontColor = UIColor.white
+        //addChild(labelDebugInfo)
 
     }
 
-    override var position: CGPoint {
+    /*override var position: CGPoint {
         willSet {
-            myLabel.text = "Y: \(newValue.y)"
+            labelDebugInfo.text = "Y: \(newValue.y)"
+        }
+    }*/
+
+    private func updateEnergyBar() {
+        let newSize = life*100 / Constants.Enemy.startLife
+        energyBar.xScale = CGFloat(newSize/100)
+        if life < Constants.Enemy.criticPercentageLife {
+            energyBar.fillColor = Constants.Color.energyBarYellow
         }
     }
+    // MARK: public methods
 
     func walk() {
-        let animatedAction = SKAction.animate(with: self.enemyFrames, timePerFrame: 0.1)
+        let animatedAction = SKAction.animate(with: enemyFrames, timePerFrame: 0.1)
         let walkAction = SKAction.repeatForever(animatedAction)
-        self.run(walkAction, withKey: "enemyWalk")
+        run(walkAction, withKey: "enemyWalk")
     }
 
     func rotate(angle: Int) {
-        self.run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
+        run(SKAction.rotate(toAngle: CGFloat(angle).degreesToRadians(), duration: Constants.Enemy.rotateSpeed))
     }
 
-    func  shoot(damage: CGFloat) {
-        if self.life != 0 {
-            self.life -= damage
+    func  shoot(damage: Double) {
+        if life != 0.0 {
+            life -= damage
         }
 
-        if self.life <= 0 {
-            self.life = 0
-
-            //TODO: enemy destroy
-
-            self.removeAllActions()
+        if life <= 0.0 {
+            life = 0.0
+            // TODO: enemy destroy
+            removeAllActions()
         }
 
-        //TODO: calc life width bar
+        updateEnergyBar()
     }
 
     override func copy(with zone: NSZone? = nil) -> Any {
         let copy = Enemy(type: type)
-        copy?.position = self.position
-        copy?.col = self.col
-        copy?.row = self.row
+        copy?.position = position
+        copy?.col = col
+        copy?.row = row
         return copy!
     }
 }
