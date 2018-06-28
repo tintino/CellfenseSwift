@@ -3,7 +3,7 @@ This a is Swift version of my old game launched for Android and iOS in 2010 when
 Cellfense is a mix between a Tower defense and a Puzzle game. This flavor make it complex and challenge.
 
 # Screenshots
-![](/CellfenseSwift/CellfenseSwift/Resources/Images/hud.png)
+![](/Screenshots/screenshot1.jpeg)
 
 ## Release History
 
