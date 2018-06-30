@@ -11,8 +11,17 @@ import Foundation
 import SpriteKit
 
 class GameScene: SKScene {
-    // Parent controller needed to show ui alerts.
-    weak var holderViewController: UIViewController!
+    // MARK: Delegates Methods
+    var showAlert : (
+    (
+    _ title: String,
+    _ message: String,
+    _ positiveLabel: String,
+    _ negativeLabel: String,
+    _ onPositive: @escaping () -> Void,
+    _ onNegative: @escaping () -> Void
+    ) -> Void)?
+    var onGameEnded: (() -> Void)?
 
     private var sceneCam: SKCameraNode!
     private var touchedTower: Tower?
@@ -33,9 +42,8 @@ class GameScene: SKScene {
     // To show messages to the user as position errors, sell?, etc
     private var labelMessage = SKLabelNode()
 
-    required init(size: CGSize, level: Level, holderViewController: UIViewController) {
+    required init(size: CGSize, level: Level) {
         self.levelLoaded = level
-        self.holderViewController = holderViewController
         super.init(size: size)
     }
 
@@ -123,6 +131,11 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         for touch in touches {
+
+            // Use 3d touch as pause game
+            if touch.force > CGFloat(6.00) {
+                isPaused ? resumeGame() : pauseGame()
+            }
 
             let location = (touch as UITouch).location(in: self)
             // let nodeTouched = atPoint(location)
@@ -217,36 +230,32 @@ class GameScene: SKScene {
 
         gameControl.onGameComplete = { score in
             self.pauseGame()
-            let alertController = UIAlertController(title: "LevelCompleted".localized,
-                                                    message: "\("YourScoreIs".localized) \(score)",
-                preferredStyle: UIAlertController.Style.alert)
-            let okAction = UIAlertAction(title: "Continue".localized, style: .default) { result in
-                self.dissmissGame()
+            guard let alertDelegate = self.showAlert else {
+                fatalError("Must provide showAlert Delegate")
             }
-            let okCancel = UIAlertAction(title: "TryAgain".localized, style: .cancel) { result in
-                self.gameRestart()
-            }
-            alertController.addAction(okAction)
-            alertController.addAction(okCancel)
 
-            self.holderViewController.present(alertController, animated: true, completion: nil)
+            let scoredLabel = "\("YourScoreIs".localized) \(score)"
+            alertDelegate("LevelCompleted".localized, scoredLabel, "Continue".localized, "TryAgain".localized, {
+                // On Continue
+                self.gameEnded()
+            }, {
+                // On Try Again
+                self.gameRestart()
+            })
         }
 
         gameControl.onGameLost = {
-            let alertController = UIAlertController(title: "GameOver".localized,
-                                                    message: "Defeated".localized,
-                                                    preferredStyle: UIAlertController.Style.alert)
-
-            let okAction = UIAlertAction(title: "TryAgain".localized, style: .default) { result in
+            self.pauseGame()
+            guard let alertDelegate = self.showAlert else {
+                fatalError("Must provide showAlert Delegate")
+            }
+            alertDelegate("GameOver".localized, "Defeated".localized, "TryAgain".localized, "Back".localized, {
+                // On Try Again
                 self.gameRestart()
-            }
-            let okCancel = UIAlertAction(title: "Back".localized, style: .cancel) { result in
-                self.dissmissGame()
-            }
-            alertController.addAction(okAction)
-            alertController.addAction(okCancel)
-
-            self.holderViewController.present(alertController, animated: true, completion: nil)
+            }, {
+                // On Back
+                self.gameEnded()
+            })
         }
     }
 
@@ -290,8 +299,11 @@ class GameScene: SKScene {
         scene?.isPaused = false
     }
 
-    private func dissmissGame() {
-        holderViewController.dismiss(animated: true, completion: nil)
+    private func gameEnded() {
+        guard let gameEndDelegate = self.onGameEnded else {
+            fatalError("Must provide ended game Delegate")
+        }
+        gameEndDelegate()
     }
 
     private func gameRestart() {

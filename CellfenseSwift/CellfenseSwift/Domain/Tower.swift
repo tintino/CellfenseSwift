@@ -132,7 +132,7 @@ class Tower: SKSpriteNode {
 
     func damage(enemy: Enemy) -> Double {
         //TODO compare all towers and enemies
-        return 0.0
+        return 13.0
     }
 
     func tick(dTime: Double) {

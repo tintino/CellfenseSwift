@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class GameControlNode: SKNode {
-    // Delegate methods
+    // MARK: Delegates Methods
     var onGameComplete: ((_ score: Double) -> Void)?
     var onGameLost: (() -> Void)?
 

@@ -168,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				4B3DC28F1EFCB08D0051744F /* MenuViewController.swift */,
-				4B9C2AE21CDE70C60003B193 /* GameViewController.swift */,
 				4B2150BF1EFDCC6D00CF9FDC /* LevelsViewController.swift */,
+				4B9C2AE21CDE70C60003B193 /* GameViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

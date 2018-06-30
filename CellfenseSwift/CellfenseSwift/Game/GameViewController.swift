@@ -21,9 +21,7 @@ class GameViewController: UIViewController {
         let sceneSize = gameView.frame.size
         //let sceneSize = CGSize(width: 320  , height: 480)
 
-        //Create game Scene
-        let gameScene = GameScene(size: sceneSize, level: levelToLoad, holderViewController: self)
-        gameScene.backgroundColor = UIColor.green
+        let gameScene = createGameScene(sceneSize: sceneSize)
 
         // Configure the view.
         if let skView = gameView as? SKView {
@@ -43,5 +41,29 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+
+    private func createGameScene(sceneSize size: CGSize) -> GameScene {
+        let gameScene = GameScene(size: size, level: levelToLoad)
+
+        gameScene.showAlert = { (title, message, positive, negative, onPositive, onNegative) -> Void in
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: positive, style: .default) { result in
+                onPositive()
+            }
+            let okCancel = UIAlertAction(title: negative, style: .cancel) { result in
+                onNegative()
+            }
+            alertController.addAction(okAction)
+            alertController.addAction(okCancel)
+            self.present(alertController, animated: true, completion: nil)
+        }
+
+        gameScene.onGameEnded = {
+            self.dismiss(animated: true, completion: nil)
+        }
+
+        gameScene.backgroundColor = UIColor.green
+        return gameScene
     }
 }
