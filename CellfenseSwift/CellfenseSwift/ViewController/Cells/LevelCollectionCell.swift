@@ -15,9 +15,10 @@ class LevelCollectionCell: UICollectionViewCell {
 
     public var level =  Level()
 
-    func configureCell(level: Level) {
+    func configureCell(withLevel level: Level, number: Int) {
         self.level = level
-        self.labelName.text = self.level.name
-        self.layer.cornerRadius = 10
+        labelName.text = level.name
+        layer.cornerRadius = 10
+        labelLevelNumber.text = String(number)
     }
 }

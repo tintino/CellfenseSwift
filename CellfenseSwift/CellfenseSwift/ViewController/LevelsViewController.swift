@@ -137,7 +137,7 @@ extension LevelsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath)
         if let levelCell = cell as? LevelCollectionCell {
-            levelCell.configureCell(level: levels[indexPath.row])
+            levelCell.configureCell(withLevel: levels[indexPath.row], number: indexPath.row)
         }
         return cell
     }

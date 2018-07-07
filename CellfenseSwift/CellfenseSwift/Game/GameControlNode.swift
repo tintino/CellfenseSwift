@@ -22,7 +22,7 @@ class GameControlNode: SKNode {
     private var energy = 0
     private var lives = 0
     private var towerTypesOnLevel = Set<String>()
-
+var backgroundMusic: SKAudioNode!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")

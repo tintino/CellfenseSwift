@@ -22,7 +22,7 @@ class Tower: SKSpriteNode {
     var type: TowerType!
 
     private var towerFrames = [SKTexture]()
-    private var fireSoundFileName = ""
+    private var soundFire: SKAudioNode!
     private var shootTimer: Int = 0
     private var turboTimer: Int = 0
     private var defaultRate: Double = 0.0
@@ -51,25 +51,31 @@ class Tower: SKSpriteNode {
 
         // Shared init values
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
-
+        let fireAudioFile: String!
         // Custom init values for each tower type
         // TODO: change inital values
         switch type {
         case .TURRET:
             range = Constants.Tower.range
-            fireSoundFileName = "chain_gun.wav"
+            fireAudioFile = "machine_gun"
             defaultRate = Constants.Tower.defaultRate
         case .TANK:
             range = Constants.Tank.range
-            fireSoundFileName = "chain_gun.wav"
+            fireAudioFile = "cannon"
             defaultRate = Constants.Tower.defaultRate
             tankBase =  SKSpriteNode(imageNamed: "gun_turret_tank_base")
             tankBase?.zPosition = -1
             addChild(tankBase!)
         case .BOMB:
             range = Constants.Tank.range
-            fireSoundFileName = "chain_gun.wav"
+            fireAudioFile = "chain_gun.wav"
             defaultRate = Constants.Tower.defaultRate
+        }
+
+        if let fireURL = Bundle.main.url(forResource: fireAudioFile, withExtension: "m4a") {
+            soundFire = SKAudioNode(url: fireURL)
+            soundFire.autoplayLooped = false
+            addChild(soundFire)
         }
 
         //Shoot Radio. This will not affect the SKSpriteNode Size
@@ -94,9 +100,9 @@ class Tower: SKSpriteNode {
     func fire() {
         let animatedAction = SKAction.animate(with: towerFrames, timePerFrame: 0.1)
         let fireAction = SKAction.repeat(animatedAction, count: 1)
-        //let fireSoundAction = SKAction.playSoundFileNamed(fireSoundFileName, waitForCompletion: false)
         self.run(fireAction, withKey: "towerFire")
-        //self.run(fireSoundAction)
+        soundFire.stop()
+        soundFire.play()
     }
 
     func rotate(angle: Double) {

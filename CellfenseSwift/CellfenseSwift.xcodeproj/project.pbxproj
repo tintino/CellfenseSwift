@@ -13,6 +13,8 @@
 		4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2150D21EFDF5AD00CF9FDC /* LevelCollectionCell.swift */; };
 		4B33EF20206B242500B08BB7 /* CellfenseSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33EF1F206B242500B08BB7 /* CellfenseSwiftTests.swift */; };
 		4B3CB3CA1CE560CA001DE1A2 /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */; };
+		4B3DB9C720F0155B00870F21 /* Discognate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B3DB9C620F0155800870F21 /* Discognate.ttf */; };
+		4B3DB9C920F017AF00870F21 /* tseries_c.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B3DB9C820F0178B00870F21 /* tseries_c.ttf */; };
 		4B3DC2901EFCB08D0051744F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3DC28F1EFCB08D0051744F /* MenuViewController.swift */; };
 		4B4F662220E03D3800377D45 /* chip.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B4F662120E03D3800377D45 /* chip.atlas */; };
 		4B4F662520E0449100377D45 /* bomb.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4B4F662420E0449100377D45 /* bomb.atlas */; };
@@ -26,7 +28,6 @@
 		4B9C2AE61CDE70C60003B193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE41CDE70C60003B193 /* Main.storyboard */; };
 		4B9C2AE81CDE70C60003B193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE71CDE70C60003B193 /* Assets.xcassets */; };
 		4B9C2AEB1CDE70C60003B193 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AE91CDE70C60003B193 /* LaunchScreen.storyboard */; };
-		4B9C2AF61CDE77040003B193 /* chain_gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4B9C2AF51CDE77040003B193 /* chain_gun.wav */; };
 		4BA604AB1CE2A12A0017BC95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA604AA1CE2A12A0017BC95 /* Constants.swift */; };
 		4BC6AF141CDFD0B200901E43 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF131CDFD0B200901E43 /* Tower.swift */; };
 		4BC6AF161CE035DA00901E43 /* GameControlNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF151CE035DA00901E43 /* GameControlNode.swift */; };
@@ -35,6 +36,16 @@
 		4BC6AF1C1CE03B4900901E43 /* GameWorldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6AF1B1CE03B4900901E43 /* GameWorldNode.swift */; };
 		4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */; };
 		4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BCCDCC71F09849900273C0D /* Localizable.strings */; };
+		4BE26CAE20F04A5F008B5579 /* defense2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CA520F04A5D008B5579 /* defense2.m4a */; };
+		4BE26CAF20F04A5F008B5579 /* lock2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CA620F04A5D008B5579 /* lock2.m4a */; };
+		4BE26CB020F04A5F008B5579 /* virus1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CA720F04A5D008B5579 /* virus1.m4a */; };
+		4BE26CB120F04A5F008B5579 /* machine_gun.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CA820F04A5D008B5579 /* machine_gun.m4a */; };
+		4BE26CB220F04A5F008B5579 /* defense1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CA920F04A5E008B5579 /* defense1.wav */; };
+		4BE26CB320F04A5F008B5579 /* defense1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CAA20F04A5E008B5579 /* defense1.m4a */; };
+		4BE26CB420F04A5F008B5579 /* cannon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CAB20F04A5F008B5579 /* cannon.m4a */; };
+		4BE26CB520F04A5F008B5579 /* lock1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CAC20F04A5F008B5579 /* lock1.m4a */; };
+		4BE26CB620F04A5F008B5579 /* fireball.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BE26CAD20F04A5F008B5579 /* fireball.m4a */; };
+		4BE26CB820F04B93008B5579 /* SKAudioNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE26CB720F04B93008B5579 /* SKAudioNodeExtension.swift */; };
 		4BEA47841EF77133005CAA69 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47831EF77133005CAA69 /* Pathfinder.swift */; };
 		4BEA47871EF772EE005CAA69 /* PathfindNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA47861EF772EE005CAA69 /* PathfindNode.swift */; };
 		5DE4D0FA3A67C25B6A209220 /* Pods_CellfenseSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD7F49CB98031DE856F7E62 /* Pods_CellfenseSwiftTests.framework */; };
@@ -63,6 +74,8 @@
 		4B3CB3C71CE560CA001DE1A2 /* CellfenseSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CellfenseSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B3CB3C81CE560CA001DE1A2 /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFinder.h; path = "Domain/objective-c/PathFinder.h"; sourceTree = "<group>"; };
 		4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFinder.m; path = "Domain/objective-c/PathFinder.m"; sourceTree = "<group>"; };
+		4B3DB9C620F0155800870F21 /* Discognate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Discognate.ttf; sourceTree = "<group>"; };
+		4B3DB9C820F0178B00870F21 /* tseries_c.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tseries_c.ttf; path = "../../../../cellfense-android/Cellfense/app/src/main/assets/fonts/tseries_c.ttf"; sourceTree = "<group>"; };
 		4B3DC28F1EFCB08D0051744F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = ViewController/MenuViewController.swift; sourceTree = "<group>"; };
 		4B4F662120E03D3800377D45 /* chip.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = chip.atlas; sourceTree = "<group>"; };
 		4B4F662320E043F600377D45 /* tank.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tank.atlas; sourceTree = "<group>"; };
@@ -78,7 +91,6 @@
 		4B9C2AE71CDE70C60003B193 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B9C2AEA1CDE70C60003B193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9C2AEC1CDE70C60003B193 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B9C2AF51CDE77040003B193 /* chain_gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chain_gun.wav; sourceTree = "<group>"; };
 		4BA604AA1CE2A12A0017BC95 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4BC6AF131CDFD0B200901E43 /* Tower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tower.swift; path = Domain/Tower.swift; sourceTree = "<group>"; };
 		4BC6AF151CE035DA00901E43 /* GameControlNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameControlNode.swift; path = Game/GameControlNode.swift; sourceTree = "<group>"; };
@@ -88,6 +100,16 @@
 		4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatExtension.swift; path = Extensions/CGFloatExtension.swift; sourceTree = "<group>"; };
 		4BCCDCC61F09849900273C0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4BCCDCC81F09849D00273C0D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4BE26CA520F04A5D008B5579 /* defense2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = defense2.m4a; sourceTree = "<group>"; };
+		4BE26CA620F04A5D008B5579 /* lock2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = lock2.m4a; sourceTree = "<group>"; };
+		4BE26CA720F04A5D008B5579 /* virus1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = virus1.m4a; sourceTree = "<group>"; };
+		4BE26CA820F04A5D008B5579 /* machine_gun.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = machine_gun.m4a; sourceTree = "<group>"; };
+		4BE26CA920F04A5E008B5579 /* defense1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = defense1.wav; sourceTree = "<group>"; };
+		4BE26CAA20F04A5E008B5579 /* defense1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = defense1.m4a; sourceTree = "<group>"; };
+		4BE26CAB20F04A5F008B5579 /* cannon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cannon.m4a; sourceTree = "<group>"; };
+		4BE26CAC20F04A5F008B5579 /* lock1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = lock1.m4a; sourceTree = "<group>"; };
+		4BE26CAD20F04A5F008B5579 /* fireball.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fireball.m4a; sourceTree = "<group>"; };
+		4BE26CB720F04B93008B5579 /* SKAudioNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAudioNodeExtension.swift; sourceTree = "<group>"; };
 		4BEA47831EF77133005CAA69 /* Pathfinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pathfinder.swift; path = IA/Pathfinder.swift; sourceTree = "<group>"; };
 		4BEA47861EF772EE005CAA69 /* PathfindNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PathfindNode.swift; path = IA/PathfindNode.swift; sourceTree = "<group>"; };
 		5561312EA0A0469F285DD352 /* Pods-CellfenseSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellfenseSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CellfenseSwiftTests/Pods-CellfenseSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +142,7 @@
 		4B2150C31EFDD4D800CF9FDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4B3DB9C520F014F600870F21 /* Fonts */,
 				4B9C2AF41CDE77040003B193 /* Sounds */,
 				4B2150C41EFDD50300CF9FDC /* Levels */,
 				4B9C2AF71CDE77260003B193 /* Images */,
@@ -162,6 +185,15 @@
 				4B3CB3C91CE560CA001DE1A2 /* PathFinder.m */,
 			);
 			name = "objective-c";
+			sourceTree = "<group>";
+		};
+		4B3DB9C520F014F600870F21 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4B3DB9C820F0178B00870F21 /* tseries_c.ttf */,
+				4B3DB9C620F0155800870F21 /* Discognate.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		4B3DC2911EFCB0970051744F /* ViewController */ = {
@@ -217,7 +249,15 @@
 		4B9C2AF41CDE77040003B193 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				4B9C2AF51CDE77040003B193 /* chain_gun.wav */,
+				4BE26CAB20F04A5F008B5579 /* cannon.m4a */,
+				4BE26CAA20F04A5E008B5579 /* defense1.m4a */,
+				4BE26CA920F04A5E008B5579 /* defense1.wav */,
+				4BE26CA520F04A5D008B5579 /* defense2.m4a */,
+				4BE26CAD20F04A5F008B5579 /* fireball.m4a */,
+				4BE26CAC20F04A5F008B5579 /* lock1.m4a */,
+				4BE26CA620F04A5D008B5579 /* lock2.m4a */,
+				4BE26CA820F04A5D008B5579 /* machine_gun.m4a */,
+				4BE26CA720F04A5D008B5579 /* virus1.m4a */,
 			);
 			name = Sounds;
 			path = Resources/Sounds;
@@ -270,6 +310,7 @@
 			children = (
 				4BC9E3451CEA9E6E00E74A89 /* CGFloatExtension.swift */,
 				4B0C68B91F0987E40042D9F5 /* StringExtension.swift */,
+				4BE26CB720F04B93008B5579 /* SKAudioNodeExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -404,15 +445,25 @@
 				4B9C2AEB1CDE70C60003B193 /* LaunchScreen.storyboard in Resources */,
 				4B4F662220E03D3800377D45 /* chip.atlas in Resources */,
 				4B4F662520E0449100377D45 /* bomb.atlas in Resources */,
+				4BE26CB420F04A5F008B5579 /* cannon.m4a in Resources */,
+				4B3DB9C720F0155B00870F21 /* Discognate.ttf in Resources */,
+				4BE26CB020F04A5F008B5579 /* virus1.m4a in Resources */,
+				4BE26CB220F04A5F008B5579 /* defense1.wav in Resources */,
+				4BE26CB620F04A5F008B5579 /* fireball.m4a in Resources */,
+				4BE26CAF20F04A5F008B5579 /* lock2.m4a in Resources */,
 				4B9C2AE81CDE70C60003B193 /* Assets.xcassets in Resources */,
 				4B7ED07B20DDB3FB00FC036D /* caterpillar.atlas in Resources */,
-				4B9C2AF61CDE77040003B193 /* chain_gun.wav in Resources */,
+				4BE26CB520F04A5F008B5579 /* lock1.m4a in Resources */,
+				4B3DB9C920F017AF00870F21 /* tseries_c.ttf in Resources */,
 				4B9C2AE61CDE70C60003B193 /* Main.storyboard in Resources */,
+				4BE26CAE20F04A5F008B5579 /* defense2.m4a in Resources */,
 				4BCCDCC51F09849900273C0D /* Localizable.strings in Resources */,
 				4B7ED07720DDB3D300FC036D /* spider.atlas in Resources */,
+				4BE26CB120F04A5F008B5579 /* machine_gun.m4a in Resources */,
 				4B2150C61EFDD51000CF9FDC /* levels.xml in Resources */,
 				4B4F662620E04DBD00377D45 /* tank.atlas in Resources */,
 				4B7ED07920DDB3DF00FC036D /* turret.atlas in Resources */,
+				4BE26CB320F04A5F008B5579 /* defense1.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +544,7 @@
 				4BC9E3461CEA9E6E00E74A89 /* CGFloatExtension.swift in Sources */,
 				4B0C68BA1F0987E40042D9F5 /* StringExtension.swift in Sources */,
 				4B2150D31EFDF5AD00CF9FDC /* LevelCollectionCell.swift in Sources */,
+				4BE26CB820F04B93008B5579 /* SKAudioNodeExtension.swift in Sources */,
 				4B9C2ADD1CDE70C50003B193 /* AppDelegate.swift in Sources */,
 				4BEA47871EF772EE005CAA69 /* PathfindNode.swift in Sources */,
 				4B3DC2901EFCB08D0051744F /* MenuViewController.swift in Sources */,
