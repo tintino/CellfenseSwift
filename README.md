@@ -12,14 +12,12 @@ Cellfense is a mix between a Tower defense and a Puzzle game. This flavor make i
 
 ## ME
 
-Martin Gonzalez Vega 
-   - tintino@gmailcom
-   – gonzalez.vega.martin@gmail.com
-   – [@T1ncho](https://twitter.com/T1ncho) 
-   - [LinkedIn](https://www.linkedin.com/in/martin-gonzalez-vega-209b7328)
-   - [My Github](https://github.com/tintino/)
+Martin Gonzalez Vega – [@T1ncho](https://twitter.com/T1ncho) – gonzalez.vega.martin@gmail.com
+
+[My Github](https://github.com/tintino/)
 
 ## Contributing
 
-1. Android version [Github android](https://github.com/eliseche/puntotruco-android)
+1. Original project developed on Objective-c and Cocos2d (<https://github.com/lucholaf/CFense>)
+2. Android version (<https://github.com/eliseche/cellfense-android)
 
