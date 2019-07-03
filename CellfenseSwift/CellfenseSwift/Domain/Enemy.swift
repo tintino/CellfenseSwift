@@ -54,6 +54,13 @@ class Enemy: SKNode {
         critrure = SKSpriteNode(texture: enemyFrames[0], color: UIColor.black, size: enemyFrames[0].size())
         addChild(critrure)
         name = Constants.NodeName.enemy
+        
+        switch type {
+        case .CATERPILLAR:
+            break
+        case .CHIP: break
+        case .SPIDER: break
+        }
         speed = 1.4
 
         // Enery bar
@@ -89,7 +96,7 @@ class Enemy: SKNode {
         let newSize = life*100 / Constants.Enemy.startLife
         energyBar.xScale = CGFloat(newSize/100)
         if life < Constants.Enemy.criticPercentageLife {
-            energyBar.fillColor = Constants.Color.energyBarYellow
+            energyBar.fillColor = Constants.Color.energyBarRed
         }
     }
     // MARK: public methods

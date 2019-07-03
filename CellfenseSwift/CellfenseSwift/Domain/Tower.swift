@@ -62,7 +62,7 @@ class Tower: SKSpriteNode {
         case .TANK:
             range = Constants.Tank.range
             fireAudioFile = "cannon"
-            defaultRate = Constants.Tower.defaultRate
+            defaultRate = Constants.Tank.defaultRate
             tankBase =  SKSpriteNode(imageNamed: "gun_turret_tank_base")
             tankBase?.zPosition = -1
             addChild(tankBase!)
@@ -125,9 +125,7 @@ class Tower: SKSpriteNode {
         // Shoot only if im not shooting
         if shootTimer  >= Int(defaultRate * 1000) {
             shootTimer = 0
-
             victim.shoot(damage: damage(enemy: victim))
-
             fire()
             return true
         } else {
@@ -137,8 +135,36 @@ class Tower: SKSpriteNode {
     }
 
     func damage(enemy: Enemy) -> Double {
-        //TODO compare all towers and enemies
-        return 13.0
+        switch enemy.type {
+        case .SPIDER:
+            switch self.type! {
+            case .TURRET:
+                return Constants.Tower.damageToSpider
+            case .TANK:
+                return Constants.Tank.damageToSpider
+            default:
+                break
+            }
+        case .CATERPILLAR:
+            switch self.type! {
+            case .TURRET:
+                return Constants.Tower.damageToCaterpillar
+            case .TANK:
+                return Constants.Tank.damageToCaterpillar
+            default:
+                break
+            }
+        case .CHIP:
+            switch self.type! {
+            case .TURRET:
+                return Constants.Tower.damageToChip
+            case .TANK:
+                return Constants.Tank.damageToChip
+            default:
+                break
+            }
+        }
+        return 0
     }
 
     func tick(dTime: Double) {
